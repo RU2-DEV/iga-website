@@ -1,0 +1,158 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+<BaseLayout title="Schedule a Tour | Imagination Grove Academy" description="Book a free, no-pressure tour of Imagination Grove Academy. Meet the teachers, see the classrooms, and ask every question you have. Tours take about 30 minutes.">
+
+    <!-- ========== HERO: focused single column ========== -->
+    <section class="enroll-hero">
+      <div class="container">
+        <div class="enroll-hero-content fade-in">
+          <p class="eyebrow">Schedule your tour</p>
+          <h1>Let's show you around.</h1>
+          <p class="enroll-lead">A 30-minute tour is the fastest way to know if IGA is right for your family. No pressure, no sales pitch. Just a real look at the space and the people.</p>
+          <ul class="enroll-trust-row" aria-label="Tour details">
+            <li>Free, always</li>
+            <li>About 30 minutes</li>
+            <li>Bring your child</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== FORM: dominant centered card ========== -->
+    <section class="enroll-form-section">
+      <div class="container">
+        <div class="lead-form-card fade-in">
+          <form class="lead-form" novalidate>
+            <h2 class="form-heading">Tell us a little about your family.</h2>
+            <p class="form-sub">We will follow up within 24 hours to confirm your tour time.</p>
+
+            <div class="form-group">
+              <label for="parent-name">Your name <span class="required" aria-hidden="true">*</span></label>
+              <input id="parent-name" name="parent-name" type="text" required autocomplete="name" aria-required="true">
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email <span class="required" aria-hidden="true">*</span></label>
+                <input id="email" name="email" type="email" required autocomplete="email" aria-required="true">
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone <span class="required" aria-hidden="true">*</span></label>
+                <input id="phone" name="phone" type="tel" required autocomplete="tel" aria-required="true">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="child-dob">Child's date of birth <span class="required" aria-hidden="true">*</span></label>
+                <input id="child-dob" name="child-dob" type="date" required aria-required="true" aria-describedby="child-dob-helper">
+                <span id="child-dob-helper" class="form-helper">We will match you with the right program.</span>
+              </div>
+              <div class="form-group">
+                <label for="tour-date">Preferred tour date <span class="required" aria-hidden="true">*</span></label>
+                <input id="tour-date" name="tour-date" type="date" required aria-required="true" aria-describedby="tour-date-helper">
+                <span id="tour-date-helper" class="form-helper">Mon–Fri during operating hours.</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="notes">Anything you'd like us to know? <span class="optional">(optional)</span></label>
+              <textarea id="notes" name="notes" rows="3" maxlength="300"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-green btn-lg btn-full">Request my tour &rarr;</button>
+
+            <p role="status" aria-live="polite" class="sr-only" id="form-status"></p>
+
+            <p class="form-note">By submitting, you agree to receive a tour-confirmation email and call. We will never sell your information or add you to lists you didn't sign up for.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== WHAT TO EXPECT: numbered horizontal flow ========== -->
+    <section class="section section-green-bg">
+      <div class="container">
+        <div class="section-header fade-in">
+          <p class="eyebrow">What to expect</p>
+          <h2>Tour day, start to finish.</h2>
+        </div>
+        <ol class="tour-steps">
+          <li class="tour-step fade-in">
+            <span class="tour-step-num" aria-hidden="true">1</span>
+            <h3>Before your tour</h3>
+            <p>We will send directions, parking info, and a short FAQ 24 hours before, so you arrive ready and don't have to ask the obvious questions.</p>
+          </li>
+          <li class="tour-step fade-in">
+            <span class="tour-step-num" aria-hidden="true">2</span>
+            <h3>During your tour</h3>
+            <p>Meet <span class="placeholder-inline">[STAFF NAME]</span>, see the classrooms that serve your child's age, and watch a real class in session. About 30 minutes total.</p>
+          </li>
+          <li class="tour-step fade-in">
+            <span class="tour-step-num" aria-hidden="true">3</span>
+            <h3>After your tour</h3>
+            <p>We follow up within 24 hours. If you want to enroll, we walk you through the next steps. If not, no hard feelings: we will never spam you.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ========== TESTIMONIALS: 3 stacked text cards ========== -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header fade-in">
+          <p class="eyebrow">From other IGA families</p>
+          <h2>What parents say after their tour.</h2>
+          <p class="section-placeholder-note"><span class="placeholder-inline">[PLACEHOLDER]</span> Real quotes will replace these once we have enrolled families. Until then, these are illustrative.</p>
+        </div>
+        <div class="testimonials-grid">
+          <article class="testimonial-card fade-in">
+            <blockquote>"They actually let us sit in on a class. Three other places we toured kept us in the front office the whole time. That alone made the decision."</blockquote>
+            <cite><span class="placeholder-inline">[Parent name]</span>, parent of a 2-year-old</cite>
+          </article>
+          <article class="testimonial-card fade-in">
+            <blockquote>"Every teacher we met had a degree in early childhood ed. I asked. They told me. Nobody else did."</blockquote>
+            <cite><span class="placeholder-inline">[Parent name]</span>, parent of a 4-year-old</cite>
+          </article>
+          <article class="testimonial-card fade-in">
+            <blockquote>"The keypad entry, the two-adult release rule, the daily ratio sheet on the wall. I felt better walking out of the tour than I did walking in."</blockquote>
+            <cite><span class="placeholder-inline">[Parent name]</span>, parent of an infant</cite>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== FAQ: native disclosure accordion ========== -->
+    <section class="section section-amber-bg">
+      <div class="container">
+        <div class="section-header fade-in">
+          <p class="eyebrow">Common questions</p>
+          <h2>Quick answers, before you fill anything out.</h2>
+        </div>
+        <div class="faq-list fade-in">
+          <details class="faq-item">
+            <summary>How long is a tour?</summary>
+            <p>About 30 minutes. We will show you the classrooms relevant to your child's age, introduce you to a teacher or two, and answer every question you brought.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Can my child come with me?</summary>
+            <p>Absolutely. We love when kids come along. It is the easiest way to see how they react to the space and meet the teachers who would be with them.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Is there a fee?</summary>
+            <p>Tours are always free. If you decide to enroll, there is a one-time registration fee of <span class="placeholder-inline">[AMOUNT]</span> that reserves your spot.</p>
+          </details>
+          <details class="faq-item">
+            <summary>When can I tour?</summary>
+            <p>We run tours Monday through Friday during operating hours, and some Saturday mornings by appointment. Pick a date in the form above and we will confirm or suggest the closest available time.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What if I am not ready to tour yet?</summary>
+            <p>That's fine. Read through our <a href="/programs" class="text-link">program pages</a> and <a href="/about#safety" class="text-link">safety policies</a> first. The form is here when you are ready.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+</BaseLayout>

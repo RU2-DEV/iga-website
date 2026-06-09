@@ -6,11 +6,13 @@ import "../styles/global.css";
 interface Props {
   title?: string;
   description?: string;
+  mainClass?: string;
 }
 
 const {
   title = "Imagination Grove Academy",
   description = "Safe, joyful childcare for children 6 weeks–5 years across Indiana and Kentucky.",
+  mainClass,
 } = Astro.props;
 ---
 
@@ -29,6 +31,7 @@ const {
     />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    <slot name="head" />
   </head>
   <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -78,7 +81,7 @@ const {
       <a href="/portal" class="btn btn-outline-teal">Parent Portal</a>
     </div>
 
-    <main id="main-content">
+    <main id="main-content" class={mainClass}>
       <slot />
     </main>
 

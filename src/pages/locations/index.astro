@@ -1,0 +1,109 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+<BaseLayout title="Our Locations | Imagination Grove Academy" description="Find your nearest Imagination Grove Academy campus. Four locations opening across Indiana and Kentucky &mdash; Bargersville first, with Fishers, New Palestine, and Lexington following.">
+
+    <!-- ========== HERO ========== -->
+    <section class="page-hero">
+      <div class="container">
+        <div class="fade-in">
+          <p class="eyebrow">Our locations</p>
+          <h1>Find your nearest IGA campus.</h1>
+          <p>Four campuses opening across Indiana and Kentucky. Bargersville opens first, with Fishers, New Palestine, and Lexington following.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== LOCATIONS GRID ========== -->
+    <section class="section">
+      <div class="container">
+        <ul class="locations-grid fade-in" aria-label="IGA locations">
+
+          <li class="location-card location-card--open">
+            <div class="location-card-status status-open">
+              <span class="status-dot" aria-hidden="true"></span>
+              <span>Opening first &middot; Enrolling now</span>
+            </div>
+            <h2 class="location-card-city">Bargersville, IN</h2>
+            <p class="location-card-area"><span class="placeholder-inline">[NEIGHBORHOOD TBD]</span></p>
+            <address class="location-card-address">
+              <span class="placeholder-inline">[ADDRESS TBD]</span><br>
+              Bargersville, IN <span class="placeholder-inline">[ZIP]</span><br>
+              <span class="placeholder-inline">[PHONE TBD]</span>
+            </address>
+            <div class="location-card-actions">
+              <a href="/locations/bargersville" class="btn btn-green">See this location &rarr;</a>
+              <a href="/enroll" class="text-link">Schedule a tour &rarr;</a>
+            </div>
+          </li>
+
+          <li class="location-card">
+            <div class="location-card-status status-soon">
+              <span class="status-dot" aria-hidden="true"></span>
+              <span>Coming soon</span>
+            </div>
+            <h2 class="location-card-city">Fishers, IN</h2>
+            <p class="location-card-area"><span class="placeholder-inline">[NEIGHBORHOOD TBD]</span></p>
+            <address class="location-card-address">
+              <span class="placeholder-inline">[ADDRESS TBD]</span><br>
+              Fishers, IN <span class="placeholder-inline">[ZIP]</span><br>
+              <span class="placeholder-inline">[PHONE TBD]</span>
+            </address>
+            <div class="location-card-actions">
+              <a href="/locations/fishers" class="btn btn-outline-teal">See this location &rarr;</a>
+              <a href="/enroll" class="text-link">Join the waitlist &rarr;</a>
+            </div>
+          </li>
+
+          <li class="location-card">
+            <div class="location-card-status status-soon">
+              <span class="status-dot" aria-hidden="true"></span>
+              <span>Coming soon</span>
+            </div>
+            <h2 class="location-card-city">New Palestine, IN</h2>
+            <p class="location-card-area"><span class="placeholder-inline">[NEIGHBORHOOD TBD]</span></p>
+            <address class="location-card-address">
+              <span class="placeholder-inline">[ADDRESS TBD]</span><br>
+              New Palestine, IN <span class="placeholder-inline">[ZIP]</span><br>
+              <span class="placeholder-inline">[PHONE TBD]</span>
+            </address>
+            <div class="location-card-actions">
+              <a href="/locations/new-palestine" class="btn btn-outline-teal">See this location &rarr;</a>
+              <a href="/enroll" class="text-link">Join the waitlist &rarr;</a>
+            </div>
+          </li>
+
+          <li class="location-card">
+            <div class="location-card-status status-soon">
+              <span class="status-dot" aria-hidden="true"></span>
+              <span>Coming soon</span>
+            </div>
+            <h2 class="location-card-city">Lexington, KY</h2>
+            <p class="location-card-area"><span class="placeholder-inline">[NEIGHBORHOOD TBD]</span></p>
+            <address class="location-card-address">
+              <span class="placeholder-inline">[ADDRESS TBD]</span><br>
+              Lexington, KY <span class="placeholder-inline">[ZIP]</span><br>
+              <span class="placeholder-inline">[PHONE TBD]</span>
+            </address>
+            <div class="location-card-actions">
+              <a href="/locations/lexington-ky" class="btn btn-outline-teal">See this location &rarr;</a>
+              <a href="/enroll" class="text-link">Join the waitlist &rarr;</a>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+    </section>
+
+    <!-- ========== CTA BAND ========== -->
+    <section class="cta-band section-dark">
+      <div class="container">
+        <div class="fade-in">
+          <h2>Visit the campus near you.</h2>
+          <p>Tours take about 30 minutes. See the classrooms, meet the teachers, and ask every question you have.</p>
+          <a href="/enroll" class="btn btn-white btn-lg">Schedule a Free Tour</a>
+        </div>
+      </div>
+    </section>
+
+</BaseLayout>

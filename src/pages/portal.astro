@@ -1,0 +1,66 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+<BaseLayout title="Parent Portal | Imagination Grove Academy" description="Log in to the IGA Parent Portal for daily updates, documents, messaging, and a direct deep-link into Brightwheel." mainClass="portal-main">
+    <div class="container">
+      <div class="portal-center">
+
+        <!-- HERO -->
+        <div class="fade-in">
+          <h1>The IGA Parent Portal.</h1>
+          <p class="portal-sub">Your one login for daily updates, documents, messaging, and the Brightwheel app.</p>
+        </div>
+
+        <!-- PRIMARY: LAUNCH PAD FOR ENROLLED FAMILIES -->
+        <article class="portal-card primary fade-in">
+          <p class="portal-card-label">Already enrolled</p>
+          <h2 class="portal-card-heading">Open Brightwheel.</h2>
+          <p class="portal-launch-intro">All daily updates, messaging, photos, and billing live in Brightwheel. Pick your way in:</p>
+
+          <a href="https://schools.mybrightwheel.com" class="btn btn-green btn-lg btn-full portal-launch-btn" target="_blank" rel="noopener">
+            Open in your browser &rarr;
+          </a>
+
+          <div class="portal-divider"><span>or</span></div>
+
+          <p class="portal-app-label">Get the Brightwheel mobile app:</p>
+          <div class="app-badges">
+            <a href="https://apps.apple.com/app/brightwheel/id832701752" class="app-badge" target="_blank" rel="noopener">&#63743; App Store</a>
+            <a href="https://play.google.com/store/apps/details?id=com.brightwheel.schools" class="app-badge" target="_blank" rel="noopener">&#9654; Google Play</a>
+          </div>
+
+          <p class="portal-launch-note">Your login lives on Brightwheel. We email you credentials when your enrollment is confirmed. Forgot your password? <a href="https://schools.mybrightwheel.com" target="_blank" rel="noopener" class="text-link">Reset it on Brightwheel</a>.</p>
+        </article>
+
+        <!-- DIVIDER -->
+        <div class="portal-divider fade-in"><span>or</span></div>
+
+        <!-- SECONDARY: PROSPECTIVE FAMILIES -->
+        <article class="portal-card secondary fade-in">
+          <p class="portal-card-label">Not enrolled yet?</p>
+          <h2 class="portal-card-heading">Here's what's inside the portal.</h2>
+          <p class="portal-secondary-intro">The portal goes live the day your enrollment is confirmed. Inside, you'll find:</p>
+          <ul class="portal-features">
+            <li>Real-time photos and daily reports from your child's classroom</li>
+            <li>Direct messaging with your child's teachers</li>
+            <li>Digital check-in and check-out</li>
+            <li>Enrollment documents, invoices, and policies in one place</li>
+            <li>A direct deep-link into the Brightwheel app</li>
+          </ul>
+          <a href="/enroll" class="btn btn-teal">Schedule a tour &rarr;</a>
+        </article>
+
+        <!-- HOW IT WORKS EXPLAINER -->
+        <section class="portal-explainer fade-in" aria-labelledby="how-it-works">
+          <h2 id="how-it-works">How the parent portal works</h2>
+          <p>The IGA site is a launch pad. <strong>Brightwheel is where the actual portal lives.</strong></p>
+          <ol class="portal-explainer-steps">
+            <li><strong>Get enrolled.</strong> Once your enrollment is confirmed, Brightwheel emails you a login and an app invite within 48 hours.</li>
+            <li><strong>Sign in on Brightwheel.</strong> Daily updates, photos, messaging, billing, and check-in all happen there. Your login does not live on iga.com.</li>
+            <li><strong>Use this page as your shortcut.</strong> Bookmark portal.iga.com to hop into Brightwheel quickly from the web or grab the app links.</li>
+          </ol>
+        </section>
+
+      </div>
+    </div>
+</BaseLayout>
