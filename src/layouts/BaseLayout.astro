@@ -2,6 +2,7 @@
 // BaseLayout — the shared shell for every page: <head>, nav, footer, scripts.
 // Pages pass `title` and `description`; their content renders into <slot />.
 import "../styles/global.css";
+import { ClientRouter } from "astro:transitions";
 
 interface Props {
   title?: string;
@@ -31,6 +32,17 @@ const {
     />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    <ClientRouter />
+    <style is:global>
+      /* Don't animate page transitions for motion-sensitive users */
+      @media (prefers-reduced-motion: reduce) {
+        ::view-transition-group(*),
+        ::view-transition-old(*),
+        ::view-transition-new(*) {
+          animation: none !important;
+        }
+      }
+    </style>
     <slot name="head" />
   </head>
   <body>
