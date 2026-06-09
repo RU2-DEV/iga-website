@@ -1,17 +1,256 @@
 ---
-
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+  title="Imagination Grove Academy | Childcare across Indiana & Kentucky"
+  description="Safe, joyful childcare for children 6 weeks–5 years. Now enrolling — Bargersville opens first."
+>
+  <!-- ========== SECTION 1: HERO ========== -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content fade-in">
+          <p class="eyebrow">Now enrolling &mdash; Bargersville opens first</p>
+          <h1>Where imagination takes root.</h1>
+          <p class="hero-sub">Safe, joyful childcare for children 6 weeks–5 years. Enrolling now for Summer and Fall 2026.</p>
+          <div class="hero-buttons">
+            <a href="/enroll" class="btn btn-green btn-lg">Schedule a Free Tour &rarr;</a>
+            <a href="/programs" class="btn btn-outline-teal btn-lg">See Our Programs</a>
+          </div>
+          <ul class="trust-badges" aria-label="Credentials">
+            <li>State-licensed (IN &amp; KY)</li>
+            <li>Background-checked staff</li>
+            <li>Degree-qualified teachers</li>
+            <li>1:4 infant ratio</li>
+          </ul>
+        </div>
+        <div class="placeholder-img fade-in" role="img" aria-label="Hero photo placeholder">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="24" cy="16" r="8" fill="#6CB43A" opacity="0.5"></circle>
+            <path d="M12 38c0-6.6 5.4-12 12-12s12 5.4 12 12" stroke="#1F5247" stroke-width="2" fill="none"></path>
+          </svg>
+          <span class="placeholder-label">Hero photo: teacher reading to children outdoors</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 2: SOCIAL PROOF STRIP ========== -->
+  <section class="proof-strip">
+    <div class="container">
+      <div class="proof-strip-inner">
+        <div class="proof-item"><strong>6 Weeks – 5 Years</strong> &middot; All ages welcome</div>
+        <div class="proof-divider"></div>
+        <div class="proof-item"><strong>1:4 Ratio</strong> &middot; Infant teacher-to-child ratio</div>
+        <div class="proof-divider"></div>
+        <div class="proof-item"><strong>4 locations</strong> &middot; Bargersville opens first</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 3: PROGRAMS OVERVIEW ========== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>A program for every stage of growth</h2>
+        <p>From infants taking their first steps to pre-kindergarteners ready to take on the world.</p>
+      </div>
+
+      <div class="program-grid">
+        <div class="program-card fade-in">
+          <div class="program-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="6" fill="#EF9F27"></circle><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke="#854F0B" stroke-width="1.5"></path></svg>
+          </div>
+          <h3>Infant Care</h3>
+          <p class="age-badge">6 weeks – 12 months</p>
+          <p>Responsive, nurturing care designed around your baby's schedule.</p>
+          <a href="/programs" class="card-link">Learn more &rarr;</a>
+        </div>
+
+        <div class="program-card fade-in">
+          <div class="program-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 4c-2 4-8 7-8 12a8 8 0 0016 0c0-5-6-8-8-12z" fill="#6CB43A"></path><line x1="12" y1="10" x2="12" y2="20" stroke="#1F5247" stroke-width="1.2"></line></svg>
+          </div>
+          <h3>Toddler Program</h3>
+          <p class="age-badge">1 – 2 years</p>
+          <p>Hands-on exploration and language-rich play.</p>
+          <a href="/programs" class="card-link">Learn more &rarr;</a>
+        </div>
+
+        <div class="program-card fade-in">
+          <div class="program-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><polygon points="12,2 15.1,8.3 22,9.3 17,14.1 18.2,21 12,17.8 5.8,21 7,14.1 2,9.3 8.9,8.3" fill="#5FA8D3"></polygon></svg>
+          </div>
+          <h3>Preschool</h3>
+          <p class="age-badge">3 – 4 years</p>
+          <p>Creative, curiosity-led learning with structured foundations.</p>
+          <a href="/programs" class="card-link">Learn more &rarr;</a>
+        </div>
+
+        <div class="program-card fade-in">
+          <div class="program-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" fill="#EAF3F8" stroke="#2C6F95" stroke-width="1.5"></rect><line x1="8" y1="8" x2="16" y2="8" stroke="#2C6F95" stroke-width="1.2"></line><line x1="8" y1="12" x2="14" y2="12" stroke="#2C6F95" stroke-width="1.2"></line><line x1="8" y1="16" x2="12" y2="16" stroke="#2C6F95" stroke-width="1.2"></line></svg>
+          </div>
+          <h3>Pre-K</h3>
+          <p class="age-badge">4 – 5 years</p>
+          <p>Kindergarten-ready academics with a love-of-learning approach.</p>
+          <a href="/programs" class="card-link">Learn more &rarr;</a>
+        </div>
+      </div>
+
+      <div class="text-center mt-48 fade-in">
+        <a href="/programs" class="btn btn-outline-green btn-lg">View all programs &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 4: WHY IGA ========== -->
+  <section class="section why-iga">
+    <div class="container">
+      <div class="section-header fade-in">
+        <p class="eyebrow">What sets IGA apart</p>
+        <h2>Three things parents can verify before signing up.</h2>
+        <p>Not vibes, not slogans. The specifics that separate real childcare from generic-childcare.</p>
+      </div>
+
+      <div class="why-row why-row-stat fade-in">
+        <div class="why-stat">
+          <span class="why-stat-number">1:4</span>
+          <span class="why-stat-label">Infant teacher-to-child ratio. State minimums are 1:5. We staff below.</span>
+        </div>
+        <div class="why-row-text">
+          <h3>Academic playfulness, not academic pressure.</h3>
+          <p>Structured curriculum at the heart of every program. Imagination layered on top, not bolted on. Children leave Pre-K reading, counting, writing their names, and excited about what's next.</p>
+        </div>
+      </div>
+
+      <div class="why-row why-row-list fade-in">
+        <div class="why-row-text">
+          <h3>Safety you can actually see.</h3>
+          <p>"Safe and loving environment" is what every center says. Here is what we actually do, every day:</p>
+        </div>
+        <ul class="why-checklist">
+          <li><strong>Keypad entry.</strong> Only verified parents and staff have codes. Visitors are buzzed in by a teacher.</li>
+          <li><strong>Two-adult release.</strong> No child leaves the building with a single staff member.</li>
+          <li><strong>Daily ratio audits.</strong> Logged and signed each morning by the lead teacher on duty.</li>
+          <li><strong>State licensed.</strong> License #<span class="placeholder-inline">[PLACEHOLDER]</span>, available on request.</li>
+        </ul>
+      </div>
+
+      <div class="why-row why-row-quote fade-in">
+        <blockquote class="why-quote">
+          <p>"Teachers who stay change everything. Turnover is the silent crisis in childcare, so we pay above market and invest in our educators long-term. Classrooms with stable adults raise calmer, more curious kids."</p>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 5: TEACHERS (HIRING) ========== -->
+  <section class="section">
+    <div class="container">
+      <div class="teacher-teaser">
+        <div class="teacher-text fade-in">
+          <h2>Your child's teachers are our most important investment.</h2>
+          <p>Every IGA educator will be degree-qualified, background-checked, and trained in child development. The teaching team is being hired now for the June 2026 opening. Bios and headshots are published as each teacher signs on.</p>
+          <a href="/about" class="text-link">More about how we hire &rarr;</a>
+        </div>
+        <div class="teacher-mini-cards fade-in" aria-label="Open teaching positions">
+          <div class="teacher-mini-card teacher-mini-card--open">
+            <div class="teacher-avatar teacher-avatar--open" aria-hidden="true">+</div>
+            <div class="teacher-mini-info">
+              <h3>Lead Infant Teacher</h3>
+              <p class="role">Hiring now</p>
+              <p class="cred mb-0">Early childhood education degree, infant-trained.</p>
+            </div>
+          </div>
+          <div class="teacher-mini-card teacher-mini-card--open">
+            <div class="teacher-avatar teacher-avatar--open" aria-hidden="true">+</div>
+            <div class="teacher-mini-info">
+              <h3>Lead Toddler Teacher</h3>
+              <p class="role">Hiring now</p>
+              <p class="cred mb-0">Early childhood degree, toddler development training.</p>
+            </div>
+          </div>
+          <div class="teacher-mini-card teacher-mini-card--open">
+            <div class="teacher-avatar teacher-avatar--open" aria-hidden="true">+</div>
+            <div class="teacher-mini-info">
+              <h3>Lead Preschool Teacher</h3>
+              <p class="role">Hiring now</p>
+              <p class="cred mb-0">Bachelor's in early childhood ed or related field.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 6: BRIGHTWHEEL PROMO ========== -->
+  <section class="section section-amber-bg brightwheel-section">
+    <div class="container">
+      <div class="brightwheel-layout">
+        <div class="bw-text fade-in">
+          <p class="eyebrow">Stay connected</p>
+          <h2>Your child's day, in your pocket.</h2>
+          <p class="bw-body">Real-time photos from the classroom every afternoon. A direct line to your child's teacher. Digital check-in that takes about four seconds. The whole day, in one app.</p>
+          <div class="app-badges">
+            <a href="#" class="app-badge">&#63743; App Store</a>
+            <a href="#" class="app-badge">&#9654; Google Play</a>
+          </div>
+          <p class="bw-attribution">Powered by Brightwheel, the daily-reports app used in thousands of accredited preschools.</p>
+          <p class="bw-portal-link"><a href="/portal" class="text-link">Already enrolled? Visit the parent portal &rarr;</a></p>
+        </div>
+
+        <div class="bw-phone fade-in" aria-hidden="true">
+          <div class="phone-frame">
+            <div class="phone-screen">
+              <div class="phone-screen-header">
+                <span class="phone-screen-day">Today</span>
+                <span class="phone-screen-name">Eli &middot; Toddler 2</span>
+              </div>
+              <div class="phone-screen-row">
+                <div class="phone-thumb amber"></div>
+                <div class="phone-row-text">
+                  <strong>Snack time</strong>
+                  <span>2:14 PM</span>
+                </div>
+              </div>
+              <div class="phone-screen-row">
+                <div class="phone-thumb green"></div>
+                <div class="phone-row-text">
+                  <strong>Outdoor play</strong>
+                  <span>1:30 PM</span>
+                </div>
+              </div>
+              <div class="phone-screen-row">
+                <div class="phone-thumb blue"></div>
+                <div class="phone-row-text">
+                  <strong>Story circle</strong>
+                  <span>11:00 AM</span>
+                </div>
+              </div>
+              <div class="phone-screen-row">
+                <div class="phone-thumb green"></div>
+                <div class="phone-row-text">
+                  <strong>Drop-off</strong>
+                  <span>7:42 AM</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 7: ENROLLMENT CTA ========== -->
+  <section class="cta-band section-dark">
+    <div class="container">
+      <div class="fade-in">
+        <h2>Tour the building. Meet a teacher. Decide for yourself.</h2>
+        <p>We open in June 2026. Tours run weekly through May, and most of our infant and toddler spots fill before opening day. Schedule yours and see what your child's day looks like, before you commit.</p>
+        <a href="/enroll" class="btn btn-white btn-lg">Schedule a Free Tour</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,134 @@
+---
+// BaseLayout — the shared shell for every page: <head>, nav, footer, scripts.
+// Pages pass `title` and `description`; their content renders into <slot />.
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Imagination Grove Academy",
+  description = "Safe, joyful childcare for children 6 weeks–5 years across Indiana and Kentucky.",
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Vollkorn:ital,wght@0,500;0,600;0,700;0,800;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- ========== NAVIGATION ========== -->
+    <nav class="site-nav">
+      <div class="nav-inner">
+        <a href="/" class="nav-logo">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M16 4c-2 4-8 8-8 14a8 8 0 0016 0c0-6-6-10-8-14z" fill="#6CB43A"></path>
+            <path d="M16 10c-1 2.5-4 5-4 8.5a4 4 0 008 0c0-3.5-3-6-4-8.5z" fill="#1F5247"></path>
+            <line x1="16" y1="14" x2="16" y2="26" stroke="#163A32" stroke-width="1.2"></line>
+          </svg>
+          <span class="nav-logo-text">
+            <span class="nav-logo-line1">Imagination Grove</span>
+            <span class="nav-logo-line2">Academy</span>
+          </span>
+        </a>
+
+        <div class="nav-links">
+          <a href="/programs">Programs</a>
+          <a href="/about">About</a>
+          <a href="/locations">Locations</a>
+          <a href="/about#safety">Safety</a>
+          <a href="#">Resources</a>
+        </div>
+
+        <div class="nav-actions">
+          <a href="/enroll" class="btn btn-green">Enroll Now</a>
+          <a href="/portal" class="btn btn-outline-teal">Parent Portal</a>
+        </div>
+
+        <button class="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-nav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <div class="mobile-overlay"></div>
+    <div class="mobile-nav" id="mobile-nav">
+      <a href="/programs">Programs</a>
+      <a href="/about">About</a>
+      <a href="/locations">Locations</a>
+      <a href="/about#safety">Safety</a>
+      <a href="#">Resources</a>
+      <a href="/enroll" class="btn btn-green">Enroll Now</a>
+      <a href="/portal" class="btn btn-outline-teal">Parent Portal</a>
+    </div>
+
+    <main id="main-content">
+      <slot />
+    </main>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="/" class="nav-logo">
+              <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" width="28" height="28" aria-hidden="true">
+                <path d="M16 4c-2 4-8 8-8 14a8 8 0 0016 0c0-6-6-10-8-14z" fill="#6CB43A"></path>
+                <path d="M16 10c-1 2.5-4 5-4 8.5a4 4 0 008 0c0-3.5-3-6-4-8.5z" fill="#EAF3DE"></path>
+              </svg>
+              <span class="nav-logo-text">
+                <span class="nav-logo-line1">Imagination Grove</span>
+                <span class="nav-logo-line2">Academy</span>
+              </span>
+            </a>
+            <p class="footer-tagline">Nurturing curious minds and kind hearts.</p>
+          </div>
+
+          <div>
+            <p class="footer-heading">Quick Links</p>
+            <div class="footer-links">
+              <a href="/programs">Programs</a>
+              <a href="/about">About</a>
+              <a href="/locations">Locations</a>
+              <a href="/about#safety">Safety</a>
+              <a href="#">Resources</a>
+              <a href="/enroll">Enroll</a>
+              <a href="/portal">Parent Portal</a>
+            </div>
+          </div>
+
+          <div>
+            <p class="footer-heading">Contact</p>
+            <div class="footer-contact">
+              <p><a href="/locations" class="footer-locate">Find a location &rarr;</a></p>
+              <p>Locations across Indiana &amp; Kentucky</p>
+              <p>hello@imaginationgroveacademy.com</p>
+              <p>Mon–Fri, 6:30 AM – 6:00 PM</p>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          &copy; 2026 Imagination Grove Academy &middot; All rights reserved
+        </div>
+      </div>
+    </footer>
+
+    <script src="/assets/js/main.js" is:inline></script>
+  </body>
+</html>
