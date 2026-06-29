@@ -1,5 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import bargersvilleBuilding from "../assets/IGA_Bargersville.png";
 ---
 
 <BaseLayout
@@ -13,7 +15,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         <div class="hero-content fade-in">
           <p class="eyebrow">Now enrolling &mdash; Bargersville opens first</p>
           <h1>Where imagination takes root.</h1>
-          <p class="hero-sub">Safe, joyful childcare for children 6 weeks–5 years. Enrolling now for Summer and Fall 2026.</p>
+          <p class="hero-sub">Safe, joyful childcare for children 6 weeks–5 years. Enrolling now for Fall 2026.</p>
           <div class="hero-buttons">
             <a href="/enroll" class="btn btn-green btn-lg">Schedule a Free Tour &rarr;</a>
             <a href="/programs" class="btn btn-outline-teal btn-lg">See Our Programs</a>
@@ -25,13 +27,13 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             <li>1:4 infant ratio</li>
           </ul>
         </div>
-        <div class="placeholder-img fade-in" role="img" aria-label="Hero photo placeholder">
-          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <circle cx="24" cy="16" r="8" fill="#6CB43A" opacity="0.5"></circle>
-            <path d="M12 38c0-6.6 5.4-12 12-12s12 5.4 12 12" stroke="#1F5247" stroke-width="2" fill="none"></path>
-          </svg>
-          <span class="placeholder-label">Hero photo: teacher reading to children outdoors</span>
-        </div>
+        <Image
+          src={bargersvilleBuilding}
+          alt="The Imagination Grove Academy campus in Bargersville, Indiana"
+          class="hero-photo fade-in"
+          sizes="(max-width: 880px) 100vw, 40vw"
+          loading="eager"
+        />
       </div>
     </div>
   </section>
@@ -117,7 +119,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       <div class="why-row why-row-stat fade-in">
         <div class="why-stat">
           <span class="why-stat-number">1:4</span>
-          <span class="why-stat-label">Infant teacher-to-child ratio. State minimums are 1:5. We staff below.</span>
+          <span class="why-stat-label">Infant teacher-to-child ratio. State minimums are 1:5.</span>
         </div>
         <div class="why-row-text">
           <h3>Academic playfulness, not academic pressure.</h3>
@@ -134,7 +136,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <li><strong>Keypad entry.</strong> Only verified parents and staff have codes. Visitors are buzzed in by a teacher.</li>
           <li><strong>Two-adult release.</strong> No child leaves the building with a single staff member.</li>
           <li><strong>Daily ratio audits.</strong> Logged and signed each morning by the lead teacher on duty.</li>
-          <li><strong>State licensed.</strong> License #<span class="placeholder-inline">[PLACEHOLDER]</span>, available on request.</li>
+          <li><strong>State licensed.</strong> License number available upon request.</li>
         </ul>
       </div>
 
@@ -152,7 +154,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       <div class="teacher-teaser">
         <div class="teacher-text fade-in">
           <h2>Your child's teachers are our most important investment.</h2>
-          <p>Every IGA educator will be degree-qualified, background-checked, and trained in child development. The teaching team is being hired now for the June 2026 opening. Bios and headshots are published as each teacher signs on.</p>
+          <p>Every IGA educator will be degree-qualified, background-checked, and trained in child development. The teaching team is being hired now for the Fall 2026 opening. Bios and headshots are published as each teacher signs on.</p>
           <a href="/about" class="text-link">More about how we hire &rarr;</a>
         </div>
         <div class="teacher-mini-cards fade-in" aria-label="Open teaching positions">
@@ -248,7 +250,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <div class="container">
       <div class="fade-in">
         <h2>Tour the building. Meet a teacher. Decide for yourself.</h2>
-        <p>We open in June 2026. Tours run weekly through May, and most of our infant and toddler spots fill before opening day. Schedule yours and see what your child's day looks like, before you commit.</p>
+        <p>We open in Fall 2026. Tours run weekly through the summer, and most of our infant and toddler spots fill before opening day. Schedule yours and see what your child's day looks like, before you commit.</p>
         <a href="/enroll" class="btn btn-white btn-lg">Schedule a Free Tour</a>
       </div>
     </div>
