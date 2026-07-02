@@ -23,7 +23,20 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <section class="enroll-form-section">
       <div class="container">
         <div class="lead-form-card fade-in">
-          <form class="lead-form" novalidate>
+          <form
+            class="lead-form"
+            name="tour-request"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+          >
+            <!-- Netlify Forms: form-name identifies this form in the Netlify
+                 dashboard; bot-field is a hidden honeypot that silently
+                 rejects spam bots that fill in every field. -->
+            <input type="hidden" name="form-name" value="tour-request" />
+            <p hidden aria-hidden="true">
+              <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+            </p>
             <h2 class="form-heading">Tell us a little about your family.</h2>
             <p class="form-sub">We will follow up within 24 hours to confirm your tour time.</p>
 

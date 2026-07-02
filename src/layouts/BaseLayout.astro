@@ -2,6 +2,17 @@
 // BaseLayout — the shared shell for every page: <head>, nav, footer, scripts.
 // Pages pass `title` and `description`; their content renders into <slot />.
 import "../styles/global.css";
+// Self-hosted fonts (served from our own domain — faster than Google's CDN,
+// and no parent traffic data sent to Google). Weights match what the CSS uses.
+import "@fontsource/manrope/400.css";
+import "@fontsource/manrope/500.css";
+import "@fontsource/manrope/600.css";
+import "@fontsource/manrope/700.css";
+import "@fontsource/vollkorn/500.css";
+import "@fontsource/vollkorn/600.css";
+import "@fontsource/vollkorn/700.css";
+import "@fontsource/vollkorn/800.css";
+import "@fontsource/vollkorn/500-italic.css";
 import { ClientRouter } from "astro:transitions";
 
 interface Props {
@@ -15,6 +26,13 @@ const {
   description = "Safe, joyful childcare for children 6 weeks–5 years across Indiana and Kentucky.",
   mainClass,
 } = Astro.props;
+
+// Canonical + social-share URLs are built against the production domain
+// (`site` in astro.config.mjs), even while the site is served from the
+// netlify.app staging URL — that's the address we want search engines
+// and shares to associate with each page at launch.
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const socialImageURL = new URL("/og-default.jpg", Astro.site);
 ---
 
 <!DOCTYPE html>
@@ -24,14 +42,22 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Vollkorn:ital,wght@0,500;0,600;0,700;0,800;1,500&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="canonical" href={canonicalURL} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="generator" content={Astro.generator} />
+
+    <!-- Social sharing (Open Graph + Twitter) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Imagination Grove Academy" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={socialImageURL} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImageURL} />
     <ClientRouter />
     <style is:global>
       /* Don't animate page transitions for motion-sensitive users */
@@ -68,7 +94,7 @@ const {
           <a href="/about">About</a>
           <a href="/locations">Locations</a>
           <a href="/about#safety">Safety</a>
-          <a href="#">Resources</a>
+          <!-- "Resources" link returns here once the Resources page is built -->
         </div>
 
         <div class="nav-actions">
@@ -88,7 +114,6 @@ const {
       <a href="/about">About</a>
       <a href="/locations">Locations</a>
       <a href="/about#safety">Safety</a>
-      <a href="#">Resources</a>
       <a href="/enroll" class="btn btn-green">Enroll Now</a>
       <a href="/portal" class="btn btn-outline-teal">Parent Portal</a>
     </div>
@@ -122,7 +147,6 @@ const {
               <a href="/about">About</a>
               <a href="/locations">Locations</a>
               <a href="/about#safety">Safety</a>
-              <a href="#">Resources</a>
               <a href="/enroll">Enroll</a>
               <a href="/portal">Parent Portal</a>
             </div>

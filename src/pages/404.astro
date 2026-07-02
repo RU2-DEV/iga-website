@@ -1,0 +1,25 @@
+---
+// 404 page — Astro emits this as dist/404.html, which Netlify serves
+// automatically for any unknown URL. Copy from content/blueprint-v1.md.
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Page Not Found | Imagination Grove Academy"
+  description="We couldn't find that page. Head back to the Imagination Grove Academy home page, programs, or schedule a tour."
+>
+  <section class="page-hero">
+    <div class="container">
+      <div class="fade-in">
+        <p class="eyebrow">404</p>
+        <h1>We couldn't find that page.</h1>
+        <p>Looks like this link wandered off. Try one of these instead:</p>
+        <div class="hero-buttons">
+          <a href="/" class="btn btn-green btn-lg">Back to home</a>
+          <a href="/programs" class="btn btn-outline-teal btn-lg">See our programs</a>
+          <a href="/enroll" class="btn btn-outline-green btn-lg">Schedule a tour</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

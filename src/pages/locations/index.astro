@@ -1,6 +1,10 @@
 ---
+// Locations hub — the four campus cards are generated from
+// src/data/locations.ts so NAP details always match the location pages.
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { locations } from "../../data/locations";
 ---
+
 <BaseLayout title="Our Locations | Imagination Grove Academy" description="Find your nearest Imagination Grove Academy campus. Four locations opening across Indiana and Kentucky &mdash; Bargersville first, with Fishers, New Palestine, and Lexington following.">
 
     <!-- ========== HERO ========== -->
@@ -18,79 +22,37 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     <section class="section">
       <div class="container">
         <ul class="locations-grid fade-in" aria-label="IGA locations">
-
-          <li class="location-card location-card--open">
-            <div class="location-card-status status-open">
-              <span class="status-dot" aria-hidden="true"></span>
-              <span>Opening first &middot; Enrolling now</span>
-            </div>
-            <h2 class="location-card-city">Bargersville, IN</h2>
-            <p class="location-card-area"><span class="placeholder-inline">[NEIGHBORHOOD TBD]</span></p>
-            <address class="location-card-address">
-              <span class="placeholder-inline">[ADDRESS TBD]</span><br>
-              Bargersville, IN <span class="placeholder-inline">[ZIP]</span><br>
-              <span class="placeholder-inline">[PHONE TBD]</span>
-            </address>
-            <div class="location-card-actions">
-              <a href="/locations/bargersville" class="btn btn-green">See this location &rarr;</a>
-              <a href="/enroll" class="text-link">Schedule a tour &rarr;</a>
-            </div>
-          </li>
-
-          <li class="location-card">
-            <div class="location-card-status status-soon">
-              <span class="status-dot" aria-hidden="true"></span>
-              <span>Coming soon</span>
-            </div>
-            <h2 class="location-card-city">Fishers, IN</h2>
-            <p class="location-card-area"><span class="placeholder-inline">[NEIGHBORHOOD TBD]</span></p>
-            <address class="location-card-address">
-              <span class="placeholder-inline">[ADDRESS TBD]</span><br>
-              Fishers, IN <span class="placeholder-inline">[ZIP]</span><br>
-              <span class="placeholder-inline">[PHONE TBD]</span>
-            </address>
-            <div class="location-card-actions">
-              <a href="/locations/fishers" class="btn btn-outline-teal">See this location &rarr;</a>
-              <a href="/enroll" class="text-link">Join the waitlist &rarr;</a>
-            </div>
-          </li>
-
-          <li class="location-card">
-            <div class="location-card-status status-soon">
-              <span class="status-dot" aria-hidden="true"></span>
-              <span>Coming soon</span>
-            </div>
-            <h2 class="location-card-city">New Palestine, IN</h2>
-            <p class="location-card-area"><span class="placeholder-inline">[NEIGHBORHOOD TBD]</span></p>
-            <address class="location-card-address">
-              <span class="placeholder-inline">[ADDRESS TBD]</span><br>
-              New Palestine, IN <span class="placeholder-inline">[ZIP]</span><br>
-              <span class="placeholder-inline">[PHONE TBD]</span>
-            </address>
-            <div class="location-card-actions">
-              <a href="/locations/new-palestine" class="btn btn-outline-teal">See this location &rarr;</a>
-              <a href="/enroll" class="text-link">Join the waitlist &rarr;</a>
-            </div>
-          </li>
-
-          <li class="location-card">
-            <div class="location-card-status status-soon">
-              <span class="status-dot" aria-hidden="true"></span>
-              <span>Coming soon</span>
-            </div>
-            <h2 class="location-card-city">Lexington, KY</h2>
-            <p class="location-card-area"><span class="placeholder-inline">[NEIGHBORHOOD TBD]</span></p>
-            <address class="location-card-address">
-              <span class="placeholder-inline">[ADDRESS TBD]</span><br>
-              Lexington, KY <span class="placeholder-inline">[ZIP]</span><br>
-              <span class="placeholder-inline">[PHONE TBD]</span>
-            </address>
-            <div class="location-card-actions">
-              <a href="/locations/lexington-ky" class="btn btn-outline-teal">See this location &rarr;</a>
-              <a href="/enroll" class="text-link">Join the waitlist &rarr;</a>
-            </div>
-          </li>
-
+          {locations.map((loc) => (
+            <li class={`location-card${loc.status === "open" ? " location-card--open" : ""}`}>
+              <div class={`location-card-status ${loc.status === "open" ? "status-open" : "status-soon"}`}>
+                <span class="status-dot" aria-hidden="true"></span>
+                <span>{loc.statusLabel}</span>
+              </div>
+              <h2 class="location-card-city">{loc.cityState}</h2>
+              <p class="location-card-area"><span class="placeholder-inline">[NEIGHBORHOOD TBD]</span></p>
+              <address class="location-card-address">
+                {loc.streetAddress
+                  ? <span>{loc.streetAddress}</span>
+                  : <span class="placeholder-inline">[ADDRESS TBD]</span>}<br />
+                {loc.cityState}{" "}
+                {loc.postalCode
+                  ? <span>{loc.postalCode}</span>
+                  : <span class="placeholder-inline">[ZIP]</span>}<br />
+                {loc.telephone
+                  ? <span>{loc.telephone}</span>
+                  : <span class="placeholder-inline">[PHONE TBD]</span>}
+              </address>
+              <div class="location-card-actions">
+                <a
+                  href={`/locations/${loc.slug}`}
+                  class={`btn ${loc.status === "open" ? "btn-green" : "btn-outline-teal"}`}
+                >See this location &rarr;</a>
+                <a href="/enroll" class="text-link">
+                  {loc.status === "open" ? "Schedule a tour" : "Join the waitlist"} &rarr;
+                </a>
+              </div>
+            </li>
+          ))}
         </ul>
       </div>
     </section>

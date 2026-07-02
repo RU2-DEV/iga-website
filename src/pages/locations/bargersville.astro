@@ -1,288 +1,187 @@
 ---
+// Bargersville, IN — the flagship (first-to-open) campus page.
+// NAP data, JSON-LD, and the programs section come from src/data/locations.ts;
+// the photo / map / full-licensing sections below are unique to this page.
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import LocationBreadcrumb from "../../components/LocationBreadcrumb.astro";
+import LocationNapCard from "../../components/LocationNapCard.astro";
+import LocationPrograms from "../../components/LocationPrograms.astro";
+import { getLocation, locationJsonLd } from "../../data/locations";
+
+const loc = getLocation("bargersville");
 ---
-<BaseLayout title="Childcare in Bargersville, IN | Imagination Grove Academy" description="Imagination Grove Academy is opening its first campus in Bargersville, IN. Safe, joyful childcare for children 6 weeks&ndash;5 years. Low ratios, degree-qualified teachers, state-licensed. Enrolling now.">
-  <script type="application/ld+json" slot="head" is:inline>
-  {
-    "@context": "https://schema.org",
-    "@type": "ChildCare",
-    "name": "Imagination Grove Academy &mdash; Bargersville",
-    "url": "https://imaginationgroveacademy.com/locations/bargersville/",
-    "image": "https://imaginationgroveacademy.com/assets/img/bargersville-exterior.jpg",
-    "telephone": "[PHONE TBD]",
-    "email": "bargersville@imaginationgroveacademy.com",
-    "priceRange": "$$",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "[STREET TBD]",
-      "addressLocality": "Bargersville",
-      "addressRegion": "IN",
-      "postalCode": "[ZIP TBD]",
-      "addressCountry": "US"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": "[LAT TBD]",
-      "longitude": "[LNG TBD]"
-    },
-    "openingHoursSpecification": [{
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      "opens": "06:30",
-      "closes": "18:00"
-    }],
-    "areaServed": [
-      { "@type": "City", "name": "Bargersville" },
-      { "@type": "City", "name": "Greenwood" },
-      { "@type": "City", "name": "Franklin" }
-    ],
-    "parentOrganization": {
-      "@type": "Organization",
-      "name": "Imagination Grove Academy",
-      "url": "https://imaginationgroveacademy.com"
-    }
-  }
-  </script>
 
-    <!-- ========== BREADCRUMB ========== -->
-    <nav class="location-breadcrumb" aria-label="Breadcrumb">
-      <div class="container">
-        <ol>
-          <li><a href="/">Home</a></li>
-          <li><a href="/locations">Locations</a></li>
-          <li aria-current="page">Bargersville, IN</li>
-        </ol>
-      </div>
-    </nav>
+<BaseLayout title={loc.metaTitle} description={loc.metaDescription}>
+  <script
+    type="application/ld+json"
+    slot="head"
+    is:inline
+    set:html={JSON.stringify(locationJsonLd(loc))}
+  />
 
-    <!-- ========== HERO ========== -->
-    <section class="location-hero">
-      <div class="container">
-        <div class="location-hero-grid fade-in">
-          <div class="location-hero-text">
-            <div class="location-status status-open">
-              <span class="status-dot" aria-hidden="true"></span>
-              <span>Opening first &middot; Enrolling now</span>
-            </div>
-            <h1>Childcare in Bargersville, IN.</h1>
-            <p class="location-hero-sub">Imagination Grove Academy's first campus is opening in Bargersville. Safe, joyful childcare for children 6 weeks&ndash;5 years &mdash; with low teacher-to-child ratios, degree-qualified teachers, and a curriculum that respects how young children actually learn.</p>
-            <div class="location-hero-actions">
-              <a href="/enroll" class="btn btn-green btn-lg">Schedule a Free Tour &rarr;</a>
-              <a href="#nap" class="btn btn-outline-teal btn-lg">Get Directions</a>
-            </div>
+  <LocationBreadcrumb loc={loc} />
+
+  <!-- ========== HERO ========== -->
+  <section class="location-hero">
+    <div class="container">
+      <div class="location-hero-grid fade-in">
+        <div class="location-hero-text">
+          <div class="location-status status-open">
+            <span class="status-dot" aria-hidden="true"></span>
+            <span>{loc.statusLabel}</span>
           </div>
-
-          <aside class="location-nap-card" id="nap" aria-labelledby="nap-heading">
-            <h2 id="nap-heading" class="nap-heading">Visit us</h2>
-
-            <dl class="nap-list">
-              <div>
-                <dt>Address</dt>
-                <dd>
-                  <address>
-                    <span class="placeholder-inline">[STREET TBD]</span><br>
-                    Bargersville, IN <span class="placeholder-inline">[ZIP]</span>
-                  </address>
-                </dd>
-              </div>
-              <div>
-                <dt>Phone</dt>
-                <dd><span class="placeholder-inline">[PHONE TBD]</span></dd>
-              </div>
-              <div>
-                <dt>Email</dt>
-                <dd><a href="mailto:bargersville@imaginationgroveacademy.com">bargersville@imaginationgroveacademy.com</a></dd>
-              </div>
-              <div>
-                <dt>Hours</dt>
-                <dd>Monday&ndash;Friday<br>6:30 AM &ndash; 6:00 PM</dd>
-              </div>
-              <div>
-                <dt>Opening</dt>
-                <dd><span class="placeholder-inline">[OPENING DATE TBD]</span></dd>
-              </div>
-            </dl>
-          </aside>
-
+          <h1>{loc.heroHeading}</h1>
+          <p class="location-hero-sub">{loc.heroSub}</p>
+          <div class="location-hero-actions">
+            <a href="/enroll" class="btn btn-green btn-lg">Schedule a Free Tour &rarr;</a>
+            <a href="#nap" class="btn btn-outline-teal btn-lg">Get Directions</a>
+          </div>
         </div>
-      </div>
-    </section>
 
-    <!-- ========== ABOUT THIS LOCATION ========== -->
-    <section class="section">
-      <div class="container">
-        <div class="location-about fade-in">
-          <div class="location-about-text">
-            <p class="eyebrow">About this campus</p>
-            <h2>A purpose-built childcare home in Bargersville.</h2>
-            <div class="content-placeholder content-placeholder--wide">
-              <p class="content-placeholder-label">DRAFT &mdash; for client review</p>
-              <p class="content-placeholder-hint">Location-specific paragraph goes here once the building, neighborhood context, and opening story are finalized. Two or three sentences: where the building is, what makes it the right fit for the community, what's unique about this campus (outdoor space, natural light, partnership with a local pediatrician, etc.). This is the copy that helps the page rank for "childcare Bargersville" and feel like a real place rather than a marketing brochure.</p>
-            </div>
+        <LocationNapCard loc={loc} />
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ABOUT THIS LOCATION ========== -->
+  <section class="section">
+    <div class="container">
+      <div class="location-about fade-in">
+        <div class="location-about-text">
+          <p class="eyebrow">About this campus</p>
+          <h2>{loc.aboutHeading}</h2>
+          <div class="content-placeholder content-placeholder--wide">
+            <p class="content-placeholder-label">DRAFT &mdash; for client review</p>
+            <p class="content-placeholder-hint">{loc.aboutHint}</p>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ========== PROGRAMS AT THIS LOCATION ========== -->
-    <section class="section section-green-bg">
-      <div class="container">
-        <div class="section-header fade-in">
-          <p class="eyebrow">At the Bargersville campus</p>
-          <h2>Programs for every age, 6 weeks through Pre-K.</h2>
-          <p>The Bargersville campus serves all four IGA age groups. Class sizes are capped below state-mandated minimums in every program.</p>
-        </div>
+  <!-- ========== PROGRAMS AT THIS LOCATION ========== -->
+  <LocationPrograms loc={loc} />
 
-        <ul class="location-programs fade-in" aria-label="Programs offered at this location">
-          <li>
-            <h3>Infant Care</h3>
-            <p class="age-meta">6 weeks &ndash; 12 months &middot; 1:4 ratio</p>
-            <p>Calm, primary-caregiver-led infant care with parent-set feed and nap schedules.</p>
-            <a href="/programs#infant" class="card-link">Learn about infant care &rarr;</a>
-          </li>
-          <li>
-            <h3>Toddler Program</h3>
-            <p class="age-meta">1 &ndash; 2 years &middot; 1:5 ratio</p>
-            <p>Sensory play, language-rich rooms, and the gentle structure toddlers need.</p>
-            <a href="/programs#toddler" class="card-link">Learn about toddler care &rarr;</a>
-          </li>
-          <li>
-            <h3>Preschool</h3>
-            <p class="age-meta">3 &ndash; 4 years &middot; 1:8 ratio</p>
-            <p>Curiosity-led curriculum with foundational literacy, math, and independent learning.</p>
-            <a href="/programs#preschool" class="card-link">Learn about preschool &rarr;</a>
-          </li>
-          <li>
-            <h3>Pre-K</h3>
-            <p class="age-meta">4 &ndash; 5 years &middot; 1:10 ratio</p>
-            <p>Kindergarten-ready academic foundations with strong social-emotional growth.</p>
-            <a href="/programs#pre-k" class="card-link">Learn about Pre-K &rarr;</a>
-          </li>
-        </ul>
+  <!-- ========== PHOTOS ========== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <p class="eyebrow">A look inside</p>
+        <h2>Our Bargersville campus.</h2>
+        <p>Photography placeholders below. Real photos go in once construction wraps and licensing inspections complete.</p>
       </div>
-    </section>
 
-    <!-- ========== PHOTOS ========== -->
-    <section class="section">
-      <div class="container">
-        <div class="section-header fade-in">
-          <p class="eyebrow">A look inside</p>
-          <h2>Our Bargersville campus.</h2>
-          <p>Photography placeholders below. Real photos go in once construction wraps and licensing inspections complete.</p>
-        </div>
-
-        <div class="location-photos fade-in">
-          <div class="placeholder-img" role="img" aria-label="Photo placeholder: exterior of Bargersville campus">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M8 22L24 10l16 12v18H8V22z" stroke="#2C6F95" stroke-width="2" fill="none"/>
-              <rect x="20" y="30" width="8" height="10" stroke="#2C6F95" stroke-width="1.5" fill="none"/>
-            </svg>
-            <span class="placeholder-label">Exterior &middot; building front, signage, parking</span>
-          </div>
-          <div class="placeholder-img" role="img" aria-label="Photo placeholder: classroom interior">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <rect x="8" y="14" width="32" height="22" stroke="#2C6F95" stroke-width="2" fill="none"/>
-              <circle cx="16" cy="25" r="3" stroke="#2C6F95" stroke-width="1.5" fill="none"/>
-              <circle cx="28" cy="25" r="3" stroke="#2C6F95" stroke-width="1.5" fill="none"/>
-            </svg>
-            <span class="placeholder-label">Classroom &middot; preschool room, natural light, learning corners</span>
-          </div>
-          <div class="placeholder-img" role="img" aria-label="Photo placeholder: outdoor play area">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <circle cx="14" cy="18" r="6" fill="#6CB43A" opacity="0.5"/>
-              <circle cx="34" cy="20" r="8" fill="#6CB43A" opacity="0.5"/>
-              <line x1="0" y1="36" x2="48" y2="36" stroke="#2C6F95" stroke-width="2"/>
-            </svg>
-            <span class="placeholder-label">Outdoor play &middot; fenced yard, age-appropriate equipment</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========== MAP ========== -->
-    <section class="section section-teal-bg">
-      <div class="container">
-        <div class="section-header fade-in">
-          <p class="eyebrow">Find us</p>
-          <h2>Located in Bargersville.</h2>
-          <p>Easy access from Greenwood, Franklin, and the southside Indianapolis metro.</p>
-        </div>
-
-        <div class="location-map-placeholder fade-in" role="img" aria-label="Map placeholder for Bargersville campus location">
+      <div class="location-photos fade-in">
+        <div class="placeholder-img" role="img" aria-label="Photo placeholder: exterior of Bargersville campus">
           <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M24 6c-6 0-11 5-11 11 0 8 11 19 11 19s11-11 11-19c0-6-5-11-11-11z" stroke="#2C6F95" stroke-width="2" fill="none"/>
-            <circle cx="24" cy="17" r="4" fill="#2C6F95"/>
+            <path d="M8 22L24 10l16 12v18H8V22z" stroke="#2C6F95" stroke-width="2" fill="none"/>
+            <rect x="20" y="30" width="8" height="10" stroke="#2C6F95" stroke-width="1.5" fill="none"/>
           </svg>
-          <p class="placeholder-label">Embedded Google Map goes here once address is finalized. Will use Google Maps Embed API with the verified GBP address.</p>
+          <span class="placeholder-label">Exterior &middot; building front, signage, parking</span>
+        </div>
+        <div class="placeholder-img" role="img" aria-label="Photo placeholder: classroom interior">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="8" y="14" width="32" height="22" stroke="#2C6F95" stroke-width="2" fill="none"/>
+            <circle cx="16" cy="25" r="3" stroke="#2C6F95" stroke-width="1.5" fill="none"/>
+            <circle cx="28" cy="25" r="3" stroke="#2C6F95" stroke-width="1.5" fill="none"/>
+          </svg>
+          <span class="placeholder-label">Classroom &middot; preschool room, natural light, learning corners</span>
+        </div>
+        <div class="placeholder-img" role="img" aria-label="Photo placeholder: outdoor play area">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="14" cy="18" r="6" fill="#6CB43A" opacity="0.5"/>
+            <circle cx="34" cy="20" r="8" fill="#6CB43A" opacity="0.5"/>
+            <line x1="0" y1="36" x2="48" y2="36" stroke="#2C6F95" stroke-width="2"/>
+          </svg>
+          <span class="placeholder-label">Outdoor play &middot; fenced yard, age-appropriate equipment</span>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ========== LICENSING ========== -->
-    <section class="section">
-      <div class="container">
-        <div class="section-header fade-in">
-          <p class="eyebrow">Licensing &amp; credentials</p>
-          <h2>Our Bargersville campus, by the paperwork.</h2>
-        </div>
-
-        <div class="credentials-block fade-in">
-          <h3>State licensing</h3>
-          <dl class="credentials-list">
-            <div>
-              <dt>License type</dt>
-              <dd>Indiana Class 1 Licensed Childcare Center</dd>
-            </div>
-            <div>
-              <dt>Licensing body</dt>
-              <dd>Indiana Family &amp; Social Services Administration (FSSA), Bureau of Child Care</dd>
-            </div>
-            <div>
-              <dt>License number</dt>
-              <dd>Available upon request</dd>
-            </div>
-            <div>
-              <dt>Licensed capacity</dt>
-              <dd><span class="placeholder-inline">[CAPACITY TBD]</span> children</dd>
-            </div>
-            <div>
-              <dt>Inspection record</dt>
-              <dd>Available upon request</dd>
-            </div>
-          </dl>
-
-          <h3>Staff at this campus</h3>
-          <dl class="credentials-list">
-            <div>
-              <dt>Lead teachers</dt>
-              <dd>Minimum Associate's degree in Early Childhood Education or related field</dd>
-            </div>
-            <div>
-              <dt>Background checks</dt>
-              <dd>100% of staff: FBI, Indiana state criminal history, sex offender registry, DCS</dd>
-            </div>
-            <div>
-              <dt>CPR &amp; first aid</dt>
-              <dd>100% certified, renewed annually</dd>
-            </div>
-            <div>
-              <dt>Annual training</dt>
-              <dd>Hours exceed Indiana FSSA minimums</dd>
-            </div>
-          </dl>
-        </div>
+  <!-- ========== MAP ========== -->
+  <section class="section section-teal-bg">
+    <div class="container">
+      <div class="section-header fade-in">
+        <p class="eyebrow">Find us</p>
+        <h2>Located in Bargersville.</h2>
+        <p>Easy access from Greenwood, Franklin, and the southside Indianapolis metro.</p>
       </div>
-    </section>
 
-    <!-- ========== CTA BAND ========== -->
-    <section class="cta-band section-dark">
-      <div class="container">
-        <div class="fade-in">
-          <h2>See the Bargersville campus in person.</h2>
-          <p>Tours take about 30 minutes. Meet the teachers, see the classrooms, and ask every question you have.</p>
-          <a href="/enroll" class="btn btn-white btn-lg">Schedule a Free Tour</a>
-        </div>
+      <div class="location-map-placeholder fade-in" role="img" aria-label="Map placeholder for Bargersville campus location">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M24 6c-6 0-11 5-11 11 0 8 11 19 11 19s11-11 11-19c0-6-5-11-11-11z" stroke="#2C6F95" stroke-width="2" fill="none"/>
+          <circle cx="24" cy="17" r="4" fill="#2C6F95"/>
+        </svg>
+        <p class="placeholder-label">Embedded Google Map goes here once address is finalized. Will use Google Maps Embed API with the verified GBP address.</p>
       </div>
-    </section>
+    </div>
+  </section>
 
+  <!-- ========== LICENSING ========== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <p class="eyebrow">Licensing &amp; credentials</p>
+        <h2>Our Bargersville campus, by the paperwork.</h2>
+      </div>
+
+      <div class="credentials-block fade-in">
+        <h3>State licensing</h3>
+        <dl class="credentials-list">
+          <div>
+            <dt>License type</dt>
+            <dd>Indiana Class 1 Licensed Childcare Center</dd>
+          </div>
+          <div>
+            <dt>Licensing body</dt>
+            <dd>Indiana Family &amp; Social Services Administration (FSSA), Bureau of Child Care</dd>
+          </div>
+          <div>
+            <dt>License number</dt>
+            <dd>Available upon request</dd>
+          </div>
+          <div>
+            <dt>Licensed capacity</dt>
+            <dd><span class="placeholder-inline">[CAPACITY TBD]</span> children</dd>
+          </div>
+          <div>
+            <dt>Inspection record</dt>
+            <dd>Available upon request</dd>
+          </div>
+        </dl>
+
+        <h3>Staff at this campus</h3>
+        <dl class="credentials-list">
+          <div>
+            <dt>Lead teachers</dt>
+            <dd>Minimum Associate's degree in Early Childhood Education or related field</dd>
+          </div>
+          <div>
+            <dt>Background checks</dt>
+            <dd>100% of staff: FBI, Indiana state criminal history, sex offender registry, DCS</dd>
+          </div>
+          <div>
+            <dt>CPR &amp; first aid</dt>
+            <dd>100% certified, renewed annually</dd>
+          </div>
+          <div>
+            <dt>Annual training</dt>
+            <dd>Hours exceed Indiana FSSA minimums</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA BAND ========== -->
+  <section class="cta-band section-dark">
+    <div class="container">
+      <div class="fade-in">
+        <h2>See the Bargersville campus in person.</h2>
+        <p>Tours take about 30 minutes. Meet the teachers, see the classrooms, and ask every question you have.</p>
+        <a href="/enroll" class="btn btn-white btn-lg">Schedule a Free Tour</a>
+      </div>
+    </div>
+  </section>
 </BaseLayout>

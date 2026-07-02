@@ -1,0 +1,120 @@
+---
+// The full page body for a "Coming soon" campus (Fishers, New Palestine,
+// Lexington). All city-specific copy lives in src/data/locations.ts —
+// the three coming-soon pages are just this component fed different data.
+// Bargersville (the open flagship) has its own richer page.
+import type { Location } from "../data/locations";
+import LocationBreadcrumb from "./LocationBreadcrumb.astro";
+import LocationNapCard from "./LocationNapCard.astro";
+import LocationPrograms from "./LocationPrograms.astro";
+
+interface Props {
+  loc: Location;
+}
+const { loc } = Astro.props;
+---
+
+<LocationBreadcrumb loc={loc} />
+
+<!-- ========== HERO ========== -->
+<section class="location-hero">
+  <div class="container">
+    <div class="location-hero-grid fade-in">
+      <div class="location-hero-text">
+        <div class="location-status status-soon">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span>{loc.statusLabel}</span>
+        </div>
+        <h1>{loc.heroHeading}</h1>
+        <p class="location-hero-sub">{loc.heroSub}</p>
+        <div class="location-hero-actions">
+          <a href="/enroll" class="btn btn-green btn-lg">Join the Waitlist &rarr;</a>
+          <a href="/locations" class="btn btn-outline-teal btn-lg">See open locations</a>
+        </div>
+      </div>
+
+      <LocationNapCard loc={loc} />
+    </div>
+  </div>
+</section>
+
+<!-- ========== ABOUT THIS LOCATION ========== -->
+<section class="section">
+  <div class="container">
+    <div class="location-about fade-in">
+      <div class="location-about-text">
+        <p class="eyebrow">About this campus</p>
+        <h2>{loc.aboutHeading}</h2>
+        <div class="content-placeholder content-placeholder--wide">
+          <p class="content-placeholder-label">DRAFT &mdash; for client review</p>
+          <p class="content-placeholder-hint">{loc.aboutHint}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PROGRAMS AT THIS LOCATION ========== -->
+<LocationPrograms loc={loc} />
+
+<!-- ========== WAITLIST CTA ========== -->
+{loc.waitlist && (
+  <section class="section section-teal-bg">
+    <div class="container">
+      <div class="location-waitlist fade-in">
+        <h2>{loc.waitlist.heading}</h2>
+        <p>{loc.waitlist.body}</p>
+        <a href="/enroll" class="btn btn-green btn-lg">Join the Waitlist &rarr;</a>
+      </div>
+    </div>
+  </section>
+)}
+
+<!-- ========== LICENSING ========== -->
+<section class="section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <p class="eyebrow">Licensing &amp; credentials</p>
+      <h2>Our {loc.city} campus, by the paperwork.</h2>
+    </div>
+
+    <div class="credentials-block fade-in">
+      <h3>State licensing</h3>
+      <dl class="credentials-list">
+        {(loc.licensingRows ?? []).map((row) => (
+          <div>
+            <dt>{row.dt}</dt>
+            <dd>{row.dd}</dd>
+          </div>
+        ))}
+        <div>
+          <dt>Licensed capacity</dt>
+          <dd><span class="placeholder-inline">[CAPACITY TBD]</span> children</dd>
+        </div>
+      </dl>
+
+      <h3>Staff at this campus</h3>
+      <dl class="credentials-list">
+        {(loc.staffingRows ?? []).map((row) => (
+          <div>
+            <dt>{row.dt}</dt>
+            <dd>{row.dd}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CTA BAND ========== -->
+{loc.cta && (
+  <section class="cta-band section-dark">
+    <div class="container">
+      <div class="fade-in">
+        <h2>{loc.cta.heading}</h2>
+        <p>{loc.cta.body}</p>
+        <a href={loc.cta.btnHref} class="btn btn-white btn-lg">{loc.cta.btnLabel}</a>
+      </div>
+    </div>
+  </section>
+)}

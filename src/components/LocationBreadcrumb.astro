@@ -1,0 +1,19 @@
+---
+// Breadcrumb trail shown at the top of every location page.
+import type { Location } from "../data/locations";
+
+interface Props {
+  loc: Location;
+}
+const { loc } = Astro.props;
+---
+
+<nav class="location-breadcrumb" aria-label="Breadcrumb">
+  <div class="container">
+    <ol>
+      <li><a href="/">Home</a></li>
+      <li><a href="/locations">Locations</a></li>
+      <li aria-current="page">{loc.cityState}</li>
+    </ol>
+  </div>
+</nav>

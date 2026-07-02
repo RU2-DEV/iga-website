@@ -1,0 +1,32 @@
+---
+// "Programs at this location" section — identical program list on every
+// location page; only the eyebrow + intro sentence vary per campus.
+import type { Location } from "../data/locations";
+import { programs } from "../data/locations";
+
+interface Props {
+  loc: Location;
+}
+const { loc } = Astro.props;
+---
+
+<section class="section section-green-bg">
+  <div class="container">
+    <div class="section-header fade-in">
+      <p class="eyebrow">{loc.programsEyebrow}</p>
+      <h2>Programs for every age, 6 weeks through Pre-K.</h2>
+      <p>{loc.programsIntro}</p>
+    </div>
+
+    <ul class="location-programs fade-in" aria-label="Programs offered at this location">
+      {programs.map((program) => (
+        <li>
+          <h3>{program.name}</h3>
+          <p class="age-meta">{program.ageMeta}</p>
+          <p>{program.blurb}</p>
+          <a href={program.href} class="card-link">{program.linkLabel} &rarr;</a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

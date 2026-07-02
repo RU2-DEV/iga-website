@@ -1,5 +1,5 @@
 {
-  "name": "users-austenpitman-documents-claude-2026-03-31-code-iga-website-mockup-iga-site",
+  "name": "iga-website",
   "type": "module",
   "version": "0.0.1",
   "engines": {
@@ -12,6 +12,9 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.3",
+    "@fontsource/manrope": "^5.2.8",
+    "@fontsource/vollkorn": "^5.2.10",
     "astro": "^6.4.4"
   }
 }

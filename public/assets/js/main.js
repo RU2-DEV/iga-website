@@ -71,7 +71,10 @@
     fadeEls.forEach((el) => observer.observe(el));
   }
 
-  /* --- Lead Form (Enroll Page) — mock submit confirmation --- */
+  /* --- Lead Form (Enroll Page) — submits to Netlify Forms --- */
+  /* The browser's native validation runs first (required fields), so this
+     handler only fires with a complete form. We POST in the background so
+     the parent stays on the page and sees the confirmation in place. */
   function initForm() {
     const enrollForm = document.querySelector('.lead-form');
     if (!enrollForm) return;
@@ -80,22 +83,31 @@
       e.preventDefault();
       const btn = enrollForm.querySelector('button[type="submit"]');
       const status = enrollForm.querySelector('#form-status');
-      if (!btn) return;
-      const originalText = btn.textContent;
-      btn.textContent = 'Tour Requested!';
-      btn.disabled = true;
-      btn.style.background = 'var(--iga-green-mid)';
-      btn.style.borderColor = 'var(--iga-green-mid)';
-      if (status) status.textContent = 'Tour request submitted. Watch for a confirmation email within two minutes.';
+      if (!btn || btn.disabled) return;
 
-      setTimeout(() => {
-        btn.textContent = originalText;
-        btn.disabled = false;
-        btn.style.background = '';
-        btn.style.borderColor = '';
-        if (status) status.textContent = '';
-        enrollForm.reset();
-      }, 3000);
+      const originalText = btn.textContent;
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+
+      const body = new URLSearchParams(new FormData(enrollForm)).toString();
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: body,
+      })
+        .then((res) => {
+          if (!res.ok) throw new Error('Submit failed: ' + res.status);
+          btn.textContent = 'Tour Requested!';
+          btn.style.background = 'var(--iga-green-mid)';
+          btn.style.borderColor = 'var(--iga-green-mid)';
+          if (status) status.textContent = 'Tour request received. We will follow up within 24 hours to confirm your tour time.';
+          enrollForm.reset();
+        })
+        .catch(() => {
+          btn.textContent = originalText;
+          btn.disabled = false;
+          if (status) status.textContent = 'Something went wrong sending your request. Please try again, or email team@imaginationgroveacademy.com.';
+        });
     });
   }
 
@@ -128,6 +140,18 @@
       if (nav) nav.classList.toggle('scrolled', window.scrollY > 40);
     };
     window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Escape closes the mobile menu (bound once on document — it survives
+    // View Transitions, so it re-queries the current page's elements).
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      const openNav = document.querySelector('.mobile-nav.open');
+      const hamburger = document.querySelector('.hamburger');
+      if (openNav && hamburger) {
+        hamburger.click();
+        hamburger.focus();
+      }
+    });
 
     // astro:page-load fires on the initial load AND after every View Transition.
     document.addEventListener('astro:page-load', () => {
