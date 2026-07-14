@@ -65,14 +65,16 @@ export const locations: Location[] = [
     state: "IN",
     cityState: "Bargersville, IN",
     email: "bargersville@imaginationgroveacademy.com",
+    streetAddress: "2805 South Grove Blvd",
+    postalCode: "46106",
     status: "open",
     statusLabel: "Opening first · Enrolling now",
     metaTitle: "Childcare in Bargersville, IN | Imagination Grove Academy",
     metaDescription:
-      "Imagination Grove Academy is opening its first campus in Bargersville, IN. Safe, joyful childcare for children 6 weeks–5 years. Low ratios, degree-qualified teachers, state-licensed. Enrolling now.",
+      "Imagination Grove Academy is opening its first campus in Bargersville, IN. Safe, joyful childcare for children 6 weeks–5 years. Low ratios, degree-qualified lead teachers, state-licensed. Enrolling now.",
     heroHeading: "Childcare in Bargersville, IN.",
     heroSub:
-      "Imagination Grove Academy's first campus is opening in Bargersville. Safe, joyful childcare for children 6 weeks–5 years — with low teacher-to-child ratios, degree-qualified teachers, and a curriculum that respects how young children actually learn.",
+      "Imagination Grove Academy's first campus is opening in Bargersville. Safe, joyful childcare for children 6 weeks–5 years — with low teacher-to-child ratios, degree-qualified lead teachers, and a curriculum that respects how young children actually learn.",
     napHeading: "Visit us",
     areaServed: ["Bargersville", "Greenwood", "Franklin"],
     aboutHeading: "A purpose-built childcare home in Bargersville.",
@@ -80,7 +82,7 @@ export const locations: Location[] = [
       "Location-specific paragraph goes here once the building, neighborhood context, and opening story are finalized. Two or three sentences: where the building is, what makes it the right fit for the community, what's unique about this campus (outdoor space, natural light, partnership with a local pediatrician, etc.). This is the copy that helps the page rank for \"childcare Bargersville\" and feel like a real place rather than a marketing brochure.",
     programsEyebrow: "At the Bargersville campus",
     programsIntro:
-      "The Bargersville campus serves all four IGA age groups. Class sizes are capped below state-mandated minimums in every program.",
+      "The Bargersville campus serves all four IGA age groups. We follow all state guidelines strictly, keeping class sizes small in every program.",
   },
   {
     slug: "fishers",
@@ -88,14 +90,16 @@ export const locations: Location[] = [
     state: "IN",
     cityState: "Fishers, IN",
     email: "fishers@imaginationgroveacademy.com",
+    streetAddress: "12344 Cyntheanne Rd",
+    postalCode: "46037",
     status: "soon",
     statusLabel: "Coming soon",
     metaTitle: "Childcare in Fishers, IN | Imagination Grove Academy",
     metaDescription:
-      "Imagination Grove Academy is coming soon to Fishers, IN. Safe, joyful childcare for children 6 weeks–5 years. Low ratios, degree-qualified teachers, state-licensed. Join the waitlist.",
+      "Imagination Grove Academy is coming soon to Fishers, IN. Safe, joyful childcare for children 6 weeks–5 years. Low ratios, degree-qualified lead teachers, state-licensed. Join the waitlist.",
     heroHeading: "Childcare in Fishers, IN.",
     heroSub:
-      "Imagination Grove Academy is coming to Fishers. Safe, joyful childcare for children 6 weeks–5 years — with low teacher-to-child ratios, degree-qualified teachers, and a curriculum that respects how young children actually learn. Join the waitlist to be first in line.",
+      "Imagination Grove Academy is coming to Fishers. Safe, joyful childcare for children 6 weeks–5 years — with low teacher-to-child ratios, degree-qualified lead teachers, and a curriculum that respects how young children actually learn. Join the waitlist to be first in line.",
     napHeading: "Coming to Fishers",
     areaServed: ["Fishers", "Noblesville", "Carmel"],
     aboutHeading: "An IGA campus is coming to Fishers.",
@@ -103,7 +107,7 @@ export const locations: Location[] = [
       "Location-specific paragraph goes here once the Fishers building, neighborhood context, and opening timeline are finalized. Mention the area being served (Geist? Saxony? Hamilton County north?), what makes this campus distinct, and any partnerships or features unique to the Fishers location. This is what helps the page rank for \"childcare Fishers Indiana\" once live.",
     programsEyebrow: "When the Fishers campus opens",
     programsIntro:
-      "Every IGA campus serves all four age groups. Class sizes are capped below state-mandated minimums in every program.",
+      "Every IGA campus serves all four age groups. We follow all state guidelines strictly, keeping class sizes small in every program.",
     waitlist: {
       heading: "Be first in line when Fishers opens.",
       body: "The Fishers campus is opening soon. Join the waitlist and we'll reach out as soon as we have an opening date and tour availability.",
@@ -134,10 +138,10 @@ export const locations: Location[] = [
     statusLabel: "Coming soon",
     metaTitle: "Childcare in New Palestine, IN | Imagination Grove Academy",
     metaDescription:
-      "Imagination Grove Academy is coming soon to New Palestine, IN. Safe, joyful childcare for children 6 weeks–5 years. Low ratios, degree-qualified teachers, state-licensed. Join the waitlist.",
+      "Imagination Grove Academy is coming soon to New Palestine, IN. Safe, joyful childcare for children 6 weeks–5 years. Low ratios, degree-qualified lead teachers, state-licensed. Join the waitlist.",
     heroHeading: "Childcare in New Palestine, IN.",
     heroSub:
-      "Imagination Grove Academy is coming to New Palestine. Safe, joyful childcare for children 6 weeks–5 years — with low teacher-to-child ratios, degree-qualified teachers, and a curriculum that respects how young children actually learn. Join the waitlist to be first in line.",
+      "Imagination Grove Academy is coming to New Palestine. Safe, joyful childcare for children 6 weeks–5 years — with low teacher-to-child ratios, degree-qualified lead teachers, and a curriculum that respects how young children actually learn. Join the waitlist to be first in line.",
     napHeading: "Coming to New Palestine",
     areaServed: ["New Palestine", "Greenfield", "McCordsville"],
     aboutHeading: "An IGA campus is coming to New Palestine.",
@@ -145,7 +149,7 @@ export const locations: Location[] = [
       "Location-specific paragraph goes here once the New Palestine building, neighborhood context, and opening timeline are finalized. Mention the area being served, what makes this campus distinct, and any partnerships or features unique to the New Palestine location. This is what helps the page rank for \"childcare New Palestine Indiana\" once live.",
     programsEyebrow: "When the New Palestine campus opens",
     programsIntro:
-      "Every IGA campus serves all four age groups. Class sizes are capped below state-mandated minimums in every program.",
+      "Every IGA campus serves all four age groups. We follow all state guidelines strictly, keeping class sizes small in every program.",
     waitlist: {
       heading: "Be first in line when New Palestine opens.",
       body: "The New Palestine campus is opening soon. Join the waitlist and we'll reach out as soon as we have an opening date and tour availability.",
@@ -172,14 +176,16 @@ export const locations: Location[] = [
     state: "KY",
     cityState: "Lexington, KY",
     email: "lexington@imaginationgroveacademy.com",
+    streetAddress: "2450 Georgetown Rd",
+    postalCode: "40511",
     status: "soon",
     statusLabel: "Coming soon",
     metaTitle: "Childcare in Lexington, KY | Imagination Grove Academy",
     metaDescription:
-      "Imagination Grove Academy is coming soon to Lexington, KY. Safe, joyful childcare for children 6 weeks–5 years. Low ratios, degree-qualified teachers, Kentucky-licensed. Join the waitlist.",
+      "Imagination Grove Academy is coming soon to Lexington, KY. Safe, joyful childcare for children 6 weeks–5 years. Low ratios, degree-qualified lead teachers, Kentucky-licensed. Join the waitlist.",
     heroHeading: "Childcare in Lexington, KY.",
     heroSub:
-      "Imagination Grove Academy is coming to Lexington — our first campus in Kentucky. Safe, joyful childcare for children 6 weeks–5 years, with low teacher-to-child ratios, degree-qualified teachers, and a curriculum that respects how young children actually learn. Join the waitlist to be first in line.",
+      "Imagination Grove Academy is coming to Lexington — our first campus in Kentucky. Safe, joyful childcare for children 6 weeks–5 years, with low teacher-to-child ratios, degree-qualified lead teachers, and a curriculum that respects how young children actually learn. Join the waitlist to be first in line.",
     napHeading: "Coming to Lexington",
     areaServed: ["Lexington", "Nicholasville", "Georgetown"],
     aboutHeading: "IGA is expanding into Kentucky.",
@@ -187,7 +193,7 @@ export const locations: Location[] = [
       "Location-specific paragraph goes here once the Lexington building, neighborhood context, and opening timeline are finalized. This is also where you can introduce IGA to a new state — why Kentucky, why Lexington, what makes this expansion meaningful. The page needs to rank for \"childcare Lexington KY\" and feel rooted in the city rather than imported.",
     programsEyebrow: "When the Lexington campus opens",
     programsIntro:
-      "Every IGA campus serves all four age groups. Class sizes are capped below state-mandated minimums in every program.",
+      "Every IGA campus serves all four age groups. We follow all state guidelines strictly, keeping class sizes small in every program.",
     waitlist: {
       heading: "Be first in line when Lexington opens.",
       body: "The Lexington campus is our first in Kentucky. Join the waitlist and we'll reach out as soon as we have an opening date and tour availability.",
@@ -266,28 +272,35 @@ export function locationJsonLd(loc: Location) {
 export const programs = [
   {
     name: "Infant Care",
-    ageMeta: "6 weeks – 12 months · 1:4 ratio",
+    ageMeta: "6 weeks – 12 months",
     blurb: "Calm, primary-caregiver-led infant care with parent-set feed and nap schedules.",
     href: "/programs#infant",
     linkLabel: "Learn about infant care",
   },
   {
     name: "Toddler Program",
-    ageMeta: "1 – 2 years · 1:5 ratio",
+    ageMeta: "1 – 2 years",
     blurb: "Sensory play, language-rich rooms, and the gentle structure toddlers need.",
     href: "/programs#toddler",
     linkLabel: "Learn about toddler care",
   },
   {
+    name: "Two-Year-Olds",
+    ageMeta: "2 – 3 years",
+    blurb: "Play-based exploration that builds language, independence, and social confidence.",
+    href: "/programs#twos",
+    linkLabel: "Learn about our twos program",
+  },
+  {
     name: "Preschool",
-    ageMeta: "3 – 4 years · 1:8 ratio",
+    ageMeta: "3 – 4 years",
     blurb: "Curiosity-led curriculum with foundational literacy, math, and independent learning.",
     href: "/programs#preschool",
     linkLabel: "Learn about preschool",
   },
   {
     name: "Pre-K",
-    ageMeta: "4 – 5 years · 1:10 ratio",
+    ageMeta: "4 – 5 years",
     blurb: "Kindergarten-ready academic foundations with strong social-emotional growth.",
     href: "/programs#pre-k",
     linkLabel: "Learn about Pre-K",

@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
-<BaseLayout title="Programs | Imagination Grove Academy" description="IGA's age-appropriate programs for children 6 weeks through 5 years. Small class sizes, degree-qualified teachers, and curriculum that meets your child where they are.">
+<BaseLayout title="Programs | Imagination Grove Academy" description="IGA's age-appropriate programs for children 6 weeks through 5 years. Small class sizes, degree-qualified lead teachers, and curriculum that meets your child where they are.">
 
     <!-- ========== HERO ========== -->
     <section class="page-hero">
@@ -20,8 +20,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         <ul class="program-jump-list">
           <li><a href="#infant"><span class="program-jump-age">6 wks – 12 mo</span><span class="program-jump-name">Infant</span></a></li>
           <li><a href="#toddler"><span class="program-jump-age">1 – 2 yrs</span><span class="program-jump-name">Toddler</span></a></li>
+          <li><a href="#twos"><span class="program-jump-age">2 – 3 yrs</span><span class="program-jump-name">Twos</span></a></li>
           <li><a href="#preschool"><span class="program-jump-age">3 – 4 yrs</span><span class="program-jump-name">Preschool</span></a></li>
           <li><a href="#pre-k"><span class="program-jump-age">4 – 5 yrs</span><span class="program-jump-name">Pre-K</span></a></li>
+          <li><a href="#school-age"><span class="program-jump-age">6 – 12 yrs</span><span class="program-jump-name">School Age</span></a></li>
         </ul>
       </div>
     </nav>
@@ -33,11 +35,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <div class="program-detail-text">
             <span class="age-badge-lg">6 weeks – 12 months</span>
             <h2>Infant Care</h2>
-            <p>The first year is the most tender one. Our infant room is designed for calm: soft light, quiet corners, and caregivers who match each baby's individual rhythm rather than imposing a group schedule.</p>
+            <p>The first year is the most tender one. Our infant room is designed for calm: soft light, quiet corners, and caregivers who nurture each baby's individual milestones rather than rushing a group timeline.</p>
             <ul class="curriculum-list">
-              <li><strong>1:4 ratio.</strong> State minimum is 1:5.</li>
-              <li><strong>Daily reports.</strong> Real feed times, nap durations, diaper counts, milestones, via Brightwheel.</li>
-              <li><strong>Parent-led schedules.</strong> Your bottle times and nap windows, not a group clock.</li>
+              <li><strong>Ratios kept under the state minimum.</strong> We follow all state guidelines strictly.</li>
+              <li><strong>Real-time updates.</strong> Notifications for feedings, diaper changes, nap times, daily activities, photos, and all the moments that matter most, via Brightwheel.</li>
+              <li><strong>Parent-led scheduling.</strong> We follow your child's established routine for feedings, naps, and care whenever possible.</li>
             </ul>
             <a href="/enroll" class="btn btn-outline-green mt-24">Tour the infant room &rarr;</a>
           </div>
@@ -61,9 +63,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <div class="program-detail-text">
             <span class="age-badge-lg">1 – 2 years</span>
             <h2>Toddler Program</h2>
-            <p>Big feelings, little people, huge growth. Toddlers learn faster than at any other stage of life. Our 1-to-2-year-old program meets the whirlwind with curiosity, structure, and a lot of patience.</p>
+            <p>Big feelings, little people, huge growth. Every interaction is a learning opportunity. Through talking, singing, reading aloud, and responsive conversations, we help toddlers develop confidence in communication and in understanding the world around them.</p>
             <ul class="curriculum-list">
-              <li><strong>1:5 ratio, held strictly.</strong> State minimum is 1:5.</li>
+              <li><strong>1:5 ratio.</strong> State ratios are taken seriously and followed strictly.</li>
               <li><strong>Sensory and outdoor play daily.</strong> Water tables, textures, music, secure outdoor space.</li>
               <li><strong>Language-rich classroom.</strong> Toddlers add roughly one new word per waking hour. We design around that.</li>
             </ul>
@@ -83,18 +85,48 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </div>
     </section>
 
-    <!-- ========== PRESCHOOL ========== -->
-    <section class="section" id="preschool">
+    <!-- ========== TWO-YEAR-OLDS ========== -->
+    <section class="section" id="twos">
       <div class="container">
         <div class="program-detail fade-in">
           <div class="program-detail-text">
+            <span class="age-badge-lg">2 – 3 years</span>
+            <h2>Two-Year-Olds</h2>
+            <p>Our two-year-old classroom is a safe, nurturing, and engaging environment where children learn through play, exploration, and meaningful relationships. Daily routines provide consistency while encouraging independence, language, social skills, and early learning. Through hands-on activities, music, stories, sensory experiences, and learning centers, children build confidence, curiosity, and a lifelong love of learning.</p>
+            <ul class="curriculum-list">
+              <li><strong>Ratios: 1:8 (24–29 months), 1:9 (30–35 months).</strong> State ratios are taken seriously and followed strictly.</li>
+              <li><strong>Sensory and outdoor play.</strong> Children explore, discover, and grow through daily sensory experiences and outdoor play.</li>
+              <li><strong>Language-rich classroom.</strong> We build language skills through songs, stories, conversations, and play, helping children grow from single words to complete sentences and meaningful conversations.</li>
+            </ul>
+            <a href="/enroll" class="btn btn-outline-green mt-24">Tour the two-year-old room &rarr;</a>
+          </div>
+          <div class="program-detail-img">
+            <div class="placeholder-img" role="img" aria-label="Photo placeholder for two-year-old classroom">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="10" y="26" width="10" height="10" rx="2" fill="#6CB43A" opacity="0.6"/>
+                <rect x="22" y="26" width="10" height="10" rx="2" fill="#5FA8D3" opacity="0.6"/>
+                <rect x="16" y="14" width="10" height="10" rx="2" fill="#EF9F27" opacity="0.6"/>
+              </svg>
+              <span class="placeholder-label">Photo: two-year-old classroom, learning centers in use</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PRESCHOOL ========== -->
+    <section class="section section-green-bg" id="preschool">
+      <div class="container">
+        <div class="program-detail reverse fade-in">
+          <div class="program-detail-text">
             <span class="age-badge-lg">3 – 4 years</span>
             <h2>Preschool</h2>
-            <p>Great preschool isn't "kindergarten minus one year." It's its own developmental window. Kids at 3 and 4 are building the cognitive, emotional, and social foundations that everything else will sit on. We respect that window. No worksheets, no screens, no rushing the timeline.</p>
+            <p>Great preschool isn't "kindergarten minus one year." It's its own developmental window. Our preschool classroom prepares children through hands-on learning, purposeful play, and meaningful experiences. We foster independence, confidence, early literacy and math skills, problem-solving, and social-emotional development in a caring, language-rich environment where every child is encouraged to explore, grow, and succeed.</p>
             <ul class="curriculum-list">
-              <li><strong>Project-based units.</strong> Two-week deep dives that pull literacy, math, art, and science together.</li>
-              <li><strong>Small-group rotations.</strong> Kids cycle through stations in groups of 4 to 6. Never lectured at as a big group.</li>
-              <li><strong>Wonder walks weekly.</strong> Teachers ask open-ended questions. Kids lead where we go.</li>
+              <li><strong>1:11 ratio.</strong> Followed strictly.</li>
+              <li><strong>Education.</strong> Our lesson plans provide engaging, developmentally appropriate learning through hands-on exploration and play.</li>
+              <li><strong>Learning together.</strong> We balance small- and large-group activities to prepare children for the next step in education, while making sure each child gets the individualized support and attention they need to succeed.</li>
+              <li><strong>Learning through choice.</strong> We encourage children to share their interests, then listen and weave them into lesson plans, keeping them engaged while exploring topics that spark curiosity and support meaningful learning.</li>
             </ul>
             <a href="/enroll" class="btn btn-outline-green mt-24">Tour the preschool room &rarr;</a>
           </div>
@@ -111,17 +143,17 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </section>
 
     <!-- ========== PRE-K ========== -->
-    <section class="section section-green-bg" id="pre-k">
+    <section class="section" id="pre-k">
       <div class="container">
-        <div class="program-detail reverse fade-in">
+        <div class="program-detail fade-in">
           <div class="program-detail-text">
             <span class="age-badge-lg">4 – 5 years</span>
             <h2>Pre-K</h2>
-            <p>Ready for kindergarten, still in love with learning. Our Pre-K program prepares your child for day one of kindergarten without burning them out before they get there. We hit every readiness benchmark without using workbooks, flashcards, or drill-and-kill.</p>
+            <p>Ready for kindergarten, still in love with learning. Our Pre-K program balances structured learning with purposeful play, building strong foundations in literacy, math, science, social-emotional development, and problem-solving. Children leave with the confidence, independence, and school-ready skills they need for a successful start to kindergarten and everything after.</p>
             <ul class="curriculum-list">
-              <li><strong>45-min literacy block daily.</strong> Letters, sounds, name-writing, early reading, story comprehension.</li>
-              <li><strong>30-min math block daily.</strong> Hands-on manipulatives, patterns, simple addition, problem-solving.</li>
-              <li><strong>Independence skills, practiced.</strong> Open the snack, zip the coat, manage the bathroom, pack the bag.</li>
+              <li><strong>Ratios: 1:13.</strong> State minimum is 1:17.</li>
+              <li><strong>Classroom schedule.</strong> Ample time for the skills that matter most for kindergarten, including literacy, math, and science.</li>
+              <li><strong>Independence skills, practiced.</strong> We won't forget the life skills that are easy to take for granted, like eating lunch on their own, managing the bathroom, and even packing their own bag.</li>
             </ul>
             <a href="/enroll" class="btn btn-outline-green mt-24">Tour the Pre-K room &rarr;</a>
           </div>
@@ -136,6 +168,17 @@ import BaseLayout from "../layouts/BaseLayout.astro";
               <span class="placeholder-label">Photo: Pre-K classroom, child working independently at a table</span>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SCHOOL AGE (coming soon) ========== -->
+    <section class="section section-green-bg" id="school-age">
+      <div class="container">
+        <div class="section-header fade-in">
+          <p class="eyebrow">School age &middot; 6 – 12 years</p>
+          <h2>Summer and break care is on the way.</h2>
+          <p>Care for school-age children during the summer and school breaks is coming to IGA. Check back in September for program details.</p>
         </div>
       </div>
     </section>
@@ -158,12 +201,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             <p>Every adult in the building has cleared a background check and completed our onboarding training.</p>
           </li>
           <li>
-            <h3>Ratios below state minimums</h3>
-            <p>Our ratios run below the state-required minimum in every age group.</p>
+            <h3>Ratios that follow state guidelines</h3>
+            <p>We follow all state guidelines strictly, keeping classrooms small in every age group.</p>
           </li>
           <li>
-            <h3>Locally-sourced, nutritionist-approved meals</h3>
-            <p>Breakfast, lunch, and two snacks. Allergen-aware. No nuggets-and-fries shortcuts.</p>
+            <h3>Locally sourced meals</h3>
+            <p>Breakfast, lunch, and two snacks every day, including at least one hot meal. Allergen-aware, with fresh vegetables and fruit always on the menu, giving your child the nutrition to power a full day of play and learning.</p>
           </li>
           <li>
             <h3>Daily outdoor time</h3>
@@ -183,18 +226,20 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         <div class="section-header fade-in">
           <p class="eyebrow">Sample Tuesday</p>
           <h2>What a day at IGA looks like.</h2>
-          <p>This is a typical preschool day. Infant and toddler days have a gentler shape but follow the same philosophy: predictable rhythms, child-led moments, real learning throughout.</p>
+          <p>This is a typical preschool day. Infant, toddler, and two-year-old days have a gentler shape but follow the same philosophy: predictable rhythms, child-led moments, real learning throughout.</p>
         </div>
         <ol class="daily-rhythm fade-in">
           <li><span class="rhythm-time">6:30 – 8:30 AM</span><span class="rhythm-activity">Arrival, free play, breakfast</span></li>
-          <li><span class="rhythm-time">8:30 – 9:00 AM</span><span class="rhythm-activity">Morning circle: weather, story, daily question</span></li>
-          <li><span class="rhythm-time">9:00 – 10:15 AM</span><span class="rhythm-activity">Curriculum time: rotating literacy, math, science, art</span></li>
+          <li><span class="rhythm-time">8:30 – 9:00 AM</span><span class="rhythm-activity">Final drop-offs</span></li>
+          <li><span class="rhythm-time">9:00 – 9:15 AM</span><span class="rhythm-activity">Morning circle: weather, story, daily question</span></li>
+          <li><span class="rhythm-time">9:15 – 10:15 AM</span><span class="rhythm-activity">Curriculum time: rotating literacy, math, science, art</span></li>
           <li><span class="rhythm-time">10:15 – 11:30 AM</span><span class="rhythm-activity">Outdoor play and exploration</span></li>
-          <li><span class="rhythm-time">11:30 AM – 12:15 PM</span><span class="rhythm-activity">Lunch</span></li>
-          <li><span class="rhythm-time">12:15 – 2:30 PM</span><span class="rhythm-activity">Rest or quiet activities</span></li>
-          <li><span class="rhythm-time">2:30 – 3:30 PM</span><span class="rhythm-activity">Snack and project time</span></li>
+          <li><span class="rhythm-time">11:30 AM – 12:00 PM</span><span class="rhythm-activity">Curriculum time</span></li>
+          <li><span class="rhythm-time">12:00 – 1:00 PM</span><span class="rhythm-activity">Lunch and clean-up</span></li>
+          <li><span class="rhythm-time">1:00 – 3:00 PM</span><span class="rhythm-activity">Rest or quiet activities</span></li>
+          <li><span class="rhythm-time">3:00 – 3:30 PM</span><span class="rhythm-activity">Snack and project time</span></li>
           <li><span class="rhythm-time">3:30 – 5:00 PM</span><span class="rhythm-activity">Outdoor play, free choice</span></li>
-          <li><span class="rhythm-time">5:00 – 6:30 PM</span><span class="rhythm-activity">Wind-down, pickup</span></li>
+          <li><span class="rhythm-time">5:00 – 6:00 PM</span><span class="rhythm-activity">Wind-down and goodbyes</span></li>
         </ol>
       </div>
     </section>

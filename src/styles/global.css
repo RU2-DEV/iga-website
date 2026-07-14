@@ -263,7 +263,8 @@ p { margin-bottom: 1rem; }
   flex-shrink: 0;
 }
 
-.nav-logo svg { width: 32px; height: 32px; flex-shrink: 0; }
+.nav-logo-badge { height: 44px; width: auto; flex-shrink: 0; }
+.footer-brand .nav-logo-badge { height: 42px; }
 
 .nav-logo-text {
   display: flex;
@@ -586,7 +587,7 @@ p { margin-bottom: 1rem; }
    ============================================ */
 .program-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 24px;
 }
 
@@ -1713,7 +1714,7 @@ p { margin-bottom: 1rem; }
 }
 
 /* Anchored sections need scroll-margin so sticky nav strip doesn't cover the heading */
-#infant, #toddler, #preschool, #pre-k {
+#infant, #toddler, #twos, #preschool, #pre-k, #school-age {
   scroll-margin-top: calc(var(--nav-height) + 80px);
 }
 
@@ -1807,7 +1808,7 @@ p { margin-bottom: 1rem; }
   .daily-rhythm li { grid-template-columns: 1fr; gap: 4px; padding: 14px 8px; }
   .rhythm-time { font-size: 0.72rem; }
 
-  #infant, #toddler, #preschool, #pre-k {
+  #infant, #toddler, #twos, #preschool, #pre-k, #school-age {
     scroll-margin-top: calc(var(--nav-height) + 24px);
   }
 }
