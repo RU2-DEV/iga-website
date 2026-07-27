@@ -56,6 +56,14 @@ export interface Location {
   postalCode?: string;
   telephone?: string;
   geo?: { latitude: number; longitude: number };
+  /** Public Brightwheel digital-form URL for this campus's waitlist.
+      When set, the "Join the Waitlist" CTAs on the coming-soon page link
+      out to Brightwheel (opens in a new tab, rel="noopener nofollow") and a
+      submission auto-creates a "Prospect" record. Leave undefined until the
+      Brightwheel subscription is active and the form's share URL exists —
+      the CTAs fall back to the native /enroll page in the meantime.
+      See INTEGRATION-BRIGHTWHEEL.md, Phase 1b. */
+  waitlistFormUrl?: string;
 }
 
 export const locations: Location[] = [
@@ -112,6 +120,9 @@ export const locations: Location[] = [
       heading: "Be first in line when Fishers opens.",
       body: "The Fishers campus is opening soon. Join the waitlist and we'll reach out as soon as we have an opening date and tour availability.",
     },
+    // Brightwheel "Join the Waitlist - Fishers, IN" form (link access enabled 2026-07-26).
+    waitlistFormUrl:
+      "https://schools.mybrightwheel.com/sign-in?redirect_path=forms/bccac228-cd30-402d-9e50-58addeb5dad4/self-service",
     licensingRows: [
       { dt: "License type", dd: "Indiana Class 1 Licensed Childcare Center (pending)" },
       { dt: "Licensing body", dd: "Indiana Family & Social Services Administration (FSSA), Bureau of Child Care" },
@@ -154,6 +165,9 @@ export const locations: Location[] = [
       heading: "Be first in line when New Palestine opens.",
       body: "The New Palestine campus is opening soon. Join the waitlist and we'll reach out as soon as we have an opening date and tour availability.",
     },
+    // Brightwheel "Join the Waitlist - New Palestine, IN" form (link access enabled 2026-07-26).
+    waitlistFormUrl:
+      "https://schools.mybrightwheel.com/sign-in?redirect_path=forms/2f551fe9-af38-42a8-b46f-098129186896/self-service",
     licensingRows: [
       { dt: "License type", dd: "Indiana Class 1 Licensed Childcare Center (pending)" },
       { dt: "Licensing body", dd: "Indiana Family & Social Services Administration (FSSA), Bureau of Child Care" },
@@ -198,6 +212,9 @@ export const locations: Location[] = [
       heading: "Be first in line when Lexington opens.",
       body: "The Lexington campus is our first in Kentucky. Join the waitlist and we'll reach out as soon as we have an opening date and tour availability.",
     },
+    // Brightwheel "Join the Waitlist - Lexington, KY" form (link access enabled 2026-07-26).
+    waitlistFormUrl:
+      "https://schools.mybrightwheel.com/sign-in?redirect_path=forms/5b69bf9a-7cf4-4010-93c2-2a064756fed4/self-service",
     licensingRows: [
       { dt: "License type", dd: "Kentucky Licensed Type I Child-Care Center (pending)" },
       { dt: "Licensing body", dd: "Kentucky Cabinet for Health and Family Services — Division of Child Care" },

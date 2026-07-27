@@ -12,6 +12,15 @@ interface Props {
   loc: Location;
 }
 const { loc } = Astro.props;
+
+// Waitlist CTA target: link out to the campus's Brightwheel digital form
+// when its share URL is set (Phase 1b), otherwise fall back to the native
+// /enroll page. External links open in a new tab and use nofollow per
+// Brightwheel's guidance. See INTEGRATION-BRIGHTWHEEL.md.
+const waitlistHref = loc.waitlistFormUrl ?? "/enroll";
+const waitlistExternal = Boolean(loc.waitlistFormUrl);
+const waitlistTarget = waitlistExternal ? "_blank" : undefined;
+const waitlistRel = waitlistExternal ? "noopener nofollow" : undefined;
 ---
 
 <LocationBreadcrumb loc={loc} />
@@ -28,7 +37,7 @@ const { loc } = Astro.props;
         <h1>{loc.heroHeading}</h1>
         <p class="location-hero-sub">{loc.heroSub}</p>
         <div class="location-hero-actions">
-          <a href="/enroll" class="btn btn-green btn-lg">Join the Waitlist &rarr;</a>
+          <a href={waitlistHref} target={waitlistTarget} rel={waitlistRel} class="btn btn-green btn-lg" data-waitlist-cta={loc.slug}>Join the Waitlist &rarr;</a>
           <a href="/locations" class="btn btn-outline-teal btn-lg">See open locations</a>
         </div>
       </div>
@@ -64,7 +73,7 @@ const { loc } = Astro.props;
       <div class="location-waitlist fade-in">
         <h2>{loc.waitlist.heading}</h2>
         <p>{loc.waitlist.body}</p>
-        <a href="/enroll" class="btn btn-green btn-lg">Join the Waitlist &rarr;</a>
+        <a href={waitlistHref} target={waitlistTarget} rel={waitlistRel} class="btn btn-green btn-lg" data-waitlist-cta={loc.slug}>Join the Waitlist &rarr;</a>
       </div>
     </div>
   </section>
