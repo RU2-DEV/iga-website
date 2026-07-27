@@ -1,5 +1,8 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import emilyFamily from "../assets/emily-lee-family.jpg";
+import emilyKids from "../assets/emily-lee-kids.jpg";
 ---
 <BaseLayout title="About | Imagination Grove Academy" description="A new kind of childcare across Indiana &amp; Kentucky, built by local educators. Read our philosophy, meet the team, and see our licensing and credentials.">
 
@@ -38,21 +41,42 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </div>
     </section>
 
-    <!-- ========== LEADERSHIP & TEAM (TBD WITH CLIENT) ========== -->
+    <!-- ========== LEADERSHIP & TEAM ========== -->
     <section class="section section-green-bg">
       <div class="container">
         <div class="section-header fade-in">
           <p class="eyebrow">Leadership &amp; team</p>
-          <h2>Who is behind IGA.</h2>
+          <h2>Meet our director.</h2>
         </div>
 
-        <div class="content-placeholder content-placeholder--wide fade-in">
-          <p class="content-placeholder-label">Section needs alignment with client</p>
-          <p class="content-placeholder-hint">Leadership framing TBD. Options to discuss with the client: (1) feature the development company that is building IGA, (2) introduce the operating leadership (Tyler and a hired director), (3) keep this minimal and let the teaching team carry the page once hired. Whichever direction we choose, the visual pattern can be a 2-up or 3-up card grid in this slot. Hold off on copy and headshots until that conversation happens.</p>
+        <div class="director-grid fade-in">
+          <div class="director-bio">
+            <p>Welcome! I'm a proud graduate of Oakland City University and the Director of Imagination Grove Academy. As both an educator and a parent in a family of four, I understand the importance of providing children with a safe, nurturing, and inspiring environment where they can thrive.</p>
+            <p>One of the greatest joys of my career is watching children grow, discover their unique strengths, and develop into confident, capable individuals. I believe every child deserves meaningful relationships, engaging learning experiences, and opportunities to explore their world through play and discovery.</p>
+            <p>My vision for Imagination Grove Academy is to create more than just a childcare center. I'm committed to building a welcoming community where children flourish, families feel supported, and educators are inspired to make a lasting difference every day. I strive to foster a culture of excellence, innovation, and genuine care, making our academy a place where everyone is excited to learn, grow, and belong.</p>
+            <p>I am honored to partner with our families as we help lay the foundation for each child's lifelong love of learning.</p>
+            <p class="director-signature"><strong>Emily Lee</strong><br>Director, Imagination Grove Academy</p>
+          </div>
+          <div class="director-photos">
+            <Image
+              src={emilyFamily}
+              alt="Emily Lee with her family of four, all wearing Imagination Grove Academy shirts"
+              widths={[480, 800, 1170]}
+              sizes="(max-width: 880px) 100vw, 38vw"
+              loading="lazy"
+            />
+            <Image
+              src={emilyKids}
+              alt="Emily Lee smiling with her two children"
+              widths={[480, 800, 988]}
+              sizes="(max-width: 880px) 100vw, 38vw"
+              loading="lazy"
+            />
+          </div>
         </div>
 
         <aside class="hiring-note fade-in">
-          <p><strong>About our teaching team:</strong> We work as a team, and we're committed to staffing ample educators with a degree or equivalent to provide nothing but quality care in every classroom. Every teacher is background-checked and trained specifically in the age range they teach. The team is <span class="placeholder-inline">[hiring now]</span> for the Fall 2026 opening. Bios and headshots will be published as each teacher signs on. <a href="/enroll" class="text-link">Schedule a tour &rarr;</a> to meet whoever has joined the team by then.</p>
+          <p><strong>About our teaching team:</strong> We work as a team, and we're committed to staffing ample educators with a degree or equivalent to provide nothing but quality care in every classroom. Every teacher is background-checked and trained specifically in the age range they teach. We're hiring now for our mid-September opening: open interviews run <strong>August 17&ndash;21</strong> for teachers of all ages, plus cooks and support staff (CDA preferred but not required). Bios and headshots will be published as each teacher signs on. <a href="/enroll" class="text-link">Schedule a tour &rarr;</a> to meet whoever has joined the team by then.</p>
         </aside>
       </div>
     </section>

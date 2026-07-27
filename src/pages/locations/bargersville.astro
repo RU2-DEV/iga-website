@@ -7,6 +7,10 @@ import LocationBreadcrumb from "../../components/LocationBreadcrumb.astro";
 import LocationNapCard from "../../components/LocationNapCard.astro";
 import LocationPrograms from "../../components/LocationPrograms.astro";
 import { getLocation, locationJsonLd } from "../../data/locations";
+import { Image } from "astro:assets";
+import buildingPhoto from "../../assets/IGA_Bargersville.png";
+import renderClassroom from "../../assets/classroom-rendering-preschool-2.jpg";
+import renderIndoorPlay from "../../assets/classroom-rendering-indoor-play.jpg";
 
 const loc = getLocation("bargersville");
 ---
@@ -68,33 +72,40 @@ const loc = getLocation("bargersville");
       <div class="section-header fade-in">
         <p class="eyebrow">A look inside</p>
         <h2>Our Bargersville campus.</h2>
-        <p>Photography placeholders below. Real photos go in once construction wraps and licensing inspections complete.</p>
+        <p>The building photo is real; the classroom images are design renderings of the actual rooms. Real interior photography goes in once construction wraps and licensing inspections complete.</p>
       </div>
 
       <div class="location-photos fade-in">
-        <div class="placeholder-img" role="img" aria-label="Photo placeholder: exterior of Bargersville campus">
-          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M8 22L24 10l16 12v18H8V22z" stroke="#2C6F95" stroke-width="2" fill="none"/>
-            <rect x="20" y="30" width="8" height="10" stroke="#2C6F95" stroke-width="1.5" fill="none"/>
-          </svg>
-          <span class="placeholder-label">Exterior &middot; building front, signage, parking</span>
-        </div>
-        <div class="placeholder-img" role="img" aria-label="Photo placeholder: classroom interior">
-          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect x="8" y="14" width="32" height="22" stroke="#2C6F95" stroke-width="2" fill="none"/>
-            <circle cx="16" cy="25" r="3" stroke="#2C6F95" stroke-width="1.5" fill="none"/>
-            <circle cx="28" cy="25" r="3" stroke="#2C6F95" stroke-width="1.5" fill="none"/>
-          </svg>
-          <span class="placeholder-label">Classroom &middot; preschool room, natural light, learning corners</span>
-        </div>
-        <div class="placeholder-img" role="img" aria-label="Photo placeholder: outdoor play area">
-          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <circle cx="14" cy="18" r="6" fill="#6CB43A" opacity="0.5"/>
-            <circle cx="34" cy="20" r="8" fill="#6CB43A" opacity="0.5"/>
-            <line x1="0" y1="36" x2="48" y2="36" stroke="#2C6F95" stroke-width="2"/>
-          </svg>
-          <span class="placeholder-label">Outdoor play &middot; fenced yard, age-appropriate equipment</span>
-        </div>
+        <figure class="render-figure">
+          <Image
+            src={buildingPhoto}
+            alt="Exterior of the Imagination Grove Academy campus in Bargersville, Indiana"
+            widths={[480, 800, 1200]}
+            sizes="(max-width: 880px) 100vw, 30vw"
+            loading="lazy"
+          />
+          <figcaption>Our Bargersville campus</figcaption>
+        </figure>
+        <figure class="render-figure">
+          <Image
+            src={renderClassroom}
+            alt="Design rendering of a preschool classroom with group tables, learning shelves, and a reading couch"
+            widths={[480, 800, 1200]}
+            sizes="(max-width: 880px) 100vw, 30vw"
+            loading="lazy"
+          />
+          <figcaption>Preschool classroom (design rendering)</figcaption>
+        </figure>
+        <figure class="render-figure">
+          <Image
+            src={renderIndoorPlay}
+            alt="Design rendering of the indoor play space with soft climbing equipment, balance logs, and basketball hoops"
+            widths={[480, 800, 1200]}
+            sizes="(max-width: 880px) 100vw, 30vw"
+            loading="lazy"
+          />
+          <figcaption>Indoor play space (design rendering)</figcaption>
+        </figure>
       </div>
     </div>
   </section>

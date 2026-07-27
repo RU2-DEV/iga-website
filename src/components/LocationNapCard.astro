@@ -46,7 +46,11 @@ const { loc } = Astro.props;
     </div>
     <div>
       <dt>Opening</dt>
-      <dd><span class="placeholder-inline">[OPENING DATE TBD]</span></dd>
+      <dd>
+        {loc.openingLabel
+          ? <span>{loc.openingLabel}</span>
+          : <span class="placeholder-inline">[OPENING DATE TBD]</span>}
+      </dd>
     </div>
   </dl>
 </aside>

@@ -52,6 +52,9 @@ export interface Location {
   /** Bottom CTA band (coming-soon pages only). */
   cta?: { heading: string; body: string; btnLabel: string; btnHref: string };
   // --- Real data, added as the client provides it. Leave undefined until confirmed. ---
+  /** Display string for the NAP card's "Opening" row (e.g. "Projected: September 14, 2026").
+      Leave undefined to render the [OPENING DATE TBD] placeholder. */
+  openingLabel?: string;
   streetAddress?: string;
   postalCode?: string;
   telephone?: string;
@@ -75,6 +78,7 @@ export const locations: Location[] = [
     email: "bargersville@imaginationgroveacademy.com",
     streetAddress: "2805 South Grove Blvd",
     postalCode: "46106",
+    openingLabel: "Projected: September 14, 2026",
     status: "open",
     statusLabel: "Opening first · Enrolling now",
     metaTitle: "Childcare in Bargersville, IN | Imagination Grove Academy",
@@ -90,7 +94,7 @@ export const locations: Location[] = [
       "Location-specific paragraph goes here once the building, neighborhood context, and opening story are finalized. Two or three sentences: where the building is, what makes it the right fit for the community, what's unique about this campus (outdoor space, natural light, partnership with a local pediatrician, etc.). This is the copy that helps the page rank for \"childcare Bargersville\" and feel like a real place rather than a marketing brochure.",
     programsEyebrow: "At the Bargersville campus",
     programsIntro:
-      "The Bargersville campus serves all four IGA age groups. We follow all state guidelines strictly, keeping class sizes small in every program.",
+      "The Bargersville campus serves every IGA age group. We follow all state guidelines strictly, keeping class sizes small in every program.",
   },
   {
     slug: "fishers",
@@ -115,7 +119,7 @@ export const locations: Location[] = [
       "Location-specific paragraph goes here once the Fishers building, neighborhood context, and opening timeline are finalized. Mention the area being served (Geist? Saxony? Hamilton County north?), what makes this campus distinct, and any partnerships or features unique to the Fishers location. This is what helps the page rank for \"childcare Fishers Indiana\" once live.",
     programsEyebrow: "When the Fishers campus opens",
     programsIntro:
-      "Every IGA campus serves all four age groups. We follow all state guidelines strictly, keeping class sizes small in every program.",
+      "Every IGA campus serves every age group. We follow all state guidelines strictly, keeping class sizes small in every program.",
     waitlist: {
       heading: "Be first in line when Fishers opens.",
       body: "The Fishers campus is opening soon. Join the waitlist and we'll reach out as soon as we have an opening date and tour availability.",
@@ -160,7 +164,7 @@ export const locations: Location[] = [
       "Location-specific paragraph goes here once the New Palestine building, neighborhood context, and opening timeline are finalized. Mention the area being served, what makes this campus distinct, and any partnerships or features unique to the New Palestine location. This is what helps the page rank for \"childcare New Palestine Indiana\" once live.",
     programsEyebrow: "When the New Palestine campus opens",
     programsIntro:
-      "Every IGA campus serves all four age groups. We follow all state guidelines strictly, keeping class sizes small in every program.",
+      "Every IGA campus serves every age group. We follow all state guidelines strictly, keeping class sizes small in every program.",
     waitlist: {
       heading: "Be first in line when New Palestine opens.",
       body: "The New Palestine campus is opening soon. Join the waitlist and we'll reach out as soon as we have an opening date and tour availability.",
@@ -207,7 +211,7 @@ export const locations: Location[] = [
       "Location-specific paragraph goes here once the Lexington building, neighborhood context, and opening timeline are finalized. This is also where you can introduce IGA to a new state — why Kentucky, why Lexington, what makes this expansion meaningful. The page needs to rank for \"childcare Lexington KY\" and feel rooted in the city rather than imported.",
     programsEyebrow: "When the Lexington campus opens",
     programsIntro:
-      "Every IGA campus serves all four age groups. We follow all state guidelines strictly, keeping class sizes small in every program.",
+      "Every IGA campus serves every age group. We follow all state guidelines strictly, keeping class sizes small in every program.",
     waitlist: {
       heading: "Be first in line when Lexington opens.",
       body: "The Lexington campus is our first in Kentucky. Join the waitlist and we'll reach out as soon as we have an opening date and tour availability.",
@@ -285,7 +289,7 @@ export function locationJsonLd(loc: Location) {
   };
 }
 
-/** The four IGA programs, shown identically on every location page. */
+/** The IGA programs, shown identically on every location page. */
 export const programs = [
   {
     name: "Infant Care",

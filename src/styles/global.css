@@ -1062,6 +1062,28 @@ p { margin-bottom: 1rem; }
   align-items: center;
 }
 
+/* Classroom design renderings — fill photo slots until real photography exists */
+.render-figure { margin: 0; }
+
+.render-figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+}
+
+.render-figure figcaption {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: var(--iga-text-muted);
+}
+
+.location-photos .render-figure img {
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
 .program-detail.reverse .program-detail-text { order: 2; }
 .program-detail.reverse .program-detail-img  { order: 1; }
 
@@ -1285,6 +1307,45 @@ p { margin-bottom: 1rem; }
 .story-grid p { color: var(--iga-text-muted); font-size: 0.95rem; }
 
 
+/* Director bio (About page) */
+.director-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.director-bio p {
+  color: var(--iga-text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 16px;
+}
+
+.director-signature {
+  margin-top: 24px;
+  font-size: 1rem;
+}
+
+.director-signature strong {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  color: var(--iga-green-dark);
+}
+
+.director-photos {
+  display: grid;
+  gap: 20px;
+}
+
+.director-photos img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+}
+
+
 /* Team Grid */
 
 
@@ -1362,6 +1423,8 @@ p { margin-bottom: 1rem; }
   .testimonials-grid { grid-template-columns: 1fr; }
 
   .story-grid { grid-template-columns: 1fr; }
+
+  .director-grid { grid-template-columns: 1fr; }
 
   
   

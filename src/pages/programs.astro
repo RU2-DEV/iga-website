@@ -1,5 +1,11 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import renderInfant from "../assets/classroom-rendering-infant.jpg";
+import renderToddler from "../assets/classroom-rendering-toddler.jpg";
+import renderTwos from "../assets/classroom-rendering-twos.jpg";
+import renderPreschool from "../assets/classroom-rendering-preschool.jpg";
+import renderPreK from "../assets/classroom-rendering-prek.jpg";
 ---
 <BaseLayout title="Programs | Imagination Grove Academy" description="IGA's age-appropriate programs for children 6 weeks through 5 years. Small class sizes, degree-qualified lead teachers, and curriculum that meets your child where they are.">
 
@@ -44,13 +50,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             <a href="/enroll" class="btn btn-outline-green mt-24">Tour the infant room &rarr;</a>
           </div>
           <div class="program-detail-img">
-            <div class="placeholder-img" role="img" aria-label="Photo placeholder for infant room">
-              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <circle cx="24" cy="22" r="6" fill="#6CB43A" opacity="0.5"/>
-                <path d="M14 38c0-5.5 4.5-10 10-10s10 4.5 10 10" stroke="#1F5247" stroke-width="2" fill="none"/>
-              </svg>
-              <span class="placeholder-label">Photo: infant room, natural light, primary caregiver with baby</span>
-            </div>
+            <figure class="render-figure">
+              <Image
+                src={renderInfant}
+                alt="Design rendering of the IGA infant room with cribs, a changing station, and a soft play area"
+                widths={[480, 800, 1200]}
+                sizes="(max-width: 880px) 100vw, 45vw"
+                loading="lazy"
+              />
+              <figcaption>Our infant room (design rendering)</figcaption>
+            </figure>
           </div>
         </div>
       </div>
@@ -72,14 +81,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             <a href="/enroll" class="btn btn-outline-green mt-24">Tour the toddler room &rarr;</a>
           </div>
           <div class="program-detail-img">
-            <div class="placeholder-img" role="img" aria-label="Photo placeholder for toddler classroom">
-              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <rect x="14" y="20" width="20" height="16" rx="3" fill="#6CB43A" opacity="0.5"/>
-                <circle cx="20" cy="14" r="3" fill="#1F5247"/>
-                <circle cx="28" cy="14" r="3" fill="#1F5247"/>
-              </svg>
-              <span class="placeholder-label">Photo: toddler classroom, sensory play in progress</span>
-            </div>
+            <figure class="render-figure">
+              <Image
+                src={renderToddler}
+                alt="Design rendering of the IGA toddler classroom with a soft climber, leaf-patterned rug, and low activity tables"
+                widths={[480, 800, 1200]}
+                sizes="(max-width: 880px) 100vw, 45vw"
+                loading="lazy"
+              />
+              <figcaption>Our toddler classroom (design rendering)</figcaption>
+            </figure>
           </div>
         </div>
       </div>
@@ -101,14 +112,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             <a href="/enroll" class="btn btn-outline-green mt-24">Tour the two-year-old room &rarr;</a>
           </div>
           <div class="program-detail-img">
-            <div class="placeholder-img" role="img" aria-label="Photo placeholder for two-year-old classroom">
-              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <rect x="10" y="26" width="10" height="10" rx="2" fill="#6CB43A" opacity="0.6"/>
-                <rect x="22" y="26" width="10" height="10" rx="2" fill="#5FA8D3" opacity="0.6"/>
-                <rect x="16" y="14" width="10" height="10" rx="2" fill="#EF9F27" opacity="0.6"/>
-              </svg>
-              <span class="placeholder-label">Photo: two-year-old classroom, learning centers in use</span>
-            </div>
+            <figure class="render-figure">
+              <Image
+                src={renderTwos}
+                alt="Design rendering of the IGA two-year-old classroom with learning centers, a play kitchen, and child-size seating"
+                widths={[480, 800, 1200]}
+                sizes="(max-width: 880px) 100vw, 45vw"
+                loading="lazy"
+              />
+              <figcaption>Our two-year-old classroom (design rendering)</figcaption>
+            </figure>
           </div>
         </div>
       </div>
@@ -131,12 +144,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             <a href="/enroll" class="btn btn-outline-green mt-24">Tour the preschool room &rarr;</a>
           </div>
           <div class="program-detail-img">
-            <div class="placeholder-img" role="img" aria-label="Photo placeholder for preschool classroom">
-              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <polygon points="24,8 30,20 42,22 33,30 36,42 24,36 12,42 15,30 6,22 18,20" fill="#5FA8D3" opacity="0.6"/>
-              </svg>
-              <span class="placeholder-label">Photo: preschool small-group station with teacher</span>
-            </div>
+            <figure class="render-figure">
+              <Image
+                src={renderPreschool}
+                alt="Design rendering of the IGA preschool classroom with a circle-time rug, small-group tables, and a reading nook"
+                widths={[480, 800, 1200]}
+                sizes="(max-width: 880px) 100vw, 45vw"
+                loading="lazy"
+              />
+              <figcaption>Our preschool classroom (design rendering)</figcaption>
+            </figure>
           </div>
         </div>
       </div>
@@ -158,15 +175,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             <a href="/enroll" class="btn btn-outline-green mt-24">Tour the Pre-K room &rarr;</a>
           </div>
           <div class="program-detail-img">
-            <div class="placeholder-img" role="img" aria-label="Photo placeholder for Pre-K classroom">
-              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <rect x="8" y="10" width="32" height="28" rx="3" fill="#EAF3F8" stroke="#2C6F95" stroke-width="2"/>
-                <line x1="14" y1="18" x2="34" y2="18" stroke="#2C6F95" stroke-width="1.5"/>
-                <line x1="14" y1="24" x2="30" y2="24" stroke="#2C6F95" stroke-width="1.5"/>
-                <line x1="14" y1="30" x2="26" y2="30" stroke="#2C6F95" stroke-width="1.5"/>
-              </svg>
-              <span class="placeholder-label">Photo: Pre-K classroom, child working independently at a table</span>
-            </div>
+            <figure class="render-figure">
+              <Image
+                src={renderPreK}
+                alt="Design rendering of the IGA Pre-K classroom with a tree-shaped reading corner, group tables, and building-block stations"
+                widths={[480, 800, 1200]}
+                sizes="(max-width: 880px) 100vw, 45vw"
+                loading="lazy"
+              />
+              <figcaption>Our Pre-K classroom (design rendering)</figcaption>
+            </figure>
           </div>
         </div>
       </div>
