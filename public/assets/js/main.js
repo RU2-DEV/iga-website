@@ -102,8 +102,10 @@
       // glance, and so messages don't collapse into one mail-client thread the
       // way identical subjects do. The hidden input in the markup carries a
       // no-JS fallback value; this only enriches it.
+      // NOTE: the field is "parent-name", not "name" — reading the wrong key
+      // here fails silently, falling back to the generic markup value.
       const data = new FormData(enrollForm);
-      const parentName = String(data.get('name') || '').trim();
+      const parentName = String(data.get('parent-name') || '').trim();
       if (parentName) {
         data.set('subject', 'New Tour Request | ' + parentName + ' | FOLLOW UP');
       }
