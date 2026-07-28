@@ -1,0 +1,129 @@
+---
+// Terms of Service. Copy is a DRAFT pending review by RU2's legal team —
+// source of truth for the wording is content/terms-of-service-draft-v1.md.
+// Unresolved values and the draft banner come from src/data/legal.ts;
+// flip legal.isDraft to false after sign-off.
+//
+// NOTE: the source draft's "Notes for legal review" section is internal and
+// deliberately NOT reproduced here. Two omissions are intentional and
+// documented there: no arbitration / class-action waiver, and no formal
+// accessibility statement — both are RU2's calls, not ours to slip in.
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { legal, pendingLabel } from "../data/legal";
+
+const entity = legal.entityName ?? pendingLabel("Legal entity name");
+const effective = legal.effectiveDate ?? pendingLabel("Effective date");
+const updated = legal.lastUpdated ?? pendingLabel("Date");
+---
+
+<BaseLayout
+  title="Terms of Service | Imagination Grove Academy"
+  description="The terms that govern your use of the Imagination Grove Academy website."
+  noindex={legal.isDraft}
+>
+  <section class="page-hero">
+    <div class="container">
+      <div class="fade-in">
+        <p class="eyebrow">Legal</p>
+        <h1>Terms of Service</h1>
+        <p>The terms that govern your use of this website.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <article class="legal-page fade-in">
+        {legal.isDraft && (
+          <aside class="legal-draft-banner" role="note">
+            <p><strong>Draft &mdash; pending legal review.</strong> These terms have been prepared for review and are not yet final. Items marked <em>pending legal review</em> below are still being confirmed. Questions in the meantime: <a href={`mailto:${legal.contactEmail}`}>{legal.contactEmail}</a>.</p>
+          </aside>
+        )}
+
+        <p class="legal-meta">
+          <strong>Effective date:</strong> {effective}<br />
+          <strong>Last updated:</strong> {updated}
+        </p>
+
+        <h2>1. Agreement to these terms</h2>
+        <p>These Terms of Service (&ldquo;Terms&rdquo;) govern your use of this website (the &ldquo;Site&rdquo;), operated by {entity} (&ldquo;IGA,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;).</p>
+        <p>By using the Site, you agree to these Terms. If you do not agree, please do not use the Site.</p>
+
+        <h2>2. Who may use the Site</h2>
+        <p>You may browse the Site freely. To <strong>submit a form</strong> &mdash; including a tour request &mdash; you must be at least 18 years old and be the parent or legal guardian of the child the request concerns, or otherwise authorized to act on their behalf.</p>
+
+        <h2>3. What the Site is</h2>
+        <p>The Site provides information about IGA&rsquo;s childcare programs, campuses, staffing standards, and enrollment process, and allows you to request a tour or join a waitlist.</p>
+
+        <h2>4. The Site is not an offer of enrollment</h2>
+        <p><strong>This is important, so we are stating it plainly.</strong></p>
+        <ul>
+          <li>Information on the Site is provided for general informational purposes. <strong>It is marketing material, not a contract.</strong></li>
+          <li>Submitting a tour request or joining a waitlist <strong>does not enroll your child</strong>, does not reserve a space, and does not guarantee availability in any program or at any campus.</li>
+          <li>Enrollment happens only through a <strong>separate written enrollment agreement</strong> between you and IGA. That agreement &mdash; not the Site &mdash; governs tuition, fees, schedules, policies, and the childcare services we provide. If anything on the Site conflicts with your enrollment agreement, <strong>the enrollment agreement controls.</strong></li>
+          <li>Program details, ratios, hours, staffing, capacity, opening dates, and availability <strong>may change</strong>, and are subject to state licensing requirements and approval.</li>
+        </ul>
+
+        <h2>5. Accuracy and forward-looking information</h2>
+        <p>We work to keep the Site accurate and current, but we do not warrant that it is complete, accurate, or up to date at any given moment.</p>
+        <p>Some information on the Site is <strong>forward-looking</strong> &mdash; for example, projected opening dates, planned capacity, programs at campuses that have not yet opened, and the status of pending licensing. Forward-looking information reflects our expectations at the time of writing and <strong>is subject to change</strong>, including for reasons outside our control such as construction timelines and regulatory approvals. Images identified as design renderings depict planned spaces, not completed ones.</p>
+
+        <h2>6. Your submissions</h2>
+        <p>When you submit information through the Site, you agree that it is accurate and that you are authorized to provide it &mdash; including any information about a child.</p>
+        <p>Your submissions are handled according to our <a href="/privacy-policy">Privacy Policy</a>. By submitting a tour request, you agree that we may contact you by email and phone about your request and about enrollment.</p>
+
+        <h2>7. Acceptable use</h2>
+        <p>You agree not to:</p>
+        <ul>
+          <li>Use the Site for any unlawful purpose</li>
+          <li>Submit false, misleading, or fraudulent information, or information about a child you are not authorized to provide</li>
+          <li>Attempt to gain unauthorized access to the Site, its systems, or any account</li>
+          <li>Interfere with or disrupt the Site, including by automated scraping, or by transmitting malware</li>
+          <li>Use the Site to harass any person, or to send unsolicited commercial messages</li>
+          <li>Copy, reproduce, or republish Site content except as permitted in Section 8</li>
+        </ul>
+
+        <h2>8. Intellectual property</h2>
+        <p>The Site and its content &mdash; text, photographs, design renderings, graphics, layout, and the Imagination Grove Academy name and logo &mdash; are owned by IGA or its licensors and are protected by intellectual property law.</p>
+        <p>You may view, download, and print Site content <strong>for your own personal, non-commercial use</strong> in evaluating our programs. You may not otherwise reproduce, distribute, modify, or create derivative works from it without our written permission.</p>
+
+        <h2>9. Third-party services and links</h2>
+        <p>The Site links to and embeds services operated by others, including:</p>
+        <ul>
+          <li><strong>Brightwheel</strong>, our childcare management platform, which hosts campus waitlist forms and our family portal</li>
+          <li><strong>Google Maps</strong>, embedded on our location pages</li>
+          <li><strong>State licensing lookups</strong> &mdash; Indiana&rsquo;s Child Care Finder and Kentucky&rsquo;s public child care search, which we link to so you can independently verify any center&rsquo;s licensing status and inspection history</li>
+          <li>Social media and mobile app store links</li>
+        </ul>
+        <p><strong>We do not control these services</strong>, and we are not responsible for their content, availability, or practices. Your use of them is governed by their own terms and privacy policies. We link to state licensing resources as a convenience and make no representation about the content of those government systems.</p>
+
+        <h2>10. Availability</h2>
+        <p>We aim to keep the Site available but do not guarantee uninterrupted access. We may modify, suspend, or discontinue any part of the Site at any time without notice.</p>
+
+        <h2>11. Disclaimers</h2>
+        <p class="legal-caps">The Site is provided &ldquo;as is&rdquo; and &ldquo;as available,&rdquo; without warranties of any kind, express or implied, including implied warranties of merchantability, fitness for a particular purpose, and non-infringement. We do not warrant that the Site will be uninterrupted, secure, or error-free.</p>
+        <p>Nothing in this section limits any obligation IGA owes you under a separate enrollment agreement, or any right you have that cannot be waived under applicable law.</p>
+
+        <h2>12. Limitation of liability and indemnification</h2>
+        <p class="legal-caps">To the maximum extent permitted by law, IGA and its officers, employees, and agents will not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the Site. Our total liability for any claim arising from your use of the Site will not exceed {legal.liabilityCap ?? pendingLabel("Liability cap")}.</p>
+        <p>This limitation applies to your use of the <strong>Site</strong>. It does not apply to, and does not limit, IGA&rsquo;s obligations or liability in connection with the actual care of a child, which is governed by your enrollment agreement and by applicable law.</p>
+        <p>You agree to indemnify and hold IGA harmless from claims arising out of your breach of these Terms or your misuse of the Site.</p>
+
+        <h2>13. Governing law and venue</h2>
+        <p>These Terms are governed by the laws of the State of {legal.governingState}, without regard to its conflict-of-laws rules. Any dispute arising from the Site will be brought exclusively in the state or federal courts located in {legal.venueCounty ?? pendingLabel("County")} County, {legal.governingState}, and you consent to that jurisdiction.</p>
+
+        <h2>14. Changes to these Terms</h2>
+        <p>We may update these Terms. When we do, we will change the &ldquo;Last updated&rdquo; date above. Significant changes will be posted on the Site. Continuing to use the Site after a change means you accept the updated Terms.</p>
+
+        <h2>15. General</h2>
+        <p>If any provision of these Terms is found unenforceable, the remaining provisions stay in effect. Our failure to enforce a provision is not a waiver of it. These Terms, together with our <a href="/privacy-policy">Privacy Policy</a>, are the entire agreement between you and IGA regarding the Site &mdash; and are separate from any enrollment agreement.</p>
+
+        <h2>16. Contact us</h2>
+        <p>
+          <strong>Email:</strong> <a href={`mailto:${legal.contactEmail}`}>{legal.contactEmail}</a><br />
+          <strong>Mail:</strong> {entity}, {legal.noticeAddress ?? pendingLabel("Notice address")}
+        </p>
+      </article>
+    </div>
+  </section>
+</BaseLayout>

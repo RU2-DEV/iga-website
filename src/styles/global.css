@@ -468,6 +468,26 @@ html.js .fade-in.visible {
   font-size: 0.8rem;
   color: rgba(255,255,255,0.5);
   text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px 20px;
+}
+
+.footer-legal-links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-legal-links a {
+  color: rgba(255,255,255,0.65);
+  text-decoration: none;
+}
+
+.footer-legal-links a:hover {
+  color: var(--iga-white);
+  text-decoration: underline;
 }
 
 /* ============================================
@@ -1329,6 +1349,84 @@ html.js .fade-in.visible {
 .mb-0 { margin-bottom: 0; }
 
 /* Visually hidden but accessible to screen readers */
+/* ============================================
+   LEGAL PAGES (/privacy-policy, /terms)
+   Long-form prose — narrower measure than the marketing pages,
+   which run wide multi-column layouts.
+   ============================================ */
+.legal-page {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.legal-page h2 {
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  margin-top: 40px;
+  margin-bottom: 12px;
+}
+
+.legal-page h2:first-of-type {
+  margin-top: 24px;
+}
+
+.legal-page p,
+.legal-page li {
+  color: var(--iga-text-muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.legal-page p {
+  margin-bottom: 14px;
+}
+
+.legal-page ul {
+  margin: 0 0 18px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.legal-page strong {
+  color: var(--iga-green-dark);
+}
+
+.legal-meta {
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(31, 82, 71, 0.15);
+  font-size: 0.9rem;
+}
+
+/* Draft notice — removed automatically when legal.isDraft flips to false. */
+.legal-draft-banner {
+  background: var(--iga-amber-bg);
+  border-left: 4px solid var(--iga-amber-mid);
+  border-radius: var(--radius-sm);
+  padding: 18px 22px;
+  margin-bottom: 28px;
+}
+
+.legal-draft-banner p {
+  margin: 0;
+  color: var(--iga-amber-mid);
+  font-size: 0.9rem;
+}
+
+.legal-draft-banner a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+/* Clauses conventionally set in all-caps. Written in sentence case in the
+   markup and uppercased here, so screen readers announce words rather than
+   spelling out letters. */
+.legal-caps {
+  text-transform: uppercase;
+  font-size: 0.82rem !important;
+  letter-spacing: 0.01em;
+  line-height: 1.65 !important;
+}
+
 /* ---- Form status message (tour form) ----
    Visible to everyone, not just screen readers. Empty by default and
    collapsed, so it takes no space until there's something to say. */

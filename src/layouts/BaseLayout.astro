@@ -19,12 +19,17 @@ interface Props {
   title?: string;
   description?: string;
   mainClass?: string;
+  /** Force this page out of search results even after the site launches.
+      Used by the draft legal pages, which must not be indexed until RU2's
+      legal team has signed off on their wording. */
+  noindex?: boolean;
 }
 
 const {
   title = "Imagination Grove Academy",
   description = "Safe, joyful childcare for children 6 weeks–5 years across Indiana and Kentucky.",
   mainClass,
+  noindex = false,
 } = Astro.props;
 
 // Canonical + social-share URLs are built against the production domain
@@ -74,7 +79,7 @@ const isLaunched = import.meta.env.PUBLIC_LAUNCHED === "true";
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={socialImageURL} />
 
-    {!isLaunched && <meta name="robots" content="noindex, nofollow" />}
+    {(!isLaunched || noindex) && <meta name="robots" content="noindex, nofollow" />}
 
     <script is:inline>
       /* Progressive-enhancement guard for the .fade-in animations.
@@ -194,7 +199,11 @@ const isLaunched = import.meta.env.PUBLIC_LAUNCHED === "true";
           </div>
         </div>
         <div class="footer-bottom">
-          &copy; 2026 Imagination Grove Academy &middot; All rights reserved
+          <span>&copy; 2026 Imagination Grove Academy &middot; All rights reserved</span>
+          <span class="footer-legal-links">
+            <a href="/privacy-policy">Privacy Policy</a>
+            <a href="/terms">Terms of Service</a>
+          </span>
         </div>
       </div>
     </footer>
