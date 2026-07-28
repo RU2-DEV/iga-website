@@ -4,14 +4,20 @@
 // the three coming-soon pages are just this component fed different data.
 // Bargersville (the open flagship) has its own richer page.
 import type { Location } from "../data/locations";
+import { stateLookup } from "../data/locations";
 import LocationBreadcrumb from "./LocationBreadcrumb.astro";
 import LocationNapCard from "./LocationNapCard.astro";
 import LocationPrograms from "./LocationPrograms.astro";
+import LocationMap from "./LocationMap.astro";
 
 interface Props {
   loc: Location;
 }
 const { loc } = Astro.props;
+
+// State-appropriate public lookup for licensing + inspection history
+// (Indiana FSSA vs. Kentucky KYNECT — see stateLookup in locations.ts).
+const lookup = stateLookup[loc.state];
 
 // Waitlist CTA target: link out to the campus's Brightwheel digital form
 // when its share URL is set (Phase 1b), otherwise fall back to the native
@@ -54,10 +60,7 @@ const waitlistRel = waitlistExternal ? "noopener nofollow" : undefined;
       <div class="location-about-text">
         <p class="eyebrow">About this campus</p>
         <h2>{loc.aboutHeading}</h2>
-        <div class="content-placeholder content-placeholder--wide">
-          <p class="content-placeholder-label">DRAFT &mdash; for client review</p>
-          <p class="content-placeholder-hint">{loc.aboutHint}</p>
-        </div>
+        {loc.aboutBody.map((para) => <p>{para}</p>)}
       </div>
     </div>
   </div>
@@ -65,6 +68,24 @@ const waitlistRel = waitlistExternal ? "noopener nofollow" : undefined;
 
 <!-- ========== PROGRAMS AT THIS LOCATION ========== -->
 <LocationPrograms loc={loc} />
+
+<!-- ========== MAP ==========
+     Only renders for campuses with a confirmed street address (so
+     New Palestine has no map yet). Sits on a white section between the
+     green programs band and the teal waitlist band to keep the
+     tinted-section rhythm intact.
+============================================================ -->
+{loc.streetAddress && (
+  <section class="section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <p class="eyebrow">Find us</p>
+        <h2>Where our {loc.city} campus will be.</h2>
+      </div>
+      <LocationMap loc={loc} />
+    </div>
+  </section>
+)}
 
 <!-- ========== WAITLIST CTA ========== -->
 {loc.waitlist && (
@@ -96,10 +117,18 @@ const waitlistRel = waitlistExternal ? "noopener nofollow" : undefined;
             <dd>{row.dd}</dd>
           </div>
         ))}
-        <div>
-          <dt>Licensed capacity</dt>
-          <dd><span class="placeholder-inline">[CAPACITY TBD]</span> children</dd>
-        </div>
+        {loc.capacity && (
+          <div>
+            <dt>Planned capacity</dt>
+            <dd>{loc.capacity} children</dd>
+          </div>
+        )}
+        {lookup && (
+          <div>
+            <dt>Inspection record</dt>
+            <dd>Public. You can look up any licensed center's status and inspection history yourself on <a href={lookup.url} target="_blank" rel="noopener" class="text-link">{lookup.label}</a>.</dd>
+          </div>
+        )}
       </dl>
 
       <h3>Staff at this campus</h3>

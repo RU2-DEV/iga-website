@@ -1,7 +1,12 @@
 ---
 // The NAP (name / address / phone) card on each location page.
 // All values come from src/data/locations.ts — never hardcode NAP here.
-// Placeholders render until real data is filled in on the location entry.
+//
+// Rows OMIT THEMSELVES when their data is missing rather than rendering a
+// bracket placeholder (changed 2026-07-28). Two reasons: the placeholders were
+// publicly visible on the live site, and a pre-opening campus with no phone or
+// no confirmed date is normal — an absent row reads as "not announced yet",
+// while "[PHONE TBD]" reads as an unfinished website.
 import type { Location } from "../data/locations";
 
 interface Props {
@@ -18,24 +23,19 @@ const { loc } = Astro.props;
       <dt>Address</dt>
       <dd>
         <address>
-          {loc.streetAddress
-            ? <span>{loc.streetAddress}</span>
-            : <span class="placeholder-inline">[STREET TBD]</span>}<br />
-          {loc.cityState}{" "}
-          {loc.postalCode
-            ? <span>{loc.postalCode}</span>
-            : <span class="placeholder-inline">[ZIP]</span>}
+          {loc.streetAddress && <Fragment><span>{loc.streetAddress}</span><br /></Fragment>}
+          {loc.cityState}{loc.postalCode ? ` ${loc.postalCode}` : ""}
         </address>
       </dd>
     </div>
-    <div>
-      <dt>Phone</dt>
-      <dd>
-        {loc.telephone
-          ? <a href={`tel:${loc.telephone.replace(/[^+\d]/g, "")}`}>{loc.telephone}</a>
-          : <span class="placeholder-inline">[PHONE TBD]</span>}
-      </dd>
-    </div>
+    {loc.telephone && (
+      <div>
+        <dt>Phone</dt>
+        <dd>
+          <a href={`tel:${loc.telephone.replace(/[^+\d]/g, "")}`}>{loc.telephone}</a>
+        </dd>
+      </div>
+    )}
     <div>
       <dt>Email</dt>
       <dd><a href={`mailto:${loc.email}`}>{loc.email}</a></dd>
@@ -46,11 +46,7 @@ const { loc } = Astro.props;
     </div>
     <div>
       <dt>Opening</dt>
-      <dd>
-        {loc.openingLabel
-          ? <span>{loc.openingLabel}</span>
-          : <span class="placeholder-inline">[OPENING DATE TBD]</span>}
-      </dd>
+      <dd>{loc.openingLabel ?? "Date to be announced"}</dd>
     </div>
   </dl>
 </aside>

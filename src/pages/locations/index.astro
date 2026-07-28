@@ -29,18 +29,11 @@ import { locations } from "../../data/locations";
                 <span>{loc.statusLabel}</span>
               </div>
               <h2 class="location-card-city">{loc.cityState}</h2>
-              <p class="location-card-area"><span class="placeholder-inline">[NEIGHBORHOOD TBD]</span></p>
+              {loc.areaLabel && <p class="location-card-area">{loc.areaLabel}</p>}
               <address class="location-card-address">
-                {loc.streetAddress
-                  ? <span>{loc.streetAddress}</span>
-                  : <span class="placeholder-inline">[ADDRESS TBD]</span>}<br />
-                {loc.cityState}{" "}
-                {loc.postalCode
-                  ? <span>{loc.postalCode}</span>
-                  : <span class="placeholder-inline">[ZIP]</span>}<br />
-                {loc.telephone
-                  ? <span>{loc.telephone}</span>
-                  : <span class="placeholder-inline">[PHONE TBD]</span>}
+                {loc.streetAddress && <Fragment><span>{loc.streetAddress}</span><br /></Fragment>}
+                {loc.cityState}{loc.postalCode ? ` ${loc.postalCode}` : ""}
+                {loc.telephone && <Fragment><br /><span>{loc.telephone}</span></Fragment>}
               </address>
               <div class="location-card-actions">
                 <a

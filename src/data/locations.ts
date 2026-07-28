@@ -38,9 +38,15 @@ export interface Location {
   napHeading: string;
   /** Cities for the JSON-LD areaServed field. */
   areaServed: string[];
-  /** "About this campus" heading + draft-note hint (coming-soon pages). */
+  /** "About this campus" heading + body. One string per paragraph.
+      This is the primary organic-ranking copy for the page and should stay
+      aligned with the campus's Google Business Profile description once that
+      exists. Replaced the old aboutHint draft-note field 2026-07-28. */
   aboutHeading: string;
-  aboutHint: string;
+  aboutBody: string[];
+  /** Short area line on the /locations hub card (county / side of metro).
+      Geographic only — deliberately avoids naming school districts. */
+  areaLabel?: string;
   programsEyebrow: string;
   programsIntro: string;
   /** Waitlist CTA section (coming-soon pages only). */
@@ -53,12 +59,18 @@ export interface Location {
   cta?: { heading: string; body: string; btnLabel: string; btnHref: string };
   // --- Real data, added as the client provides it. Leave undefined until confirmed. ---
   /** Display string for the NAP card's "Opening" row (e.g. "Projected: September 14, 2026").
-      Leave undefined to render the [OPENING DATE TBD] placeholder. */
+      Leave undefined to render "Date to be announced". */
   openingLabel?: string;
   streetAddress?: string;
   postalCode?: string;
   telephone?: string;
   geo?: { latitude: number; longitude: number };
+  /** Planned capacity for this campus. Rendered under the label "Planned
+      capacity" — NOT "Licensed capacity" — until the state license actually
+      comes back, because the licensed figure can differ from the planned one.
+      Switch the label on the location page once licensure is confirmed.
+      Leave undefined to omit the row entirely (preferred over a placeholder). */
+  capacity?: number;
   /** Public Brightwheel digital-form URL for this campus's waitlist.
       When set, the "Join the Waitlist" CTAs on the coming-soon page link
       out to Brightwheel (opens in a new tab, rel="noopener nofollow") and a
@@ -69,6 +81,22 @@ export interface Location {
   waitlistFormUrl?: string;
 }
 
+/** Per-state public lookup where a parent can independently verify a center's
+    licensing status and inspection history. Client direction (2026-07-27) is to
+    link these out rather than list inspection records on the site. Indiana and
+    Kentucky have separate systems, so this is keyed by state — never hardcode
+    the Indiana URL on a Kentucky page. */
+export const stateLookup: Record<string, { label: string; url: string }> = {
+  IN: {
+    label: "Indiana's Child Care Finder",
+    url: "https://www.in.gov/fssa/childcarefinder/",
+  },
+  KY: {
+    label: "Kentucky's public child care search",
+    url: "https://kynect.ky.gov/benefits/s/child-care-provider?origin=program-page&language=en_US",
+  },
+};
+
 export const locations: Location[] = [
   {
     slug: "bargersville",
@@ -78,20 +106,26 @@ export const locations: Location[] = [
     email: "bargersville@imaginationgroveacademy.com",
     streetAddress: "2805 South Grove Blvd",
     postalCode: "46106",
+    telephone: "317-207-4797",
+    capacity: 135,
     openingLabel: "Projected: September 14, 2026",
     status: "open",
     statusLabel: "Opening first · Enrolling now",
     metaTitle: "Childcare in Bargersville, IN | Imagination Grove Academy",
     metaDescription:
-      "Imagination Grove Academy is opening its first campus in Bargersville, IN. Safe, joyful childcare for children 6 weeks–5 years. Low ratios, degree-qualified lead teachers, state-licensed. Enrolling now.",
+      "Imagination Grove Academy is opening its first campus in Bargersville, IN. Safe, joyful childcare for children 6 weeks–5 years. Low ratios, degree-qualified lead teachers. Enrolling now.",
     heroHeading: "Childcare in Bargersville, IN.",
     heroSub:
       "Imagination Grove Academy's first campus is opening in Bargersville. Safe, joyful childcare for children 6 weeks–5 years — with low teacher-to-child ratios, degree-qualified lead teachers, and a curriculum that respects how young children actually learn.",
     napHeading: "Visit us",
     areaServed: ["Bargersville", "Greenwood", "Franklin"],
+    areaLabel: "Johnson County · Indianapolis south metro",
     aboutHeading: "A purpose-built childcare home in Bargersville.",
-    aboutHint:
-      "Location-specific paragraph goes here once the building, neighborhood context, and opening story are finalized. Two or three sentences: where the building is, what makes it the right fit for the community, what's unique about this campus (outdoor space, natural light, partnership with a local pediatrician, etc.). This is the copy that helps the page rank for \"childcare Bargersville\" and feel like a real place rather than a marketing brochure.",
+    aboutBody: [
+      "Our Bargersville campus is new construction on South Grove Blvd — built from the ground up as a childcare center, not converted from a space that used to be something else. Every classroom was drawn around the age group it serves, so sinks, cubbies, sightlines, and nap space sit where they need to be from day one instead of being worked around later.",
+      "Bargersville is opening first because this building is furthest along. It also sits in one of the fastest-growing corners of the Indianapolis south metro, within an easy drive for families in Bargersville, Greenwood, Franklin, and the Center Grove area — most of whom are heading north for work in the morning. Doors open at 6:30 AM and stay open until 6:00 PM, Monday through Friday.",
+      "The campus serves every IGA age group under one roof: infants from six weeks, toddlers, twos, preschool, and Pre-K, each in their own room with their own teaching team. Class sizes stay small in every program, and lead teachers are degree-qualified. A 30-minute tour is the fastest way to see it — and you are welcome in the classrooms while the children are in them.",
+    ],
     programsEyebrow: "At the Bargersville campus",
     programsIntro:
       "The Bargersville campus serves every IGA age group. We follow all state guidelines strictly, keeping class sizes small in every program.",
@@ -104,19 +138,24 @@ export const locations: Location[] = [
     email: "fishers@imaginationgroveacademy.com",
     streetAddress: "12344 Cyntheanne Rd",
     postalCode: "46037",
+    capacity: 135,
     status: "soon",
     statusLabel: "Coming soon",
     metaTitle: "Childcare in Fishers, IN | Imagination Grove Academy",
     metaDescription:
-      "Imagination Grove Academy is coming soon to Fishers, IN. Safe, joyful childcare for children 6 weeks–5 years. Low ratios, degree-qualified lead teachers, state-licensed. Join the waitlist.",
+      "Imagination Grove Academy is coming soon to Fishers, IN. Safe, joyful childcare for children 6 weeks–5 years. Low ratios, degree-qualified lead teachers. Join the waitlist.",
     heroHeading: "Childcare in Fishers, IN.",
     heroSub:
       "Imagination Grove Academy is coming to Fishers. Safe, joyful childcare for children 6 weeks–5 years — with low teacher-to-child ratios, degree-qualified lead teachers, and a curriculum that respects how young children actually learn. Join the waitlist to be first in line.",
     napHeading: "Coming to Fishers",
     areaServed: ["Fishers", "Noblesville", "Carmel"],
+    areaLabel: "East Fishers · Hamilton County",
     aboutHeading: "An IGA campus is coming to Fishers.",
-    aboutHint:
-      "Location-specific paragraph goes here once the Fishers building, neighborhood context, and opening timeline are finalized. Mention the area being served (Geist? Saxony? Hamilton County north?), what makes this campus distinct, and any partnerships or features unique to the Fishers location. This is what helps the page rank for \"childcare Fishers Indiana\" once live.",
+    aboutBody: [
+      "Our Fishers campus is new construction on Cyntheanne Road, on the east side of Hamilton County. Like every IGA building, it is purpose-built for childcare rather than adapted from another use — classrooms sized to the age groups that will use them, with the practical things designed in rather than retrofitted.",
+      "The location puts us within a short drive of east Fishers, the Geist area, Noblesville, and Carmel, near the Southeastern Parkway and Olio Road corridors that families in this part of the county already use on their commute. Hours will match our other campuses: 6:30 AM to 6:00 PM, Monday through Friday.",
+      "When Fishers opens it will offer the full IGA age range — infants from six weeks through Pre-K — with the same small class sizes, the same credentialing standards for lead teachers, and the same curriculum running at every IGA campus. We do not have an opening date to publish yet. Joining the waitlist is how you hear first: we will reach out as soon as we have a date and tour availability.",
+    ],
     programsEyebrow: "When the Fishers campus opens",
     programsIntro:
       "Every IGA campus serves every age group. We follow all state guidelines strictly, keeping class sizes small in every program.",
@@ -149,19 +188,24 @@ export const locations: Location[] = [
     state: "IN",
     cityState: "New Palestine, IN",
     email: "newpalestine@imaginationgroveacademy.com",
+    capacity: 135,
     status: "soon",
     statusLabel: "Coming soon",
     metaTitle: "Childcare in New Palestine, IN | Imagination Grove Academy",
     metaDescription:
-      "Imagination Grove Academy is coming soon to New Palestine, IN. Safe, joyful childcare for children 6 weeks–5 years. Low ratios, degree-qualified lead teachers, state-licensed. Join the waitlist.",
+      "Imagination Grove Academy is coming soon to New Palestine, IN. Safe, joyful childcare for children 6 weeks–5 years. Low ratios, degree-qualified lead teachers. Join the waitlist.",
     heroHeading: "Childcare in New Palestine, IN.",
     heroSub:
       "Imagination Grove Academy is coming to New Palestine. Safe, joyful childcare for children 6 weeks–5 years — with low teacher-to-child ratios, degree-qualified lead teachers, and a curriculum that respects how young children actually learn. Join the waitlist to be first in line.",
     napHeading: "Coming to New Palestine",
     areaServed: ["New Palestine", "Greenfield", "McCordsville"],
+    areaLabel: "Hancock County · east of Indianapolis",
     aboutHeading: "An IGA campus is coming to New Palestine.",
-    aboutHint:
-      "Location-specific paragraph goes here once the New Palestine building, neighborhood context, and opening timeline are finalized. Mention the area being served, what makes this campus distinct, and any partnerships or features unique to the New Palestine location. This is what helps the page rank for \"childcare New Palestine Indiana\" once live.",
+    aboutBody: [
+      "Our New Palestine campus will be new construction, serving Hancock County and the communities east of Indianapolis. Like every IGA building, it is designed as a childcare center from the start rather than converted from another use, with classrooms built around the age groups that will use them.",
+      "New Palestine sits along the US 52 and I-70 corridor, which makes it a practical stop for families commuting between Hancock County and Indianapolis, and puts us within reach of New Palestine, Greenfield, McCordsville, and Cumberland. Hours will match our other campuses: 6:30 AM to 6:00 PM, Monday through Friday.",
+      "We are not ready to publish a street address or an opening date for this campus yet. What we can tell you is what will not change: the full age range from six weeks through Pre-K, the same small class sizes, the same credentialing standards for lead teachers, and the same curriculum running at every IGA campus. Join the waitlist and we will reach out as soon as we have dates to share.",
+    ],
     programsEyebrow: "When the New Palestine campus opens",
     programsIntro:
       "Every IGA campus serves every age group. We follow all state guidelines strictly, keeping class sizes small in every program.",
@@ -196,19 +240,24 @@ export const locations: Location[] = [
     email: "lexington@imaginationgroveacademy.com",
     streetAddress: "2450 Georgetown Rd",
     postalCode: "40511",
+    capacity: 135,
     status: "soon",
     statusLabel: "Coming soon",
     metaTitle: "Childcare in Lexington, KY | Imagination Grove Academy",
     metaDescription:
-      "Imagination Grove Academy is coming soon to Lexington, KY. Safe, joyful childcare for children 6 weeks–5 years. Low ratios, degree-qualified lead teachers, Kentucky-licensed. Join the waitlist.",
+      "Imagination Grove Academy is coming soon to Lexington, KY. Safe, joyful childcare for children 6 weeks–5 years. Low ratios, degree-qualified lead teachers. Join the waitlist.",
     heroHeading: "Childcare in Lexington, KY.",
     heroSub:
       "Imagination Grove Academy is coming to Lexington — our first campus in Kentucky. Safe, joyful childcare for children 6 weeks–5 years, with low teacher-to-child ratios, degree-qualified lead teachers, and a curriculum that respects how young children actually learn. Join the waitlist to be first in line.",
     napHeading: "Coming to Lexington",
     areaServed: ["Lexington", "Nicholasville", "Georgetown"],
+    areaLabel: "Northwest Lexington · Fayette County",
     aboutHeading: "IGA is expanding into Kentucky.",
-    aboutHint:
-      "Location-specific paragraph goes here once the Lexington building, neighborhood context, and opening timeline are finalized. This is also where you can introduce IGA to a new state — why Kentucky, why Lexington, what makes this expansion meaningful. The page needs to rank for \"childcare Lexington KY\" and feel rooted in the city rather than imported.",
+    aboutBody: [
+      "Lexington is IGA's first campus outside Indiana. The reason is straightforward: the need we saw in the Indianapolis suburbs — families struggling to find quality infant and toddler care close to home — is just as real in central Kentucky.",
+      "The campus is new construction on Georgetown Road in northwest Lexington, minutes from New Circle Road and convenient to both I-64 and I-75, which keeps it reachable for families across Fayette County and from Nicholasville and Georgetown. Hours will match our other campuses: 6:30 AM to 6:00 PM, Monday through Friday.",
+      "Kentucky regulates childcare through its own framework — the Cabinet for Health and Family Services, Division of Child Care, with the Kentucky All STARS quality rating rather than Indiana's system — and our Lexington campus will meet those requirements in full. The programs themselves will be identical to our Indiana campuses: infants from six weeks through Pre-K, small class sizes, and degree-qualified lead teachers. Join the waitlist to hear first.",
+    ],
     programsEyebrow: "When the Lexington campus opens",
     programsIntro:
       "Every IGA campus serves every age group. We follow all state guidelines strictly, keeping class sizes small in every program.",

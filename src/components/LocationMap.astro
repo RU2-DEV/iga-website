@@ -1,0 +1,44 @@
+---
+// Embedded Google Map for a campus.
+//
+// Uses the keyless `google.com/maps?q=...&output=embed` form — no API key and
+// no billing account required. (The official Maps Embed API does need a key;
+// this form does not, which keeps one less credential out of the handoff.)
+//
+// Renders NOTHING when the campus has no confirmed street address, so
+// New Palestine simply has no map until an address exists. Add the address to
+// locations.ts and the map appears automatically.
+//
+// loading="lazy" matters here: the iframe is a third-party request to Google
+// that sets cookies, and lazy-loading means it only fires if the visitor
+// actually scrolls to the map. It still needs a line in the Privacy Policy
+// when that gets written.
+//
+// FUTURE: once each campus has a Google Business Profile, switching the query
+// to the GBP place ID makes the pin show the business listing (name, hours,
+// reviews) instead of a bare address marker.
+import type { Location } from "../data/locations";
+
+interface Props {
+  loc: Location;
+}
+const { loc } = Astro.props;
+
+const query = `${loc.streetAddress}, ${loc.cityState}${loc.postalCode ? ` ${loc.postalCode}` : ""}`;
+const embedSrc = `https://www.google.com/maps?q=${encodeURIComponent(query)}&output=embed`;
+const directionsHref = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(query)}`;
+---
+
+{loc.streetAddress && (
+  <div class="location-map fade-in">
+    <iframe
+      src={embedSrc}
+      title={`Map showing the Imagination Grove Academy campus at ${query}`}
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+    ></iframe>
+    <p class="location-map-link">
+      <a href={directionsHref} target="_blank" rel="noopener" class="text-link">Get directions in Google Maps &rarr;</a>
+    </p>
+  </div>
+)}

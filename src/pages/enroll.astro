@@ -100,7 +100,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <li class="tour-step fade-in">
             <span class="tour-step-num" aria-hidden="true">2</span>
             <h3>During your tour</h3>
-            <p>Meet <span class="placeholder-inline">[STAFF NAME]</span>, see the classrooms that serve your child's age, and watch a real class in session. About 30 minutes total.</p>
+            <p>Meet our director, see the classrooms that serve your child's age, and watch a real class in session. About 30 minutes total.</p>
           </li>
           <li class="tour-step fade-in">
             <span class="tour-step-num" aria-hidden="true">3</span>
@@ -111,30 +111,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </div>
     </section>
 
-    <!-- ========== TESTIMONIALS: 3 stacked text cards ========== -->
-    <section class="section">
-      <div class="container">
-        <div class="section-header fade-in">
-          <p class="eyebrow">From other IGA families</p>
-          <h2>What parents say after their tour.</h2>
-          <p class="section-placeholder-note"><span class="placeholder-inline">[PLACEHOLDER]</span> Real quotes will replace these once we have enrolled families. Until then, these are illustrative.</p>
-        </div>
-        <div class="testimonials-grid">
-          <article class="testimonial-card fade-in">
-            <blockquote>"They actually let us sit in on a class. Three other places we toured kept us in the front office the whole time. That alone made the decision."</blockquote>
-            <cite><span class="placeholder-inline">[Parent name]</span>, parent of a 2-year-old</cite>
-          </article>
-          <article class="testimonial-card fade-in">
-            <blockquote>"Every teacher we met had a degree in early childhood ed. I asked. They told me. Nobody else did."</blockquote>
-            <cite><span class="placeholder-inline">[Parent name]</span>, parent of a 4-year-old</cite>
-          </article>
-          <article class="testimonial-card fade-in">
-            <blockquote>"The keypad entry, the two-adult release rule, the daily ratio sheet on the wall. I felt better walking out of the tour than I did walking in."</blockquote>
-            <cite><span class="placeholder-inline">[Parent name]</span>, parent of an infant</cite>
-          </article>
-        </div>
-      </div>
-    </section>
+    <!-- ========== TESTIMONIALS ==========
+         REMOVED 2026-07-28 (client direction). The three quotes here were
+         written as illustrative placeholders, which meant a school with no
+         enrolled families was publishing parent testimonials. Bring this
+         section back when there are REAL reviews to place — the
+         .testimonials-grid / .testimonial-card styles are still in
+         global.css, so restoring it is markup-only.
+    ============================================================ -->
 
     <!-- ========== FAQ: native disclosure accordion ========== -->
     <section class="section section-amber-bg">
@@ -154,7 +138,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           </details>
           <details class="faq-item">
             <summary>Is there a fee?</summary>
-            <p>Tours are always free. If you decide to enroll, there is a one-time registration fee of <span class="placeholder-inline">[AMOUNT]</span> that reserves your spot.</p>
+            <p>Tours are always free. If you decide to enroll, a one-time registration fee reserves your spot. We will walk you through current tuition and fees during your visit.</p>
           </details>
           <details class="faq-item">
             <summary>When can I tour?</summary>

@@ -6,13 +6,16 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import LocationBreadcrumb from "../../components/LocationBreadcrumb.astro";
 import LocationNapCard from "../../components/LocationNapCard.astro";
 import LocationPrograms from "../../components/LocationPrograms.astro";
-import { getLocation, locationJsonLd } from "../../data/locations";
+import LocationMap from "../../components/LocationMap.astro";
+import { getLocation, locationJsonLd, stateLookup } from "../../data/locations";
 import { Image } from "astro:assets";
 import buildingPhoto from "../../assets/IGA_Bargersville.png";
 import renderClassroom from "../../assets/classroom-rendering-preschool-2.jpg";
 import renderIndoorPlay from "../../assets/classroom-rendering-indoor-play.jpg";
 
 const loc = getLocation("bargersville");
+// State-appropriate public lookup for licensing + inspection history.
+const lookup = stateLookup[loc.state];
 ---
 
 <BaseLayout title={loc.metaTitle} description={loc.metaDescription}>
@@ -54,10 +57,7 @@ const loc = getLocation("bargersville");
         <div class="location-about-text">
           <p class="eyebrow">About this campus</p>
           <h2>{loc.aboutHeading}</h2>
-          <div class="content-placeholder content-placeholder--wide">
-            <p class="content-placeholder-label">DRAFT &mdash; for client review</p>
-            <p class="content-placeholder-hint">{loc.aboutHint}</p>
-          </div>
+          {loc.aboutBody.map((para) => <p>{para}</p>)}
         </div>
       </div>
     </div>
@@ -119,13 +119,7 @@ const loc = getLocation("bargersville");
         <p>Easy access from Greenwood, Franklin, and the southside Indianapolis metro.</p>
       </div>
 
-      <div class="location-map-placeholder fade-in" role="img" aria-label="Map placeholder for Bargersville campus location">
-        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M24 6c-6 0-11 5-11 11 0 8 11 19 11 19s11-11 11-19c0-6-5-11-11-11z" stroke="#2C6F95" stroke-width="2" fill="none"/>
-          <circle cx="24" cy="17" r="4" fill="#2C6F95"/>
-        </svg>
-        <p class="placeholder-label">Embedded Google Map goes here once address is finalized. Will use Google Maps Embed API with the verified GBP address.</p>
-      </div>
+      <LocationMap loc={loc} />
     </div>
   </section>
 
@@ -142,7 +136,7 @@ const loc = getLocation("bargersville");
         <dl class="credentials-list">
           <div>
             <dt>License type</dt>
-            <dd>Indiana Class 1 Licensed Childcare Center</dd>
+            <dd>Indiana Class 1 Licensed Childcare Center (pending)</dd>
           </div>
           <div>
             <dt>Licensing body</dt>
@@ -152,14 +146,18 @@ const loc = getLocation("bargersville");
             <dt>License number</dt>
             <dd>Available upon request</dd>
           </div>
-          <div>
-            <dt>Licensed capacity</dt>
-            <dd><span class="placeholder-inline">[CAPACITY TBD]</span> children</dd>
-          </div>
-          <div>
-            <dt>Inspection record</dt>
-            <dd>Available upon request</dd>
-          </div>
+          {loc.capacity && (
+            <div>
+              <dt>Planned capacity</dt>
+              <dd>{loc.capacity} children</dd>
+            </div>
+          )}
+          {lookup && (
+            <div>
+              <dt>Inspection record</dt>
+              <dd>Public. You can look up any licensed center's status and inspection history yourself on <a href={lookup.url} target="_blank" rel="noopener" class="text-link">{lookup.label}</a>.</dd>
+            </div>
+          )}
         </dl>
 
         <h3>Staff at this campus</h3>

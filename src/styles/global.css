@@ -513,30 +513,6 @@ p { margin-bottom: 1rem; }
   flex-shrink: 0;
 }
 
-/* Placeholder image blocks */
-.placeholder-img {
-  background: var(--iga-teal-bg);
-  border: 2px dashed var(--iga-teal-light);
-  border-radius: var(--radius);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  padding: 32px;
-  min-height: 280px;
-  text-align: center;
-}
-
-.placeholder-img svg { width: 48px; height: 48px; opacity: 0.5; }
-
-.placeholder-img .placeholder-label {
-  font-size: 0.75rem;
-  font-family: var(--font-mono);
-  color: var(--iga-text-muted);
-  max-width: 200px;
-}
-
 /* Real photo in the hero (and reusable for other building shots) */
 .hero-photo {
   width: 100%;
@@ -742,15 +718,6 @@ p { margin-bottom: 1rem; }
   font-weight: 700;
   color: var(--iga-green-dark);
   margin-right: 4px;
-}
-
-.placeholder-inline {
-  font-family: var(--font-mono);
-  font-size: 0.85em;
-  color: var(--iga-amber-mid);
-  background: var(--iga-amber-bg);
-  padding: 1px 6px;
-  border-radius: 3px;
 }
 
 .why-quote {
@@ -1297,15 +1264,6 @@ p { margin-bottom: 1rem; }
 /* ============================================
    ABOUT PAGE
    ============================================ */
-.story-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 48px;
-  align-items: center;
-}
-
-.story-grid p { color: var(--iga-text-muted); font-size: 0.95rem; }
-
 
 /* Director bio (About page) */
 .director-grid {
@@ -1421,8 +1379,6 @@ p { margin-bottom: 1rem; }
   .philosophy-cols { grid-template-columns: 1fr; gap: 24px; }
 
   .testimonials-grid { grid-template-columns: 1fr; }
-
-  .story-grid { grid-template-columns: 1fr; }
 
   .director-grid { grid-template-columns: 1fr; }
 
@@ -1623,14 +1579,6 @@ p { margin-bottom: 1rem; }
   color: var(--iga-text-muted);
   line-height: 1.6;
   margin: 0;
-}
-
-/* Section header note for placeholder testimonials */
-.section-placeholder-note {
-  font-size: 0.85rem;
-  color: var(--iga-text-muted);
-  font-style: italic;
-  margin-top: 12px;
 }
 
 /* FAQ accordion: native details/summary */
@@ -1881,42 +1829,6 @@ p { margin-bottom: 1rem; }
    ============================================ */
 
 /* Story narrative — pull-quote callout */
-
-/* Content placeholder — for whole sections client must draft */
-.content-placeholder {
-  border: 2px dashed rgba(133, 79, 11, 0.4);
-  background: var(--iga-amber-bg);
-  border-radius: var(--radius);
-  padding: 26px 30px;
-  margin-top: 16px;
-}
-
-/* Wide variant: centered, capped width when used outside a story-grid column */
-.content-placeholder--wide {
-  max-width: 880px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.content-placeholder-label {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--iga-amber-mid);
-  font-weight: 700;
-  margin-bottom: 10px;
-}
-
-.content-placeholder-hint {
-  font-size: 0.92rem;
-  color: var(--iga-text-muted);
-  font-style: italic;
-  line-height: 1.6;
-  margin: 0;
-}
-
-/* Inline founder bio placeholder */
 
 /* ============================================
    === PORTAL PAGE ===
@@ -2541,10 +2453,6 @@ p { margin-bottom: 1rem; }
   margin-bottom: 24px;
 }
 
-.location-about .content-placeholder {
-  text-align: left;
-}
-
 /* ---- Programs at this location ---- */
 .location-programs {
   list-style: none;
@@ -2594,37 +2502,29 @@ p { margin-bottom: 1rem; }
   margin: 0 auto;
 }
 
-.location-photos .placeholder-img {
-  min-height: 220px;
-}
-
-/* ---- Map placeholder ---- */
-.location-map-placeholder {
+/* ---- Embedded campus map (replaced the dashed map placeholder 2026-07-28) ---- */
+.location-map {
   max-width: 920px;
   margin: 0 auto;
-  background: var(--iga-white);
-  border: 2px dashed var(--iga-teal-light);
+}
+
+.location-map iframe {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
   border-radius: var(--radius);
-  padding: 60px 40px;
+  background: var(--iga-teal-bg);
+}
+
+.location-map-link {
+  margin-top: 16px;
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
+  font-size: 0.95rem;
 }
 
-.location-map-placeholder svg {
-  width: 64px;
-  height: 64px;
-  opacity: 0.7;
-}
-
-.location-map-placeholder .placeholder-label {
-  max-width: 420px;
-  font-family: var(--font-mono);
-  font-size: 0.82rem;
-  color: var(--iga-text-muted);
-  line-height: 1.55;
+@media (max-width: 600px) {
+  .location-map iframe { aspect-ratio: 4 / 3; }
 }
 
 /* ---- Waitlist CTA block (coming-soon pages) ---- */
