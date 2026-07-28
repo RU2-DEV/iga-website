@@ -16,6 +16,12 @@
     const mobileNav = document.querySelector('.mobile-nav');
     const overlay = document.querySelector('.mobile-overlay');
     if (!hamburger || !mobileNav) return;
+    // init() can now run from either DOMContentLoaded or astro:page-load, so
+    // guard against binding the same element twice (which would toggle the
+    // menu open and immediately closed). After a View Transition the elements
+    // are new, so the flag is absent and they bind normally.
+    if (hamburger.dataset.bound === '1') return;
+    hamburger.dataset.bound = '1';
 
     const toggleMenu = () => {
       hamburger.classList.toggle('open');
@@ -78,6 +84,8 @@
   function initForm() {
     const enrollForm = document.querySelector('.lead-form');
     if (!enrollForm) return;
+    if (enrollForm.dataset.bound === '1') return; // see note in initMobileNav
+    enrollForm.dataset.bound = '1';
 
     enrollForm.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -100,13 +108,19 @@
           btn.textContent = 'Tour Requested!';
           btn.style.background = 'var(--iga-green-mid)';
           btn.style.borderColor = 'var(--iga-green-mid)';
-          if (status) status.textContent = 'Tour request received. We will follow up within 24 hours to confirm your tour time.';
+          if (status) {
+            status.className = 'form-status is-success';
+            status.textContent = 'Tour request received. We will follow up within 24 hours to confirm your tour time.';
+          }
           enrollForm.reset();
         })
         .catch(() => {
           btn.textContent = originalText;
           btn.disabled = false;
-          if (status) status.textContent = 'Something went wrong sending your request. Please try again, or email team@imaginationgroveacademy.com.';
+          if (status) {
+            status.className = 'form-status is-error';
+            status.textContent = 'Something went wrong sending your request. Please try again, or email team@imaginationgroveacademy.com.';
+          }
         });
     });
   }
@@ -125,6 +139,12 @@
   }
 
   function init() {
+    // Cancel BaseLayout's reveal failsafe — this script is alive, so the
+    // fade-in animations can be trusted to reveal content themselves.
+    if (window.__igaRevealFailsafe) {
+      window.clearTimeout(window.__igaRevealFailsafe);
+      window.__igaRevealFailsafe = null;
+    }
     initMobileNav();
     initFadeIns();
     initForm();
@@ -158,5 +178,19 @@
       onScroll();
       init();
     });
+
+    // Fallback for the INITIAL load only: if the View Transitions router fails
+    // to load, astro:page-load never fires and nothing would initialize —
+    // leaving a page with a dead mobile menu. init() is safe to call twice
+    // (see the dataset.bound guards), so overlap with astro:page-load is fine.
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => {
+        onScroll();
+        init();
+      });
+    } else {
+      onScroll();
+      init();
+    }
   }
 })();

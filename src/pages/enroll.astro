@@ -76,7 +76,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
             <button type="submit" class="btn btn-green btn-lg btn-full">Request my tour &rarr;</button>
 
-            <p role="status" aria-live="polite" class="sr-only" id="form-status"></p>
+            <!-- Visible AND announced. Was .sr-only, which meant a failed
+                 submission showed a sighted parent nothing at all on the
+                 site's primary conversion. Collapses when empty via
+                 .form-status:empty. -->
+            <p role="status" aria-live="polite" class="form-status" id="form-status"></p>
 
             <p class="form-note">By submitting, you agree to receive a tour-confirmation email and call. We will never sell your information or add you to lists you didn't sign up for.</p>
           </form>

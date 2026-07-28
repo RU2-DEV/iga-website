@@ -33,6 +33,21 @@ const {
 // and shares to associate with each page at launch.
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const socialImageURL = new URL("/og-default.jpg", Astro.site);
+
+// SEARCH-ENGINE GATE. The staging URL must stay out of Google until the
+// custom domain goes live, or it competes with imaginationgroveacademy.com.
+//
+// This replaced a hardcoded `X-Robots-Tag: noindex` header in netlify.toml,
+// which required a CODE CHANGE at launch and was therefore easy to forget.
+// Now it is one environment variable in the Netlify UI.
+//
+// FAILS SAFE BY DESIGN: only the exact string "true" opens the site to
+// crawlers. Unset, misspelled, "TRUE", or "1" all keep it noindexed — the
+// wrong-way failure is an invisible site, not an accidentally indexed one.
+//
+// >>> AT LAUNCH: set PUBLIC_LAUNCHED = "true" in Netlify
+// >>> (Site configuration -> Environment variables), then redeploy.
+const isLaunched = import.meta.env.PUBLIC_LAUNCHED === "true";
 ---
 
 <!DOCTYPE html>
@@ -58,6 +73,29 @@ const socialImageURL = new URL("/og-default.jpg", Astro.site);
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={socialImageURL} />
+
+    {!isLaunched && <meta name="robots" content="noindex, nofollow" />}
+
+    <script is:inline>
+      /* Progressive-enhancement guard for the .fade-in animations.
+         Those elements are opacity:0 ONLY under `html.js`, so this script is
+         what opts a visitor into the animation. It runs before first paint, so
+         there is no flash of visible-then-hidden content.
+
+         The failsafe matters more than the animation: if main.js never
+         initializes (network failure, script error, blocked request), the
+         class is stripped and everything becomes visible. A skipped animation
+         is a much better failure than a blank page. main.js clears this timer
+         as soon as it runs. */
+      (function () {
+        var root = document.documentElement;
+        root.classList.add("js");
+        window.__igaRevealFailsafe = window.setTimeout(function () {
+          root.classList.remove("js");
+        }, 2500);
+      })();
+    </script>
+
     <ClientRouter />
     <style is:global>
       /* Don't animate page transitions for motion-sensitive users */

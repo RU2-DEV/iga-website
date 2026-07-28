@@ -4,16 +4,27 @@
   command = "npm run build"
   publish = "dist"
 
+[build.environment]
+  # Pinned so a change to Netlify's default Node version can't break a build
+  # at an inconvenient moment (e.g. launch day). Node 22 is LTS and satisfies
+  # Astro 6's engine requirement. Bump deliberately, not by surprise.
+  NODE_VERSION = "22"
+
 # ------------------------------------------------------------------
-# PRE-LAUNCH ONLY: keep the imaginationgrove.netlify.app staging URL
-# out of search engines while the site still has placeholder content.
-# Without this, Google can index the netlify.app URL and it will
-# compete with imaginationgroveacademy.com at launch.
+# SEARCH-ENGINE GATING — no longer lives in this file.
 #
-# >>> REMOVE THIS ENTIRE [[headers]] BLOCK WHEN THE CUSTOM DOMAIN
-# >>> GOES LIVE, or the real site will be invisible to Google too.
+# This used to be an [[headers]] block sending `X-Robots-Tag: noindex` on
+# every path, which meant going live required someone to remember to delete
+# code from this file. It's now handled by the PUBLIC_LAUNCHED environment
+# variable, read in src/layouts/BaseLayout.astro, which emits
+# `<meta name="robots" content="noindex, nofollow">` on every page unless
+# PUBLIC_LAUNCHED is exactly "true".
+#
+# Current state: PUBLIC_LAUNCHED is unset, so the whole site is noindexed.
+# That is intentional and correct pre-launch.
+#
+# >>> AT LAUNCH: Netlify -> Site configuration -> Environment variables,
+# >>>            add PUBLIC_LAUNCHED = true, then trigger a redeploy.
+# >>> No code change needed, and forgetting it fails safe (site stays
+# >>> hidden) rather than exposing the staging URL to Google.
 # ------------------------------------------------------------------
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Robots-Tag = "noindex"
