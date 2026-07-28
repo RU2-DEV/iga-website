@@ -97,7 +97,18 @@
       btn.textContent = 'Sending…';
       btn.disabled = true;
 
-      const body = new URLSearchParams(new FormData(enrollForm)).toString();
+      // Netlify uses a submitted field named "subject" as the notification
+      // email's subject line. Inject the parent's name so team@ can triage at a
+      // glance, and so messages don't collapse into one mail-client thread the
+      // way identical subjects do. The hidden input in the markup carries a
+      // no-JS fallback value; this only enriches it.
+      const data = new FormData(enrollForm);
+      const parentName = String(data.get('name') || '').trim();
+      if (parentName) {
+        data.set('subject', 'New Tour Request | ' + parentName + ' | FOLLOW UP');
+      }
+
+      const body = new URLSearchParams(data).toString();
       fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },

@@ -37,6 +37,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             <p hidden aria-hidden="true">
               <label>Don't fill this out if you're human: <input name="bot-field" /></label>
             </p>
+            <!-- Netlify Forms reads a field literally named "subject" and uses it
+                 as the notification email's subject line. main.js rewrites this
+                 value on submit to include the parent's name, so the shared
+                 team@ inbox is scannable and messages don't thread together.
+                 The value here is the NO-JS FALLBACK — if the script fails, the
+                 form still posts natively and the email still gets a usable
+                 subject instead of an empty one. Do not remove it.
+                 NOTE: this only takes effect while the Netlify UI's "Custom
+                 email subject line" field is left EMPTY. -->
+            <input type="hidden" name="subject" value="New Tour Request | FOLLOW UP" />
             <h2 class="form-heading">Tell us a little about your family.</h2>
             <p class="form-sub">We will follow up within 24 hours to confirm your tour time.</p>
 
