@@ -10,6 +10,68 @@
 
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* --- Analytics: dataLayer plumbing --------------------------------------
+     Every tracking event goes through here as a dataLayer push; GTM decides
+     what to do with it. This file never talks to GA4, Google Ads, Meta or
+     Microsoft directly — that's the whole point of the container.
+
+     dataLayer is created if missing so pushes are SAFE when GTM is absent:
+     no PUBLIC_GTM_ID set, an ad blocker, or a failed Google request. Events
+     queue into a plain array that nobody reads, and the site behaves normally.
+     A form submission must never fail because analytics did. */
+  function pushEvent(name, params) {
+    window.dataLayer = window.dataLayer || [];
+    const payload = Object.assign({ event: name }, params || {});
+    try {
+      window.dataLayer.push(payload);
+    } catch (err) {
+      /* Never let a tracking failure surface to a parent. */
+    }
+  }
+
+  /* Coarse program bucket from the child's date of birth, so GA4 can show which
+     programs leads are actually asking about — the useful question when
+     deciding which rooms to staff first.
+
+     Deliberately a BUCKET, never the DOB itself. A child's date of birth is
+     personal data and has no business in an analytics payload; "toddler" is
+     all the signal we need. Boundaries are approximate and follow the program
+     ladder (infant / toddler / twos / preschool / pre-K), not licensing rules. */
+  function childAgeGroup(dobValue) {
+    if (!dobValue) return 'unspecified';
+    const dob = new Date(dobValue);
+    if (isNaN(dob.getTime())) return 'unspecified';
+    const months = (Date.now() - dob.getTime()) / (1000 * 60 * 60 * 24 * 30.44);
+    if (months < 0) return 'expecting';
+    if (months < 12) return 'infant';
+    if (months < 24) return 'toddler';
+    if (months < 36) return 'twos';
+    if (months < 48) return 'preschool';
+    if (months < 72) return 'pre-k';
+    return 'school-age';
+  }
+
+  /* GA4 counts a page_view when the GTM container loads — which on this site
+     happens ONCE, because the ClientRouter (View Transitions) navigates without
+     a full page load. Without the push below, every click-through inside the
+     site is invisible: GA4 would report one page per session, making engagement
+     look terrible and the /locations/ pages look unvisited.
+
+     Seeded with the landing path because GTM already counted that one. Comparing
+     paths (rather than counting fires) also makes this immune to init() running
+     twice, which it legitimately can — see the DOMContentLoaded fallback below. */
+  let lastTrackedPath = window.location.pathname;
+
+  function trackPageView() {
+    const path = window.location.pathname;
+    if (path === lastTrackedPath) return;
+    lastTrackedPath = path;
+    pushEvent('spa_page_view', {
+      page_path: path,
+      page_title: document.title,
+    });
+  }
+
   /* --- Mobile Navigation --- */
   function initMobileNav() {
     const hamburger = document.querySelector('.hamburger');
@@ -110,6 +172,9 @@
         data.set('subject', 'New Tour Request | ' + parentName + ' | FOLLOW UP');
       }
 
+      // Captured before the reset() below wipes the form.
+      const ageGroup = childAgeGroup(data.get('child-dob'));
+
       const body = new URLSearchParams(data).toString();
       fetch('/', {
         method: 'POST',
@@ -125,6 +190,21 @@
             status.className = 'form-status is-success';
             status.textContent = 'Tour request received. We will follow up within 24 hours to confirm your tour time.';
           }
+
+          // THE PRIMARY CONVERSION. Fired only after Netlify confirms the
+          // submission (inside .then, never before the fetch) — a conversion
+          // reported for a request that failed is worse than no conversion at
+          // all, because it silently inflates cost-per-lead reporting and
+          // teaches the ad platforms to bid on the wrong clicks.
+          //
+          // In GTM this one event fans out to GA4 + Google Ads + Meta +
+          // Microsoft UET. No name/email/phone is included: ad platforms get
+          // conversion *counts*, not parent contact details.
+          pushEvent('lead_form_submitted', {
+            form_location: window.location.pathname,
+            child_age_group: ageGroup,
+          });
+
           enrollForm.reset();
         })
         .catch(() => {
@@ -162,6 +242,7 @@
     initFadeIns();
     initForm();
     initActiveNav();
+    trackPageView();
   }
 
   /* --- Page-persistent globals: bind ONCE, even if this script re-runs --- */
@@ -184,6 +265,23 @@
         hamburger.click();
         hamburger.focus();
       }
+    });
+
+    // Tap-to-call tracking. A soft conversion, not an ad-platform one: a call
+    // click can't be verified as a real lead the way a form submission can, so
+    // it's a GA4 diagnostic only. Worth having anyway — for a childcare campus
+    // a good share of mobile parents will call rather than fill in a form, and
+    // without this those visits look like they converted at zero.
+    //
+    // Delegated on document so it survives View Transitions and covers phone
+    // links added to any campus page later (locations.ts drives several).
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest && e.target.closest('a[href^="tel:"]');
+      if (!link) return;
+      pushEvent('phone_click', {
+        phone_number: link.getAttribute('href').replace('tel:', ''),
+        page_path: window.location.pathname,
+      });
     });
 
     // astro:page-load fires on the initial load AND after every View Transition.

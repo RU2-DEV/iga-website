@@ -53,6 +53,24 @@ const socialImageURL = new URL("/og-default.jpg", Astro.site);
 // >>> AT LAUNCH: set PUBLIC_LAUNCHED = "true" in Netlify
 // >>> (Site configuration -> Environment variables), then redeploy.
 const isLaunched = import.meta.env.PUBLIC_LAUNCHED === "true";
+
+// ANALYTICS GATE — deliberately its OWN variable, NOT PUBLIC_LAUNCHED.
+//
+// Tracking loads whenever a container ID is present. Unset = no GTM at all,
+// no network request to Google, nothing to consent to. So local `npm run dev`
+// and any fork stay clean without extra config.
+//
+// WHY NOT REUSE PUBLIC_LAUNCHED: noindex is about crawlers; analytics is about
+// measurement. Coupling them means the tour-form conversion tag — the single
+// most important thing we measure — could not be tested until launch day, on
+// the same day as the DNS cutover. That is the same "unverified until it
+// matters" shape as the silent form-failure bug. Separate variables let us
+// prove the conversion fires NOW while the site stays hidden from Google.
+//
+// Cost of this choice: pre-launch test hits land in GA4. On a property with no
+// history that is a handful of Austen's own events — filter the netlify.app
+// hostname as internal traffic in GA4 if it ever gets noisy.
+const gtmId = import.meta.env.PUBLIC_GTM_ID;
 ---
 
 <!DOCTYPE html>
@@ -101,6 +119,30 @@ const isLaunched = import.meta.env.PUBLIC_LAUNCHED === "true";
       })();
     </script>
 
+    {
+      gtmId && (
+        <script is:inline define:vars={{ gtmId }}>
+          /* Google Tag Manager. Every tag (GA4, and later Google Ads / Meta /
+             Microsoft UET) is configured inside the GTM container, not here —
+             adding a platform should never require a code deploy.
+
+             dataLayer is initialized before the snippet so any event pushed by
+             main.js is queued and replayed once GTM loads, not lost in a race. */
+          window.dataLayer = window.dataLayer || [];
+          (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+            var f = d.getElementsByTagName(s)[0],
+              j = d.createElement(s),
+              dl = l != "dataLayer" ? "&l=" + l : "";
+            j.async = true;
+            j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+            f.parentNode.insertBefore(j, f);
+          })(window, document, "script", "dataLayer", gtmId);
+        </script>
+      )
+    }
+
     <ClientRouter />
     <style is:global>
       /* Don't animate page transitions for motion-sensitive users */
@@ -115,6 +157,20 @@ const isLaunched = import.meta.env.PUBLIC_LAUNCHED === "true";
     <slot name="head" />
   </head>
   <body>
+    {
+      gtmId && (
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
+            height="0"
+            width="0"
+            style="display:none;visibility:hidden"
+            title="Google Tag Manager"
+          />
+        </noscript>
+      )
+    }
+
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <!-- ========== NAVIGATION ========== -->
