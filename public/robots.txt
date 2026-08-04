@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://imaginationgroveacademy.com/sitemap-index.xml
+Sitemap: https://www.imaginationgroveacademy.com/sitemap-index.xml

@@ -7,7 +7,7 @@ export default defineConfig({
   // The production domain — used to build canonical URLs, social-share
   // URLs, and the sitemap. The site is served from imaginationgrove.netlify.app
   // until launch, but all permanent URLs point here.
-  site: 'https://imaginationgroveacademy.com',
+  site: 'https://www.imaginationgroveacademy.com',
   integrations: [
     sitemap({
       // Keep the DRAFT legal pages out of the sitemap. They force `noindex`
