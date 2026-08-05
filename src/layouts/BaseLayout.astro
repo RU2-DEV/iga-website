@@ -127,18 +127,32 @@ const gtmId = import.meta.env.PUBLIC_GTM_ID;
              adding a platform should never require a code deploy.
 
              dataLayer is initialized before the snippet so any event pushed by
-             main.js is queued and replayed once GTM loads, not lost in a race. */
+             main.js is queued and replayed once GTM loads, not lost in a race.
+
+             PRIVACY GATE (Privacy Policy §11, per RU2 legal review 2026-08-04):
+             the Site promises to honor Global Privacy Control and Do Not Track.
+             When the browser sends either signal, GTM never loads — no request
+             to Google at all. main.js pushes still land in the local dataLayer
+             array; with no GTM to read it, they go nowhere. If this gate is
+             removed, Privacy §11 and legal.honorsDoNotTrack must change too. */
           window.dataLayer = window.dataLayer || [];
-          (function (w, d, s, l, i) {
-            w[l] = w[l] || [];
-            w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-            var f = d.getElementsByTagName(s)[0],
-              j = d.createElement(s),
-              dl = l != "dataLayer" ? "&l=" + l : "";
-            j.async = true;
-            j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-            f.parentNode.insertBefore(j, f);
-          })(window, document, "script", "dataLayer", gtmId);
+          var gpcOrDnt =
+            navigator.globalPrivacyControl === true ||
+            navigator.doNotTrack === "1" ||
+            navigator.doNotTrack === "yes" ||
+            window.doNotTrack === "1";
+          if (!gpcOrDnt) {
+            (function (w, d, s, l, i) {
+              w[l] = w[l] || [];
+              w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+              var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != "dataLayer" ? "&l=" + l : "";
+              j.async = true;
+              j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+              f.parentNode.insertBefore(j, f);
+            })(window, document, "script", "dataLayer", gtmId);
+          }
         </script>
       )
     }
@@ -157,19 +171,10 @@ const gtmId = import.meta.env.PUBLIC_GTM_ID;
     <slot name="head" />
   </head>
   <body>
-    {
-      gtmId && (
-        <noscript>
-          <iframe
-            src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
-            height="0"
-            width="0"
-            style="display:none;visibility:hidden"
-            title="Google Tag Manager"
-          />
-        </noscript>
-      )
-    }
+    {/* The standard GTM install includes a <noscript> iframe fallback here.
+        Omitted deliberately (2026-08-04): it cannot check the GPC/DNT signals
+        the Privacy Policy §11 promises to honor, so it would make that claim
+        false for no-JS visitors. Cost: no analytics from no-JS visits. */}
 
     <a href="#main-content" class="skip-link">Skip to main content</a>
 

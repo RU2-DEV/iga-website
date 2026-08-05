@@ -26,40 +26,37 @@ export const legal = {
       the safety net if launch happens before legal review lands. */
   isDraft: true,
 
-  /** Operating entity. UNKNOWN — the real client is a real-estate
-      development company investing in IGA, so this may not be
-      "Imagination Grove Academy." Do not guess. */
-  entityName: null as string | null,
+  /** Operating entity. Confirmed by RU2 legal review (2026-08-04). */
+  entityName: "IGA Group, LLC" as string | null,
 
   /** Corporate/registered address for legal notices — NOT a campus
-      address. */
-  noticeAddress: null as string | null,
+      address. Confirmed by RU2 legal review (2026-08-04). */
+  noticeAddress: "15481 Union Chapel Rd, Suite 100, Noblesville, IN 46060" as string | null,
 
-  effectiveDate: null as string | null,
-  lastUpdated: null as string | null,
+  effectiveDate: "August 1, 2026" as string | null,
+  lastUpdated: "August 4, 2026" as string | null,
 
   /** Retention period for tour requests that don't convert to
-      enrollment. Emily + legal to set. */
-  tourRequestRetention: null as string | null,
+      enrollment. Set by RU2 legal review (2026-08-04). */
+  tourRequestRetention: "three years" as string | null,
 
-  /** Retention period for email correspondence. */
-  emailRetention: null as string | null,
-
-  /** Days to respond to a data request. Draft proposed 45. */
-  requestResponseDays: 45,
+  /** Retention period for email correspondence. Set by RU2 legal
+      review (2026-08-04). */
+  emailRetention: "three years" as string | null,
 
   /** Liability cap in Section 12 of the Terms. Business decision. */
   liabilityCap: null as string | null,
 
-  /** Governing law. Draft assumes Indiana (3 of 4 campuses), but the
-      Lexington KY campus makes this a real question for legal. */
+  /** Governing law + venue. Confirmed by RU2 legal review
+      (2026-08-04): Indiana, Hamilton County. */
   governingState: "Indiana",
-  venueCounty: null as string | null,
+  venueCounty: "Hamilton" as string | null,
 
-  /** Whether the site honors Do Not Track / Global Privacy Control.
-      Left null deliberately — never claim to honor a signal the site
-      does not actually honor. */
-  honorsDoNotTrack: null as boolean | null,
+  /** Legal review 2026-08-04: the Site DOES honor GPC / Do Not Track.
+      The claim is real — BaseLayout.astro skips loading GTM entirely
+      when the browser sends either signal. If that gate is ever
+      removed, this must go back to null and Privacy §11 comes out. */
+  honorsDoNotTrack: true as boolean | null,
 
   contactEmail: "team@imaginationgroveacademy.com",
 };
