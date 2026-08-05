@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { locations } from "../data/locations";
 ---
 <BaseLayout title="Schedule a Tour | Imagination Grove Academy" description="Book a free, no-pressure tour of Imagination Grove Academy. Meet the teachers, see the classrooms, and ask every question you have. Tours take about 30 minutes.">
 
@@ -77,6 +78,22 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                 <input id="tour-date" name="tour-date" type="date" required aria-required="true" aria-describedby="tour-date-helper">
                 <span id="tour-date-helper" class="form-helper">Mon–Fri during operating hours.</span>
               </div>
+            </div>
+
+            <div class="form-group">
+              <label for="campus">Which campus? <span class="required" aria-hidden="true">*</span></label>
+              <!-- Options come from locations.ts so a new campus appears here
+                   automatically. The value is the human-readable cityState —
+                   it lands verbatim in the team@ notification email. -->
+              <select id="campus" name="campus" required aria-required="true" aria-describedby="campus-helper">
+                <option value="" disabled selected>Choose a campus</option>
+                {locations.map((loc) => (
+                  <option value={loc.cityState}>
+                    {loc.cityState} — {loc.status === "open" ? "enrolling now" : "coming soon"}
+                  </option>
+                ))}
+              </select>
+              <span id="campus-helper" class="form-helper">Not open yet near you? Pick that campus and we will keep you posted.</span>
             </div>
 
             <div class="form-group">

@@ -8,6 +8,7 @@
 // no confirmed date is normal — an absent row reads as "not announced yet",
 // while "[PHONE TBD]" reads as an unfinished website.
 import type { Location } from "../data/locations";
+import { site } from "../data/site";
 
 interface Props {
   loc: Location;
@@ -42,7 +43,7 @@ const { loc } = Astro.props;
     </div>
     <div>
       <dt>Hours</dt>
-      <dd>Monday–Friday<br />6:30 AM – 6:00 PM</dd>
+      <dd>{site.hours.daysLong}<br />{site.hours.open} – {site.hours.close}</dd>
     </div>
     <div>
       <dt>Opening</dt>

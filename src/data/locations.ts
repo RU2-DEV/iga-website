@@ -13,6 +13,8 @@
 // One file to edit = no missed spots.
 // ============================================================
 
+import { site, hoursProse } from "./site";
+
 export type LocationStatus = "open" | "soon";
 
 export interface CredentialRow {
@@ -123,7 +125,7 @@ export const locations: Location[] = [
     aboutHeading: "A purpose-built childcare home in Bargersville.",
     aboutBody: [
       "Our Bargersville campus is new construction on South Grove Blvd — built from the ground up as a childcare center, not converted from a space that used to be something else. Every classroom was drawn around the age group it serves, so sinks, cubbies, sightlines, and nap space sit where they need to be from day one instead of being worked around later.",
-      "Bargersville is opening first because this building is furthest along. It also sits in one of the fastest-growing corners of the Indianapolis south metro, within an easy drive for families in Bargersville, Greenwood, Franklin, and the Center Grove area — most of whom are heading north for work in the morning. Doors open at 6:30 AM and stay open until 6:00 PM, Monday through Friday.",
+      `Bargersville is opening first because this building is furthest along. It also sits in one of the fastest-growing corners of the Indianapolis south metro, within an easy drive for families in Bargersville, Greenwood, Franklin, and the Center Grove area — most of whom are heading north for work in the morning. Doors open at ${site.hours.open} and stay open until ${site.hours.close}, Monday through Friday.`,
       "The campus serves every IGA age group under one roof: infants from six weeks, toddlers, twos, preschool, and Pre-K, each in their own room with their own teaching team. Class sizes stay small in every program, and lead teachers are degree-qualified. A 30-minute tour is the fastest way to see it — and you are welcome in the classrooms while the children are in them.",
     ],
     programsEyebrow: "At the Bargersville campus",
@@ -153,7 +155,7 @@ export const locations: Location[] = [
     aboutHeading: "An IGA campus is coming to Fishers.",
     aboutBody: [
       "Our Fishers campus is new construction on Cyntheanne Road, on the east side of Hamilton County. Like every IGA building, it is purpose-built for childcare rather than adapted from another use — classrooms sized to the age groups that will use them, with the practical things designed in rather than retrofitted.",
-      "The location puts us within a short drive of east Fishers, the Geist area, Noblesville, and Carmel, near the Southeastern Parkway and Olio Road corridors that families in this part of the county already use on their commute. Hours will match our other campuses: 6:30 AM to 6:00 PM, Monday through Friday.",
+      `The location puts us within a short drive of east Fishers, the Geist area, Noblesville, and Carmel, near the Southeastern Parkway and Olio Road corridors that families in this part of the county already use on their commute. Hours will match our other campuses: ${hoursProse}.`,
       "When Fishers opens it will offer the full IGA age range — infants from six weeks through Pre-K — with the same small class sizes, the same credentialing standards for lead teachers, and the same curriculum running at every IGA campus. We do not have an opening date to publish yet. Joining the waitlist is how you hear first: we will reach out as soon as we have a date and tour availability.",
     ],
     programsEyebrow: "When the Fishers campus opens",
@@ -203,7 +205,7 @@ export const locations: Location[] = [
     aboutHeading: "An IGA campus is coming to New Palestine.",
     aboutBody: [
       "Our New Palestine campus will be new construction, serving Hancock County and the communities east of Indianapolis. Like every IGA building, it is designed as a childcare center from the start rather than converted from another use, with classrooms built around the age groups that will use them.",
-      "New Palestine sits along the US 52 and I-70 corridor, which makes it a practical stop for families commuting between Hancock County and Indianapolis, and puts us within reach of New Palestine, Greenfield, McCordsville, and Cumberland. Hours will match our other campuses: 6:30 AM to 6:00 PM, Monday through Friday.",
+      `New Palestine sits along the US 52 and I-70 corridor, which makes it a practical stop for families commuting between Hancock County and Indianapolis, and puts us within reach of New Palestine, Greenfield, McCordsville, and Cumberland. Hours will match our other campuses: ${hoursProse}.`,
       "We are not ready to publish a street address or an opening date for this campus yet. What we can tell you is what will not change: the full age range from six weeks through Pre-K, the same small class sizes, the same credentialing standards for lead teachers, and the same curriculum running at every IGA campus. Join the waitlist and we will reach out as soon as we have dates to share.",
     ],
     programsEyebrow: "When the New Palestine campus opens",
@@ -255,7 +257,7 @@ export const locations: Location[] = [
     aboutHeading: "IGA is expanding into Kentucky.",
     aboutBody: [
       "Lexington is IGA's first campus outside Indiana. The reason is straightforward: the need we saw in the Indianapolis suburbs — families struggling to find quality infant and toddler care close to home — is just as real in central Kentucky.",
-      "The campus is new construction on Georgetown Road in northwest Lexington, minutes from New Circle Road and convenient to both I-64 and I-75, which keeps it reachable for families across Fayette County and from Nicholasville and Georgetown. Hours will match our other campuses: 6:30 AM to 6:00 PM, Monday through Friday.",
+      `The campus is new construction on Georgetown Road in northwest Lexington, minutes from New Circle Road and convenient to both I-64 and I-75, which keeps it reachable for families across Fayette County and from Nicholasville and Georgetown. Hours will match our other campuses: ${hoursProse}.`,
       "Kentucky regulates childcare through its own framework — the Cabinet for Health and Family Services, Division of Child Care, with the Kentucky All STARS quality rating rather than Indiana's system — and our Lexington campus will meet those requirements in full. The programs themselves will be identical to our Indiana campuses: infants from six weeks through Pre-K, small class sizes, and degree-qualified lead teachers. Join the waitlist to hear first.",
     ],
     programsEyebrow: "When the Lexington campus opens",
@@ -325,8 +327,8 @@ export function locationJsonLd(loc: Location) {
       {
         "@type": "OpeningHoursSpecification",
         dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        opens: "06:30",
-        closes: "18:00",
+        opens: site.hours.opensIso,
+        closes: site.hours.closesIso,
       },
     ],
     areaServed: loc.areaServed.map((name) => ({ "@type": "City", name })),

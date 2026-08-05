@@ -20,6 +20,8 @@
 //   content/terms-of-service-draft-v1.md
 // ============================================================
 
+import { site } from "./site";
+
 export const legal = {
   /** While true: draft banner shows, and both pages force noindex
       even after PUBLIC_LAUNCHED opens the rest of the site. This is
@@ -58,7 +60,7 @@ export const legal = {
       removed, this must go back to null and Privacy §11 comes out. */
   honorsDoNotTrack: true as boolean | null,
 
-  contactEmail: "team@imaginationgroveacademy.com",
+  contactEmail: site.contactEmail,
 };
 
 /** Renders a value, or a visible marker when it's still unresolved.

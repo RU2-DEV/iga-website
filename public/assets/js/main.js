@@ -168,8 +168,12 @@
       // here fails silently, falling back to the generic markup value.
       const data = new FormData(enrollForm);
       const parentName = String(data.get('parent-name') || '').trim();
+      const campus = String(data.get('campus') || '').trim();
       if (parentName) {
-        data.set('subject', 'New Tour Request | ' + parentName + ' | FOLLOW UP');
+        data.set(
+          'subject',
+          'New Tour Request | ' + parentName + (campus ? ' | ' + campus : '') + ' | FOLLOW UP'
+        );
       }
 
       // Captured before the reset() below wipes the form.
@@ -203,6 +207,10 @@
           pushEvent('lead_form_submitted', {
             form_location: window.location.pathname,
             child_age_group: ageGroup,
+            // Which campus the request is for. Reaches GA4 once a matching
+            // Data Layer Variable + event parameter are added to the GTM
+            // container (console-only change, no deploy needed).
+            campus: campus,
           });
 
           enrollForm.reset();

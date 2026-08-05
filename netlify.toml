@@ -1,7 +1,11 @@
 # Netlify configuration for the IGA site.
 
 [build]
-  command = "npm run build"
+  # check      = type-check the .astro/.ts sources (astro check)
+  # build      = generate dist/
+  # audit      = fail the deploy if placeholder text made it into dist/
+  #              (see scripts/audit-placeholders.mjs for what it catches)
+  command = "npm run check && npm run build && npm run audit:placeholders"
   publish = "dist"
 
 [build.environment]

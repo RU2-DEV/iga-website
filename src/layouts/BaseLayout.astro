@@ -2,6 +2,7 @@
 // BaseLayout — the shared shell for every page: <head>, nav, footer, scripts.
 // Pages pass `title` and `description`; their content renders into <slot />.
 import "../styles/global.css";
+import { site } from "../data/site";
 // Self-hosted fonts (served from our own domain — faster than Google's CDN,
 // and no parent traffic data sent to Google). Weights match what the CSS uses.
 import "@fontsource/manrope/400.css";
@@ -254,8 +255,8 @@ const gtmId = import.meta.env.PUBLIC_GTM_ID;
             <div class="footer-contact">
               <p><a href="/locations" class="footer-locate">Find a location &rarr;</a></p>
               <p>Locations across Indiana &amp; Kentucky</p>
-              <p>team@imaginationgroveacademy.com</p>
-              <p>Mon–Fri, 6:30 AM – 6:00 PM</p>
+              <p>{site.contactEmail}</p>
+              <p>{site.hours.daysShort}, {site.hours.open} – {site.hours.close}</p>
             </div>
           </div>
         </div>

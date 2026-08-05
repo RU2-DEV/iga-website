@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../data/site";
 ---
 <BaseLayout title="Parent Portal | Imagination Grove Academy" description="Log in to the IGA Parent Portal for daily updates, documents, messaging, and a direct deep-link into Brightwheel." mainClass="portal-main">
     <div class="container">
@@ -17,7 +18,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <h2 class="portal-card-heading">Open Brightwheel.</h2>
           <p class="portal-launch-intro">All daily updates, messaging, photos, and billing live in Brightwheel. Pick your way in:</p>
 
-          <a href="https://schools.mybrightwheel.com" class="btn btn-green btn-lg btn-full portal-launch-btn" target="_blank" rel="noopener">
+          <a href={site.brightwheel.web} class="btn btn-green btn-lg btn-full portal-launch-btn" target="_blank" rel="noopener">
             Open in your browser &rarr;
           </a>
 
@@ -25,11 +26,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
           <p class="portal-app-label">Get the Brightwheel mobile app:</p>
           <div class="app-badges">
-            <a href="https://apps.apple.com/app/brightwheel/id832701752" class="app-badge" target="_blank" rel="noopener">&#63743; App Store</a>
-            <a href="https://play.google.com/store/apps/details?id=com.brightwheel.schools" class="app-badge" target="_blank" rel="noopener">&#9654; Google Play</a>
+            <a href={site.brightwheel.appStore} class="app-badge" target="_blank" rel="noopener">&#63743; App Store</a>
+            <a href={site.brightwheel.googlePlay} class="app-badge" target="_blank" rel="noopener">&#9654; Google Play</a>
           </div>
 
-          <p class="portal-launch-note">Your login lives on Brightwheel. We email you credentials when your enrollment is confirmed. Forgot your password? <a href="https://schools.mybrightwheel.com" target="_blank" rel="noopener" class="text-link">Reset it on Brightwheel</a>.</p>
+          <p class="portal-launch-note">Your login lives on Brightwheel. We email you credentials when your enrollment is confirmed. Forgot your password? <a href={site.brightwheel.web} target="_blank" rel="noopener" class="text-link">Reset it on Brightwheel</a>.</p>
         </article>
 
         <!-- DIVIDER -->
