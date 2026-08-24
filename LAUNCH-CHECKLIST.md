@@ -17,9 +17,9 @@ The placeholder audit fails the build if `isDraft` is flipped while any
 
 ## 2. Open the site to search engines
 
-- [ ] Netlify → Site configuration → Environment variables →
-      set `PUBLIC_LAUNCHED = true`
-- [ ] Trigger a redeploy
+- [x] Netlify → Project configuration → Environment variables →
+      set `PUBLIC_LAUNCHED = true` — DONE 2026-08-24
+- [x] Trigger a redeploy — DONE 2026-08-24 (all 12 pages verified: no robots meta)
 
 ## 3. Verify (5 minutes)
 
