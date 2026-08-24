@@ -2,17 +2,12 @@
 // LEGAL PAGE CONFIG — single source of truth for /privacy-policy
 // and /terms.
 //
-// The page copy is a DRAFT (written 2026-07-28) awaiting review by
-// RU2's legal team. The unresolved values below are `null` on
-// purpose: each one renders as a visible "pending" marker rather
-// than an invented value, because guessing a legal entity name or a
-// liability cap on a published legal page is worse than admitting
-// it isn't settled yet.
-//
-// >>> AFTER LEGAL REVIEW: fill every null, apply any wording
-// >>> changes to the two .astro pages, then set isDraft = false.
-// >>> That single flag removes the draft banner AND stops forcing
-// >>> noindex on both pages.
+// LEGAL REVIEW COMPLETE: Privacy Policy signed off 2026-08-04, Terms
+// 2026-08-24 (RU2 legal). isDraft is false and every value is set.
+// If a value ever needs to go back to `null`, set isDraft = true
+// again — a null renders as a visible "pending" marker and the
+// placeholder-audit build gate fails a deploy that ships one while
+// isDraft is false.
 //
 // Source drafts (with the full "Notes for legal review" sections,
 // which deliberately do NOT appear on the site):
@@ -26,7 +21,7 @@ export const legal = {
   /** While true: draft banner shows, and both pages force noindex
       even after PUBLIC_LAUNCHED opens the rest of the site. This is
       the safety net if launch happens before legal review lands. */
-  isDraft: true,
+  isDraft: false,
 
   /** Operating entity. Confirmed by RU2 legal review (2026-08-04). */
   entityName: "IGA Group, LLC" as string | null,
@@ -36,7 +31,7 @@ export const legal = {
   noticeAddress: "15481 Union Chapel Rd, Suite 100, Noblesville, IN 46060" as string | null,
 
   effectiveDate: "August 1, 2026" as string | null,
-  lastUpdated: "August 4, 2026" as string | null,
+  lastUpdated: "August 24, 2026" as string | null,
 
   /** Retention period for tour requests that don't convert to
       enrollment. Set by RU2 legal review (2026-08-04). */
@@ -46,8 +41,9 @@ export const legal = {
       review (2026-08-04). */
   emailRetention: "three years" as string | null,
 
-  /** Liability cap in Section 12 of the Terms. Business decision. */
-  liabilityCap: null as string | null,
+  /** Liability cap in Section 12 of the Terms. Set by RU2 legal review
+      (2026-08-24) — recommendation accepted. */
+  liabilityCap: "USD $100" as string | null,
 
   /** Governing law + venue. Confirmed by RU2 legal review
       (2026-08-04): Indiana, Hamilton County. */

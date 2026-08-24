@@ -7,11 +7,10 @@ The domain (`www.imaginationgroveacademy.com`) is already live and serving the s
 
 In `src/data/legal.ts`:
 
-- [ ] Fill every remaining `null` (as of this writing: `liabilityCap`)
-- [ ] Set `isDraft = false` — this removes the draft banner AND stops forcing
-      `noindex` on `/privacy-policy` and `/terms`
-- [ ] **Separately**: delete the sitemap `filter` in `astro.config.mjs` so the
-      legal pages get indexed (flagged in a comment there — easy to miss)
+- [x] Fill every remaining `null` — DONE 2026-08-24 (`liabilityCap = "USD $100"`)
+- [x] Set `isDraft = false` — DONE 2026-08-24 (draft banner gone; legal pages
+      now follow the site-wide `PUBLIC_LAUNCHED` gate only)
+- [x] Delete the sitemap `filter` in `astro.config.mjs` — DONE 2026-08-24
 
 The placeholder audit fails the build if `isDraft` is flipped while any
 `legal.ts` value is still `null`, so a forgotten value cannot ship silently.
@@ -34,7 +33,7 @@ The placeholder audit fails the build if `isDraft` is flipped while any
 
 The site carries dates that expire — remove or update each as it passes:
 
-- [ ] Open-interviews copy (stale after **Aug 21, 2026**) — About hiring note + homepage teachers section
+- [x] Open-interviews copy — REMOVED 2026-08-24 from the homepage teachers section
 - [ ] Open-house copy (stale after **Sept 12, 2026**) — enroll page + homepage CTA
 - [ ] "Projected: September 14, 2026" opening label — `openingLabel` in `locations.ts`, update at opening
 - [ ] When the license is issued (client will confirm): flip all "licensing in progress"
