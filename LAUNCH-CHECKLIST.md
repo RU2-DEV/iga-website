@@ -27,7 +27,7 @@ The placeholder audit fails the build if `isDraft` is flipped while any
 - [x] `/privacy-policy/` — draft banner gone, no robots meta, no
       "pending legal review" text anywhere
 - [x] `/sitemap-index.xml` resolves and the sitemap includes `/privacy-policy/` and `/terms/`
-- [ ] Submit the sitemap in Google Search Console
+- [x] Submit the sitemap in Google Search Console — DONE 2026-08-27 (full URL required on a Domain property; initial "Couldn't fetch" with blank Last-read is Google's pre-crawl placeholder)
 
 ## 4. Post-launch, time-sensitive copy
 
