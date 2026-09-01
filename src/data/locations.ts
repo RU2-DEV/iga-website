@@ -110,7 +110,7 @@ export const locations: Location[] = [
     postalCode: "46106",
     telephone: "317-207-4797",
     capacity: 135,
-    openingLabel: "Projected: September 14, 2026",
+    openingLabel: "Soon — exact date to be announced",
     status: "open",
     statusLabel: "Opening first · Enrolling now",
     metaTitle: "Childcare in Bargersville, IN | Imagination Grove Academy",

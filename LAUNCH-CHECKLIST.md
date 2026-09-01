@@ -34,7 +34,9 @@ The placeholder audit fails the build if `isDraft` is flipped while any
 The site carries dates that expire — remove or update each as it passes:
 
 - [x] Open-interviews copy — REMOVED (homepage 2026-08-24; About hiring note 2026-08-27, `3584785`)
-- [ ] Open-house copy (stale after **Sept 12, 2026**) — enroll page + homepage CTA
-- [ ] "Projected: September 14, 2026" opening label — `openingLabel` in `locations.ts`, update at opening
+- [x] ~~Open houses Sept 5 & 12~~ — CANCELLED by client 2026-09-01, replaced by one open house **Saturday, September 19, 2026** (enroll page + homepage CTA)
+- [ ] Open-house copy (stale after **Sept 19, 2026**) — enroll page + homepage CTA
+- [x] ~~"Projected: September 14, 2026" opening label~~ — opening may slip past September (Emily, 2026-08-27); all opening copy made date-free 2026-09-01 (`openingLabel` → "Soon — exact date to be announced"; "mid-September" → "upcoming opening" in index/enroll/about)
+- [ ] When the client confirms a firm opening date: restore it in `openingLabel` and the homepage/enroll/About opening copy
 - [ ] When the license is issued (client will confirm): flip all "licensing in progress"
       copy site-wide, and change "Planned capacity" to the licensed figure
