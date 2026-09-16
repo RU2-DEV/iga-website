@@ -9,6 +9,7 @@
 //   - operating hours (footer, NAP cards, JSON-LD, campus copy)
 //   - the brand contact email
 //   - Brightwheel URLs (portal launch + app store badges)
+//   - social profile URLs (Facebook)
 //
 // If hours ever change, edit them HERE and they update
 // everywhere at once — footer, every location page, and the
@@ -29,6 +30,13 @@ export const site = {
     /** 24h forms for ChildCare JSON-LD OpeningHoursSpecification. */
     opensIso: "06:30",
     closesIso: "18:00",
+  },
+
+  /** Public social profiles. The Facebook page is the client's
+      channel for event dates and updates (Emily, 2026-09-16), so
+      site copy points there instead of carrying dates that expire. */
+  social: {
+    facebook: "https://www.facebook.com/profile.php?id=61591606214365",
   },
 
   /** Brightwheel entry points. Per-campus waitlist form URLs are

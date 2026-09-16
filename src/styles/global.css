@@ -1035,6 +1035,14 @@ html.js .fade-in.visible {
 
 .cta-band h2 { margin-bottom: 12px; }
 .cta-band p { margin-bottom: 28px; max-width: 540px; margin-left: auto; margin-right: auto; }
+.cta-inline-link {
+  color: var(--iga-white);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--transition);
+}
+.cta-inline-link:hover { color: var(--iga-teal-light); }
 
 /* ============================================
    PROGRAMS PAGE — DETAIL SECTIONS
