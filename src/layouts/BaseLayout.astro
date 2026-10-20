@@ -24,6 +24,9 @@ interface Props {
       Used by the draft legal pages, which must not be indexed until RU2's
       legal team has signed off on their wording. */
   noindex?: boolean;
+  /** Emit the self-referencing canonical link. Off for the 404 page, which
+      Netlify serves at every unknown URL and should not claim one. */
+  canonical?: boolean;
 }
 
 const {
@@ -31,6 +34,7 @@ const {
   description = "Safe, joyful childcare for children 6 weeks–5 years across Indiana and Kentucky.",
   mainClass,
   noindex = false,
+  canonical = true,
 } = Astro.props;
 
 // Canonical + social-share URLs are built against the production domain
@@ -81,7 +85,7 @@ const gtmId = import.meta.env.PUBLIC_GTM_ID;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonicalURL} />
+    {canonical && <link rel="canonical" href={canonicalURL} />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="generator" content={Astro.generator} />

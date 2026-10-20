@@ -43,8 +43,8 @@ export const site = {
       campus data and stay in locations.ts. */
   brightwheel: {
     web: "https://schools.mybrightwheel.com",
-    appStore: "https://apps.apple.com/app/brightwheel/id832701752",
-    googlePlay: "https://play.google.com/store/apps/details?id=com.brightwheel.schools",
+    appStore: "https://apps.apple.com/us/app/brightwheel-child-care-app/id902823296",
+    googlePlay: "https://play.google.com/store/apps/details?id=co.kidcasa.app",
   },
 } as const;
 

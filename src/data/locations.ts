@@ -307,7 +307,7 @@ export function locationJsonLd(loc: Location) {
   return {
     "@context": "https://schema.org",
     "@type": "ChildCare",
-    name: `Imagination Grove Academy — ${loc.city}`,
+    name: `Imagination Grove Academy ${loc.city}`,
     url: `https://www.imaginationgroveacademy.com/locations/${loc.slug}/`,
     email: loc.email,
     priceRange: "$$",
@@ -336,6 +336,8 @@ export function locationJsonLd(loc: Location) {
       "@type": "Organization",
       name: "Imagination Grove Academy",
       url: "https://www.imaginationgroveacademy.com",
+      logo: "https://www.imaginationgroveacademy.com/iga-badge.png",
+      sameAs: [site.social.facebook],
     },
   };
 }
