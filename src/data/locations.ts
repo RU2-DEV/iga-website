@@ -60,7 +60,7 @@ export interface Location {
   /** Bottom CTA band (coming-soon pages only). */
   cta?: { heading: string; body: string; btnLabel: string; btnHref: string };
   // --- Real data, added as the client provides it. Leave undefined until confirmed. ---
-  /** Display string for the NAP card's "Opening" row (e.g. "Projected: September 14, 2026").
+  /** Display string for the NAP card's "Opening" row (e.g. "Monday, October 26, 2026").
       Leave undefined to render "Date to be announced". */
   openingLabel?: string;
   streetAddress?: string;
@@ -110,9 +110,9 @@ export const locations: Location[] = [
     postalCode: "46106",
     telephone: "317-207-4797",
     capacity: 135,
-    openingLabel: "Soon — exact date to be announced",
+    openingLabel: "Monday, October 26, 2026",
     status: "open",
-    statusLabel: "Opening first · Enrolling now",
+    statusLabel: "Opening October 26 · Enrolling now",
     metaTitle: "Childcare in Bargersville, IN | Imagination Grove Academy",
     metaDescription:
       "Imagination Grove Academy is opening its first campus in Bargersville, IN. Safe, joyful childcare for children 6 weeks–5 years. Low ratios, degree-qualified lead teachers. Enrolling now.",
