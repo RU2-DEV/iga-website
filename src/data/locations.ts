@@ -112,21 +112,21 @@ export const locations: Location[] = [
     capacity: 135,
     openingLabel: "Monday, October 26, 2026",
     status: "open",
-    statusLabel: "Opening October 26 · Enrolling now",
+    statusLabel: "Now open · Enrolling",
     metaTitle: "Childcare in Bargersville, IN | Imagination Grove Academy",
     metaDescription:
-      "Imagination Grove Academy is opening its first campus in Bargersville, IN. Safe, joyful childcare for children 6 weeks–5 years. Low ratios, degree-qualified lead teachers. Enrolling now.",
+      "Imagination Grove Academy's Bargersville, IN campus is now open. Safe, joyful childcare for children 6 weeks-5 years. Low ratios, degree-qualified lead teachers. Enrolling now.",
     heroHeading: "Childcare in Bargersville, IN.",
     heroSub:
-      "Imagination Grove Academy's first campus is opening in Bargersville. Safe, joyful childcare for children 6 weeks–5 years — with low teacher-to-child ratios, degree-qualified lead teachers, and a curriculum that respects how young children actually learn.",
+      "Imagination Grove Academy's first campus is now open in Bargersville. Safe, joyful childcare for children 6 weeks-5 years, with low teacher-to-child ratios, degree-qualified lead teachers, and a curriculum that respects how young children actually learn.",
     napHeading: "Visit us",
     areaServed: ["Bargersville", "Greenwood", "Franklin"],
     areaLabel: "Johnson County · Indianapolis south metro",
     aboutHeading: "A purpose-built childcare home in Bargersville.",
     aboutBody: [
-      "Our Bargersville campus is new construction on South Grove Blvd — built from the ground up as a childcare center, not converted from a space that used to be something else. Every classroom was drawn around the age group it serves, so sinks, cubbies, sightlines, and nap space sit where they need to be from day one instead of being worked around later.",
-      `Bargersville is opening first because this building is furthest along. It also sits in one of the fastest-growing corners of the Indianapolis south metro, within an easy drive for families in Bargersville, Greenwood, Franklin, and the Center Grove area — most of whom are heading north for work in the morning. Doors open at ${site.hours.open} and stay open until ${site.hours.close}, Monday through Friday.`,
-      "The campus serves every IGA age group under one roof: infants from six weeks, toddlers, twos, preschool, and Pre-K, each in their own room with their own teaching team. Class sizes stay small in every program, and lead teachers are degree-qualified. A 30-minute tour is the fastest way to see it — and you are welcome in the classrooms while the children are in them.",
+      "Our Bargersville campus is new construction on South Grove Blvd, built from the ground up as a childcare center, not converted from a space that used to be something else. Every classroom was drawn around the age group it serves, so sinks, cubbies, sightlines, and nap space sit where they need to be from day one instead of being worked around later.",
+      `Bargersville opened first as our flagship campus. It sits in one of the fastest-growing corners of the Indianapolis south metro, within an easy drive for families in Bargersville, Greenwood, Franklin, and the Center Grove area, most of whom are heading north for work in the morning. Doors open at ${site.hours.open} and stay open until ${site.hours.close}, Monday through Friday.`,
+      "The campus serves every IGA age group under one roof: infants from six weeks, toddlers, twos, preschool, and Pre-K, each in their own room with their own teaching team. Class sizes stay small in every program, and lead teachers are degree-qualified. A 30-minute tour is the fastest way to see it, and you are welcome in the classrooms while the children are in them.",
     ],
     programsEyebrow: "At the Bargersville campus",
     programsIntro:
@@ -282,7 +282,7 @@ export const locations: Location[] = [
     ],
     cta: {
       heading: "The same IGA standards, in Lexington.",
-      body: "Our Bargersville, IN campus opens first. The Lexington campus follows with the exact same curriculum, ratios, and credentialing standards — adapted to Kentucky's licensing framework.",
+      body: "Our Bargersville, IN campus is now open. The Lexington campus follows with the exact same curriculum, ratios, and credentialing standards, adapted to Kentucky's licensing framework.",
       btnLabel: "See the Bargersville campus",
       btnHref: "/locations/bargersville",
     },

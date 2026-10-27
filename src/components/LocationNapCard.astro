@@ -46,7 +46,7 @@ const { loc } = Astro.props;
       <dd>{site.hours.daysLong}<br />{site.hours.open} – {site.hours.close}</dd>
     </div>
     <div>
-      <dt>Opening</dt>
+      <dt>{loc.status === "open" ? "Opened" : "Opening"}</dt>
       <dd>{loc.openingLabel ?? "Date to be announced"}</dd>
     </div>
   </dl>
